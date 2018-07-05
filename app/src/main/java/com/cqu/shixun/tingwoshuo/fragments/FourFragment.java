@@ -15,6 +15,9 @@ import com.bumptech.glide.Glide;
 import android.widget.LinearLayout;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import com.cqu.shixun.tingwoshuo.BecomeExpertActivity;
+import com.cqu.shixun.tingwoshuo.MySettingActivity;
 import com.cqu.shixun.tingwoshuo.RechargeActivity;
 import com.cqu.shixun.tingwoshuo.R;
 
@@ -29,6 +32,8 @@ public class FourFragment extends Fragment {
     private CollapsingToolbarLayout collapsing_toolbar;
     private FloatingActionButton fab;
     private LinearLayout L_my_money;
+    private LinearLayout L_my_mantoman;
+    private LinearLayout L_my_setting;
     //private  ViewPager vp;
     private static final String picUrl = "http://img1.imgtn.bdimg.com/it/u=3743691986,2983459167&fm=21&gp=0.jpg";
     List<String> mData;
@@ -36,7 +41,7 @@ public class FourFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_four, container, false);
-        //fra跳转到act
+        //fra跳转到act，我的钱包
         L_my_money=(LinearLayout)rootView.findViewById(R.id.my_money);
         L_my_money.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +52,29 @@ public class FourFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        //进入开通答主
+        L_my_mantoman=(LinearLayout)rootView.findViewById(R.id.my_mantoman);
+        L_my_mantoman.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                //SoilsenerActivity.class为想要跳转的Activity
+                intent.setClass(getActivity(), BecomeExpertActivity.class);
+                startActivity(intent);
+            }
+        });
+        //进入我的设置
+        L_my_setting=(LinearLayout)rootView.findViewById(R.id.my_setting);
+        L_my_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                //SoilsenerActivity.class为想要跳转的Activity
+                intent.setClass(getActivity(), MySettingActivity.class);
+                startActivity(intent);
+            }
+        });
+
         InitView();
 
         return rootView;

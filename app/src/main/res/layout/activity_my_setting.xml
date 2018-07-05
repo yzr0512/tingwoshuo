@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MySettingActivity">
+    <RelativeLayout
+        android:id="@+id/layout_titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="#fcccd2">
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="marquee"
+            android:gravity="center_horizontal|center"
+            android:singleLine="true"
+            android:text="设置"
+            android:textColor="#ffffffff"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/button_backward"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="#fcccd2"
+            android:drawablePadding="6dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:singleLine="true"
+            android:text="返回"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="54dp">
+        <LinearLayout
+            android:id="@+id/changephone"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="　更换手机"
+                android:layout_gravity="center"
+                android:textSize="20dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="230dp"
+                android:background="@drawable/right_arrow"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_below="@+id/changephone"
+            android:layout_marginTop="0.5dp"
+            android:layout_height="1dp"
+            android:background="#f9c2c2" />
+
+
+        <LinearLayout
+            android:id="@+id/changepsw"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="　更换密码"
+                android:layout_gravity="center"
+                android:textSize="20dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="230dp"
+                android:background="@drawable/right_arrow"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_below="@+id/changepsw"
+            android:layout_marginTop="0.5dp"
+            android:layout_height="1dp"
+            android:background="#f9c2c2" />
+
+
+        <LinearLayout
+            android:id="@+id/aboutus"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="　关于我们"
+                android:layout_gravity="center"
+                android:textSize="20dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="230dp"
+                android:background="@drawable/right_arrow"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_below="@+id/aboutus"
+            android:layout_marginTop="0.5dp"
+            android:layout_height="1dp"
+            android:background="#f9c2c2" />
+
+
+        <LinearLayout
+            android:id="@+id/clean"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="　清理缓存"
+                android:layout_gravity="center"
+                android:textSize="20dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="230dp"
+                android:background="@drawable/right_arrow"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_below="@+id/clean"
+            android:layout_marginTop="0.5dp"
+            android:layout_height="1dp"
+            android:background="#f9c2c2" />
+
+
+        <LinearLayout
+            android:id="@+id/changecount"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:background="#ffffff"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="　切换用户"
+                android:layout_gravity="center"
+                android:textSize="20dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="230dp"
+                android:background="@drawable/right_arrow"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_below="@+id/changecount"
+            android:layout_marginTop="0.5dp"
+            android:layout_height="1dp"
+            android:background="#f9c2c2" />
+        <Button
+            android:id="@+id/certain_vbu2"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:text="退出账号"/>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

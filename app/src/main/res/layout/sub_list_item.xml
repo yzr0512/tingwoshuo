@@ -92,14 +92,14 @@
                 android:id="@+id/zhuanjia_image"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
-                android:layout_centerVertical="true"
+                android:layout_marginTop="30dp"
                 android:src="@drawable/profile" />
 
             <TextView
                 android:id="@+id/zhuanjia_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
+                android:layout_marginTop="30dp"
                 android:layout_marginLeft="26dp"
                 android:layout_toRightOf="@id/profile_image"
                 android:text="专家名字"
@@ -107,7 +107,8 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/yuyinkuang"
                 android:text="1.0听币偷听"
                 android:layout_below="@+id/zhuanjia_image"/>
         </RelativeLayout>
