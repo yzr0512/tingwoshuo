@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/register_view"
+
+    tools:context=".LoginActivity">
+
+
+    <EditText
+        android:id="@+id/count_tv_login"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#273b46"
+        android:inputType="number"
+        android:hint="账号"
+        />
+    <EditText
+        android:id="@+id/mima_tv_login"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="#273b46"
+        android:inputType="textPassword"
+        android:hint="密码"
+       />
+    <Button
+        android:id="@+id/certen_bu_login"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/shape"
+        android:text="登录"/>
+    <RelativeLayout
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <Button
+            android:id="@+id/findpsw_bu_login"
+            android:background="@android:color/transparent"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="忘记密码？"/>
+        <Button
+            android:id="@+id/rigister_bu_login"
+            android:background="@android:color/transparent"
+            android:layout_alignParentRight="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="注册"/>
+    </RelativeLayout>
+</LinearLayout>

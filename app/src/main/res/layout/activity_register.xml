@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_marginTop="0dip"
+    android:orientation="vertical"
+    android:background="#e1deFa"
+    tools:context=".RegisterActivity">
+
+
+    <ImageView
+        android:layout_width="60dip"
+        android:layout_height="60dip"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/blueicon_logo" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="听我说，知识力量无限大！"
+        android:layout_marginTop="20dp"
+        android:textColor="#ff000000"
+        />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icons8_user_50"
+
+            />
+
+        <EditText
+            android:id="@+id/name_text_reg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="姓名"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icons8_cell_phone_50" />
+
+        <EditText
+            android:id="@+id/phone_text_rge"
+            android:layout_width="134dp"
+            android:layout_height="wrap_content"
+            android:hint="手机"
+            android:maxLength="11"
+            android:inputType="number" />
+
+        <Button
+            android:layout_marginRight="0dp"
+            android:id="@+id/getinf_bu_rge"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="获取验证码"
+            android:background="@drawable/shape2_bule"
+            android:textColor="#55000000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icons8_lock_50" />
+
+        <EditText
+            android:id="@+id/mima_text_rge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="密码"
+            android:maxLength="16"
+            android:inputType="textPassword"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icons8_lock_50" />
+
+        <EditText
+            android:id="@+id/mimaconform_text_rge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="确认密码"
+            android:maxLength="16"
+            android:inputType="textPassword" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icons8_protect_50" />
+
+        <EditText
+            android:id="@+id/conform_text_reg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="验证码" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/rigister_bu_reg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:background="@drawable/shape"
+        android:text="注册" />
+
+</LinearLayout>
