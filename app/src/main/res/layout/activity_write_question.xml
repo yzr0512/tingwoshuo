@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AboutUsActivity">
+    tools:context=".WriteQuestionActivity">
     <RelativeLayout
         android:id="@+id/layout_titlebar"
         android:layout_width="match_parent"
@@ -17,12 +17,12 @@
             android:ellipsize="marquee"
             android:gravity="center_horizontal|center"
             android:singleLine="true"
-            android:text="关于我们"
+            android:text="提问"
             android:textColor="#ffffffff"
             android:textSize="20dp" />
 
         <Button
-            android:id="@+id/button_backward"
+            android:id="@+id/back_bu_writeq"
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:background="@color/colorPrimary"
@@ -35,35 +35,34 @@
             android:textColor="#ffffff"
             android:textSize="18dp"
             />
-
     </RelativeLayout>
-
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_marginTop="54dp"
         android:orientation="vertical"
-        android:layout_marginTop="54dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <TextView
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:textSize="20dp"
-            android:text="邮箱：123456@163.com"/>
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="输入你的问题"/>
+        <EditText
+            android:id="@+id/question_writeq"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:textSize="15dp"
-            android:text="当前版本V1.0"/>
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="100dp"/>
         <Button
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:id="@+id/writequestion_bu_writeq"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
-            android:text="检查最新版本"/>
-    </LinearLayout>
+            android:background="@drawable/shape_red"
+            android:text="100听币提问"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content" />
 
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -13,7 +13,7 @@ public class BecomeExpertActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_become_expert);
 
-        myback_bu=(Button)findViewById(R.id.button_backward);
+        myback_bu=(Button)findViewById(R.id.back_bu_becex);
 
         myback_bu.setOnClickListener(new android.view.View.OnClickListener() {
             @Override

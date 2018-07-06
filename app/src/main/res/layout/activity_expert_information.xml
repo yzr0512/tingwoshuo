@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExpertInformationActivity">
+    <RelativeLayout
+        android:id="@+id/layout_titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="@color/colorPrimary">
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="marquee"
+            android:gravity="center_horizontal|center"
+            android:singleLine="true"
+            android:text="专家信息"
+            android:textColor="#ffffffff"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/back_bu_exim"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:drawablePadding="6dp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:singleLine="true"
+            android:text="返回"
+            android:textColor="#ffffff"
+            android:textSize="18dp"
+            />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="54dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/image_head_exim"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="40dp"
+                android:background="#ff89f3"/>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/name_exim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="名字"
+                    android:textSize="25dp"/>
+                <TextView
+                    android:id="@+id/keyword_exim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginLeft="20dp"
+                    android:text="擅长问题"
+                    android:textSize="20dp"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/imform_exim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:textSize="20dp"
+            android:text="简介aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
+        <View
+            android:id="@+id/line_one"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/money_count"
+            android:layout_marginTop="30dp"
+            android:layout_height="1dp"
+            android:background="#f9c2c2" />
+
+        <Button
+            android:id="@+id/ask_bu_exim"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_width="150dp"
+            android:text="100听币提问"
+            android:background="@drawable/shape_red"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
