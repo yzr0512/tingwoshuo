@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.cqu.shixun.tingwoshuo.RechargeActivity">
+    tools:context="com.cqu.shixun.tingwoshuo.ui.activity.RechargeActivity">
     <RelativeLayout
         android:id="@+id/layout_titlebar"
         android:layout_width="match_parent"

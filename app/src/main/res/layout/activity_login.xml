@@ -8,7 +8,7 @@
     android:gravity="center"
     android:background="@drawable/register_view"
 
-    tools:context=".LoginActivity">
+    tools:context=".ui.activity.LoginActivity">
 
 
     <EditText

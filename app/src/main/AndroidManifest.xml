@@ -9,28 +9,29 @@
         android:icon="@mipmap/zhihu_app"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:name=".MyApplication">
+
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activity.LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RechargeActivity" />
-        <activity android:name=".BecomeExpertActivity" />
-        <activity android:name=".MySettingActivity" />
-        <activity android:name=".ChangePhoneActivity" />
-        <activity android:name=".ChangePswActivity" />
-        <activity android:name=".AboutUsActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".FindPswActivity" />
-        <activity android:name=".ExpertInformationActivity" />
-        <activity android:name=".WriteQuestionActivity" />
-        <activity android:name=".AnswerActivity"></activity>
+        <activity android:name=".ui.activity.RechargeActivity" />
+        <activity android:name=".ui.activity.BecomeExpertActivity" />
+        <activity android:name=".ui.activity.MySettingActivity" />
+        <activity android:name=".ui.activity.ChangePhoneActivity" />
+        <activity android:name=".ui.activity.ChangePswActivity" />
+        <activity android:name=".ui.activity.AboutUsActivity" />
+        <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name=".ui.activity.RegisterActivity" />
+        <activity android:name=".ui.activity.FindPswActivity" />
+        <activity android:name=".ui.activity.ExpertInformationActivity" />
+        <activity android:name=".ui.activity.WriteQuestionActivity" />
+        <activity android:name=".ui.activity.AnswerActivity"></activity>
     </application>
 
 </manifest>

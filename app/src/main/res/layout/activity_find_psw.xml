@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:background="#e1deFa"
 
-    tools:context=".FindPswActivity">
+    tools:context=".ui.activity.FindPswActivity">
     <LinearLayout
 
         android:layout_marginTop="100dp"
