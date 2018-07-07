@@ -83,6 +83,10 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
         });
 
         iExpertListPrsenter = new ExpertListPresentImpl(this);
+
+        iExpertListPrsenter.getCategoryList();//板块列表
+
+
     }
 
 
@@ -102,11 +106,27 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
     public void showCategoryList(List<Category> categories) {
         // 前端完成此处的实现
 
+        for( Category   category: categories) {
+
+            category.getName();//分类名
+
+            //显示出来到前端
+
+
+
+
+
+        }
+
+
+
     }
 
     @Override
     public void showExpertList(Category category, List<User> users) {
         // 前端完成此处的实现
+
+
 
     }
 
