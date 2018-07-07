@@ -61,7 +61,7 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
     private void InitView() {
         fam = (FloatingActionMenu) rootView.findViewById(R.id.menu_yellow);
         //头像实现处
-        View headView = LayoutInflater.from(mContext).inflate(R.layout.index_list_headview, null);
+
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         swipeRefreshLayout.setProgressViewOffset(false, 0, (int) (mContext.getResources().getDisplayMetrics().density * 64));
@@ -69,21 +69,53 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(manager);
+
+
+        iExpertListPrsenter = new ExpertListPresentImpl(this);
+        //iExpertListPrsenter.getCategoryList();
+        iExpertListPrsenter.getExpertList("法律");
+    }
+//    public void  onItemClick(int position){
+//        Toast.makeText(getActivity().getApplicationContext(), ""+position, Toast.LENGTH_SHORT).show();
+//    }
+
+    @Override
+    public void onRefresh() {
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        }, 2000);
+
+    }
+
+    @Override
+    public void showCategoryList(List<Category> categories) {
+        // 前端完成此处的实现
+
+    }
+
+
+
+    @Override
+    public void showExpertList(String categoryName, List<User> users) {
+        // 前端完成此处的实现
         List<PersonItem>datas=new ArrayList<>();
-        for(int i=0;i<5;i++){
-            PersonItem personItem=new PersonItem(i);
-            personItem.setAnsNum(30);
-            personItem.setAskPrice(50+i);
+        for(User user : users){
+            PersonItem personItem=new PersonItem(user.getId());
+            personItem.setAnsNum(user.getAnsNum());
+            personItem.setAskPrice(user.getAskPrice());
             personItem.setImg("hahah");
-            personItem.setListenNum(500+2*i);
-            personItem.setName("余志荣");
-            personItem.setTitle("DNF肝帝,广东粤语倡导者，资深软件架构师,电脑清洗专家。");
+            personItem.setListenNum(500);
+            personItem.setName(user.getName());
+            personItem.setTitle(user.getTitle());
             datas.add(personItem);
         }
-//        List<String> datas = new ArrayList<>();
-//        for (int i = 0; i < 100; i++) {
-//            datas.add("This is item " + i);
-//        }
+
+
+        View headView = LayoutInflater.from(mContext).inflate(R.layout.index_list_headview, null);
         adapter = new IndexRecyclerViewAdapter(mContext, datas);
         adapter.setHeadView(headView);   //设置4个范围下面的灰块区域
 //        adapter.setmItemClickListener((IndexRecyclerViewAdapter.OnItemClickListener) this);
@@ -114,38 +146,6 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
                 }
             }
         });
-
-        iExpertListPrsenter = new ExpertListPresentImpl(this);
-        iExpertListPrsenter.getCategoryList();
-    }
-//    public void  onItemClick(int position){
-//        Toast.makeText(getActivity().getApplicationContext(), ""+position, Toast.LENGTH_SHORT).show();
-//    }
-
-    @Override
-    public void onRefresh() {
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        }, 2000);
-
-    }
-
-    @Override
-    public void showCategoryList(List<Category> categories) {
-        // 前端完成此处的实现
-
-    }
-
-
-
-    @Override
-    public void showExpertList(String categoryName, List<User> users) {
-        // 前端完成此处的实现
-
     }
 
     @Override
