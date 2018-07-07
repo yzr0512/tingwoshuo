@@ -11,12 +11,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.cqu.shixun.tingwoshuo.model.Category;
-import com.cqu.shixun.tingwoshuo.model.User;
+// import com.cqu.shixun.tingwoshuo.model.User;
 import com.cqu.shixun.tingwoshuo.presenter.iPresenter.IExpertListPrsenter;
 import com.cqu.shixun.tingwoshuo.presenter.impl.ExpertListPresentImpl;
 import com.cqu.shixun.tingwoshuo.ui.iView.IExpertListView;
+import com.cqu.shixun.tingwoshuo.model.PersonItem;
 import com.github.clans.fab.FloatingActionMenu;
 
 import java.util.ArrayList;
@@ -61,12 +63,32 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(manager);
-        List<String> datas = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            datas.add("This is item " + i);
+        List<PersonItem>datas=new ArrayList<>();
+        for(int i=0;i<5;i++){
+            PersonItem personItem=new PersonItem(i);
+            personItem.setAnsNum(30);
+            personItem.setAskPrice(50+i);
+            personItem.setImg("hahah");
+            personItem.setListenNum(500+2*i);
+            personItem.setName("余志荣");
+            personItem.setTitle("DNF肝帝,广东粤语倡导者，资深软件架构师,电脑清洗专家。");
+            datas.add(personItem);
         }
+//        List<String> datas = new ArrayList<>();
+//        for (int i = 0; i < 100; i++) {
+//            datas.add("This is item " + i);
+//        }
         adapter = new IndexRecyclerViewAdapter(mContext, datas);
         adapter.setHeadView(headView);
+//        adapter.setmItemClickListener((IndexRecyclerViewAdapter.OnItemClickListener) this);
+
+        adapter.setmItemClickListener(new IndexRecyclerViewAdapter.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(View position) {
+                Toast.makeText(getActivity().getApplicationContext(),"onItemClick:"+position.getTag(),Toast.LENGTH_SHORT).show();
+            }
+        });
         recyclerView.setAdapter(adapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -84,7 +106,9 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
 
         iExpertListPrsenter = new ExpertListPresentImpl(this);
     }
-
+//    public void  onItemClick(int position){
+//        Toast.makeText(getActivity().getApplicationContext(), ""+position, Toast.LENGTH_SHORT).show();
+//    }
 
     @Override
     public void onRefresh() {
@@ -105,7 +129,7 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
     }
 
     @Override
-    public void showExpertList(Category category, List<User> users) {
+    public void showExpertList(Category category, List<PersonItem> personItems) {
         // 前端完成此处的实现
 
     }

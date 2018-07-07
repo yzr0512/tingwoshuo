@@ -47,14 +47,14 @@ public class SecondFragment extends Fragment {
         mViewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
 
         //初始化TabLayout的title
-        mTabLayout.addTab(mTabLayout.newTab().setText("推荐"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("圆桌"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("内容"));
+        mTabLayout.addTab(mTabLayout.newTab().setText("答主"));
         mTabLayout.addTab(mTabLayout.newTab().setText("热门"));
         mTabLayout.addTab(mTabLayout.newTab().setText("收藏"));
 
         List<String> titles = new ArrayList<>();
-        titles.add("推荐");
-        titles.add("圆桌");
+        titles.add("内容");
+        titles.add("答主");
         titles.add("热门");
         titles.add("收藏");
 

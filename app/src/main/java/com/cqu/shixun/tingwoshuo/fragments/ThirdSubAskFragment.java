@@ -1,4 +1,4 @@
-package com.cqu.shixun.tingwoshuo.ui.fragments;
+package com.cqu.shixun.tingwoshuo.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,21 +12,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.cqu.shixun.tingwoshuo.model.ContentItem;
-import com.cqu.shixun.tingwoshuo.model.PersonItem;
+import com.cqu.shixun.tingwoshuo.R;
+import com.cqu.shixun.tingwoshuo.adapter.SubAskContentRecyclerViewAdapter;
+import com.cqu.shixun.tingwoshuo.adapter.SubContentRecyclerViewAdapter;
+import com.cqu.shixun.tingwoshuo.model.AskContentItem;
+import com.cqu.shixun.tingwoshuo.model.ListenContentItem;
 import com.github.clans.fab.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cqu.shixun.tingwoshuo.R;
-import com.cqu.shixun.tingwoshuo.adapter.SubRecyclerViewAdapter;
-
-public class SecondSubFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class ThirdSubAskFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private Context mContext;
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
-    private SubRecyclerViewAdapter adapter;
+    private SubAskContentRecyclerViewAdapter adapter;
     //
     private View rootView;
     private FloatingActionButton fab;
@@ -54,19 +54,19 @@ public class SecondSubFragment extends Fragment implements SwipeRefreshLayout.On
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(manager);
-        List<ContentItem>datas=new ArrayList<>();
+
+        List<AskContentItem>datas=new ArrayList<>();
         for (int i=0;i<100;i++){
-            ContentItem contentItem=new ContentItem();
-            contentItem.setIntListenNum(30+i);
-            contentItem.setStrType("精选");
-            contentItem.setStrAvatar("hahah");
-            contentItem.setIntListenPrice(500+2*i);
-            contentItem.setStrName("陶友玮");
-            contentItem.setStrQuesition("重庆合川北新御龙湾的房产是否具有投资价值？升值空间多大？");
-            datas.add(contentItem);
+            AskContentItem askContentItem=new AskContentItem();
+            askContentItem.setStrDate("2018-07-05");
+            askContentItem.setIntQuesitionPrice(13+i);
+            askContentItem.setStrAskPerson("梁宏观");
+            askContentItem.setStrQuesitionState("等待回答");
+            askContentItem.setStrAskContent("重庆大学创校多长时间了？");
+            datas.add(askContentItem);
         }
 
-        adapter = new SubRecyclerViewAdapter(mContext, datas);
+        adapter = new SubAskContentRecyclerViewAdapter(mContext, datas);
         recyclerView.setAdapter(adapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

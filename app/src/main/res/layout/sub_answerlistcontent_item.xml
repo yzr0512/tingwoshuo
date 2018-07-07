@@ -26,34 +26,32 @@
 
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/StrAvatar"
+                android:id="@+id/sub_answer_StrAskAvatar"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/profile" />
 
             <TextView
-                android:id="@+id/StrName"
+                android:id="@+id/sub_answer_StrAskPerson"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="15dp"
-                android:layout_toRightOf="@id/profile_image"
+
+                android:layout_toRightOf="@id/sub_ask_StrAskAvatar"
                 android:text="网友名字"
                 android:textSize="15sp" />
-
             <TextView
-                android:id="@+id/StrType"
+                android:id="@+id/sub_answer_IntQuesiqionPrice"
+                android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:text="网友名字"
-                android:textSize="15sp" />
-        </RelativeLayout>
+                android:text="听币"/>
 
+        </RelativeLayout>
         <TextView
-            android:id="@+id/StrQuesition"
+            android:id="@+id/sub_answer_StrAskContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
@@ -63,26 +61,59 @@
             android:textSize="14sp"
             android:textStyle="bold" />
         <RelativeLayout
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="12dp"
             android:layout_marginRight="12dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/sub_answer_StrAnswerAvatar"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/profile" />
             <Button
-                android:id="@+id/BtnAnswer"
+            android:id="@+id/sub_answer_BtnListenContent"
+            android:layout_toRightOf="@+id/sub_answer_StrAnswerAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击播放"
+            android:layout_centerVertical="true"
+            />
+            <Button
+                android:id="@+id/sub_answer_BtnReanswer"
+                android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10RMB偷偷听"
+                android:text="重新回答"
                 android:layout_centerVertical="true"
                 />
+
+        </RelativeLayout>
+        <RelativeLayout
+
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
             <TextView
-                android:id="@+id/IntListenNum"
+                android:id="@+id/sub_answer_StrDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10tingguo"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"/>
+                android:text="2018-07-02"/>
+            <TextView
+                android:id="@+id/sub_answer_IntListenContentNum"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="听过"/>
         </RelativeLayout>
-
         <!--<TextView-->
             <!--android:id="@+id/textView"-->
             <!--android:layout_width="match_parent"-->

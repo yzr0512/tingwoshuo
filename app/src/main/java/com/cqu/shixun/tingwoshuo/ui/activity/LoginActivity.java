@@ -92,7 +92,8 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
         switch (view.getId()){
             case R.id.certen_bu_login: {
                 Log.d("btn", "loginBtn click");
-                loginPresenter.login(editTextPhone.getText().toString(), editTextPwd.getText().toString());
+//                loginPresenter.login(editTextPhone.getText().toString(), editTextPwd.getText().toString());
+                loginSuccess();
             }
                 break;
             case R.id.rigister_bu_login:
