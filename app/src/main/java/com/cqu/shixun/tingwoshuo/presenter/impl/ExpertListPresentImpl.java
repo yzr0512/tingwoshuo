@@ -13,9 +13,7 @@ import java.util.List;
 
 import com.cqu.shixun.tingwoshuo.model.myokhttp.MyOkHttp;
 import com.cqu.shixun.tingwoshuo.model.myokhttp.response.JsonResponseHandler;
-import com.google.gson.JsonObject;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -61,28 +59,10 @@ public class ExpertListPresentImpl implements IExpertListPrsenter {
                     }
                 });
 
-//        for(int i = 0; i < 10; i++){ // 测试用的数据
-//            Category category = new Category(i, "板块" + Integer.toString(i));
-//            categories.add(category);
-//        }
-
     }
 
     @Override
     public void getExpertList(String categoryName) {
-
-//        Log.d("Category", Integer.toString(categoryID));
-        // 后端完成此处的实现
-
-//        for(int i = 0; i < 10; i++){ // 测试用的数据
-//            User user = new User(i);
-//            user.setName("专家" + Integer.toString(i));
-////            user.setTitle(category.getName() + "板块的专家");
-//            user.setAnsNum(100+i);
-//            user.setAskPrice(99.0f);
-//            // 头像待补充
-//            users.add(user);
-//        }
 
         MyOkHttp myOkHttp = new MyOkHttp();
         myOkHttp.get().url("http://119.29.105.37:8000/expertList").addParam("categoryName", categoryName)

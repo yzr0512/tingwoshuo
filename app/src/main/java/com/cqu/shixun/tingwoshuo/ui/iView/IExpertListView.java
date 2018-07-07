@@ -9,7 +9,7 @@ import com.cqu.shixun.tingwoshuo.model.User;
 import java.util.List;
 
 public interface IExpertListView {
-    // 显示所有的板块列表
+    // 显示所有的板块列表（弃用）
     public void showCategoryList(List<Category> categories);
 
     // 显示某个板块的专家列表

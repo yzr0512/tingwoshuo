@@ -8,8 +8,17 @@ import android.view.View;
 import android.widget.Button;
 
 import com.cqu.shixun.tingwoshuo.R;
+import com.cqu.shixun.tingwoshuo.model.Question;
+import com.cqu.shixun.tingwoshuo.model.User;
+import com.cqu.shixun.tingwoshuo.presenter.iPresenter.IExpertInfoPresenter;
+import com.cqu.shixun.tingwoshuo.presenter.impl.ExpertInfoPresenterImpl;
+import com.cqu.shixun.tingwoshuo.ui.iView.IExpertInfoView;
 
-public class ExpertInformationActivity extends AppCompatActivity implements View.OnClickListener {
+import java.util.List;
+
+public class ExpertInformationActivity extends AppCompatActivity implements IExpertInfoView, View.OnClickListener{
+
+    IExpertInfoPresenter iExpertInfoPresenter;
 
     private Button BtnBack;
     @Override
@@ -19,6 +28,8 @@ public class ExpertInformationActivity extends AppCompatActivity implements View
 
         BtnBack=(Button)findViewById(R.id.back_bu_exim);
         BtnBack.setOnClickListener(this);
+
+        iExpertInfoPresenter = new ExpertInfoPresenterImpl();
     }
 
 
@@ -31,8 +42,18 @@ public class ExpertInformationActivity extends AppCompatActivity implements View
 //            Intent intent=new Intent();
 //            intent.setClass(ExpertInformationActivity.this,ExpertInformationActivity.);
         }
+        
     }
 
+    // 显示答主页
+    @Override
+    public void showExpertInfo(User user, List<Question> questions) {
 
+    }
 
+    // 显示信息 主要是错误信息
+    @Override
+    public void showMessage(String msg) {
+
+    }
 }
