@@ -11,37 +11,36 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.bumptech.glide.Glide;
 import com.cqu.shixun.tingwoshuo.Constant;
 import com.cqu.shixun.tingwoshuo.R;
 import com.cqu.shixun.tingwoshuo.model.ContentItem;
+import com.cqu.shixun.tingwoshuo.model.ListenContentItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by engineer on 2016/9/13.
  */
-public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerViewAdapter.MyViewHolder> {
+public class SubContentRecyclerViewAdapter extends RecyclerView.Adapter<SubContentRecyclerViewAdapter.MyViewHolder> {
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_NORMAL = 1;
     private View headView;
 
-    private List<ContentItem> datas = new ArrayList<>();
+    private List<ListenContentItem> datas = new ArrayList<>();
     private Context mContext;
 
-    private int menuW, menuH;
 
-    public SubRecyclerViewAdapter(Context mContext, List<ContentItem> datas) {
+    public SubContentRecyclerViewAdapter(Context mContext, List<ListenContentItem> datas) {
         this.datas = datas;
         this.mContext = mContext;
         DisplayMetrics display = new DisplayMetrics();
         Activity mActivity = (Activity) mContext;
         mActivity.getWindowManager().getDefaultDisplay().getMetrics(display);
-        menuW = display.widthPixels / 2;
-        menuH = LinearLayout.LayoutParams.WRAP_CONTENT;
+
 
     }
 
@@ -52,7 +51,7 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
         }
 
 
-        View view = LayoutInflater.from(mContext).inflate(R.layout.sub_list_item, null);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.sub_listcontent_item, null);
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
     }
@@ -68,13 +67,12 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
 
 
 //        holder.text.setText(datas.get(pos));
-        holder.StrQuesition.setText(datas.get(pos).getStrQuesition());
-        holder.StrType.setText("推荐话题："+datas.get(pos).getStrType());
-        holder.IntListenNum.setText("听过："+datas.get(pos).getIntListenNum());
-        holder.StrName.setText("  "+datas.get(pos).getStrName());
-        holder.BtnAnswer.setText(datas.get(pos).getIntListenPrice()+"听币偷偷听");
+        holder.StrAskContent.setText(datas.get(pos).getStrAskContent());
+        holder.IntListenContentNum.setText("听过："+datas.get(pos).getIntListenContentNum());
+        holder.StrDate.setText(datas.get(pos).getStrDate());
 
-        Glide.with(mContext).load(Constant.headPics.get(pos % 3)).placeholder(R.drawable.profile).into(holder.StrAvatar);
+        Glide.with(mContext).load(Constant.headPics.get(pos % 3)).placeholder(R.drawable.profile).into(holder.StrAskAvatar);
+        Glide.with(mContext).load(Constant.headPics.get(pos % 2)).placeholder(R.drawable.profile).into(holder.StrListenAvatar);
 
     }
 
@@ -92,22 +90,22 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        CircleImageView StrAvatar;
-        TextView StrName;
-        TextView StrType;
-        TextView StrQuesition;
-        TextView IntListenNum;
-        TextView IntListenPrice;
-        Button BtnAnswer;
+        CircleImageView StrListenAvatar;
+        CircleImageView StrAskAvatar;
+        TextView StrAskContent;
+        TextView IntListenContentNum;
+        TextView StrDate;
+        Button BtnListenContent;
         public MyViewHolder(View itemView) {
             super(itemView);
             if (itemView == headView) return;
-            StrName = (TextView) itemView.findViewById(R.id.StrName);
-            StrType = (TextView) itemView.findViewById(R.id.StrType);
-            StrQuesition = (TextView) itemView.findViewById(R.id.StrQuesition);
-            IntListenNum = (TextView) itemView.findViewById(R.id.IntListenNum);
-            BtnAnswer = (Button) itemView.findViewById(R.id.BtnAnswer);
-            StrAvatar=(CircleImageView)itemView.findViewById(R.id.StrAvatar);
+
+            StrAskContent = (TextView) itemView.findViewById(R.id.StrAskContent);
+            IntListenContentNum = (TextView) itemView.findViewById(R.id.IntListenContentNum);
+            StrDate = (TextView) itemView.findViewById(R.id.StrDate);
+            BtnListenContent = (Button) itemView.findViewById(R.id.BtnListenContent);
+            StrListenAvatar=(CircleImageView)itemView.findViewById(R.id.StrListenAvatar);
+            StrAskAvatar=(CircleImageView)itemView.findViewById(R.id.StrAskAvatar);
 
         }
     }

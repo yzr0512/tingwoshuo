@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import java.util.List;
 
 import com.cqu.shixun.tingwoshuo.R;
+import com.cqu.shixun.tingwoshuo.model.PersonItem;
 
 /**
  * Created by engineer on 2016/12/22.
@@ -17,10 +18,10 @@ import com.cqu.shixun.tingwoshuo.R;
 public class IndexLiveHListAdapter extends RecyclerView.Adapter<IndexLiveHListAdapter.MyHolder> {
 
 
-    private List<String> datas;
+    private List<PersonItem> datas;
     private Context mContext;
 
-    public IndexLiveHListAdapter(List<String> datas) {
+    public IndexLiveHListAdapter(List<PersonItem> datas) {
         this.datas = datas;
     }
 

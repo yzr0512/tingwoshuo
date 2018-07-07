@@ -8,40 +8,38 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import com.bumptech.glide.Glide;
 import com.cqu.shixun.tingwoshuo.Constant;
 import com.cqu.shixun.tingwoshuo.R;
-import com.cqu.shixun.tingwoshuo.model.ContentItem;
+import com.cqu.shixun.tingwoshuo.model.AskContentItem;
+import com.cqu.shixun.tingwoshuo.model.ListenContentItem;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by engineer on 2016/9/13.
  */
-public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerViewAdapter.MyViewHolder> {
+public class SubAskContentRecyclerViewAdapter extends RecyclerView.Adapter<SubAskContentRecyclerViewAdapter.MyViewHolder> {
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_NORMAL = 1;
     private View headView;
 
-    private List<ContentItem> datas = new ArrayList<>();
+    private List<AskContentItem> datas = new ArrayList<>();
     private Context mContext;
 
-    private int menuW, menuH;
 
-    public SubRecyclerViewAdapter(Context mContext, List<ContentItem> datas) {
+    public SubAskContentRecyclerViewAdapter(Context mContext, List<AskContentItem> datas) {
         this.datas = datas;
         this.mContext = mContext;
         DisplayMetrics display = new DisplayMetrics();
         Activity mActivity = (Activity) mContext;
         mActivity.getWindowManager().getDefaultDisplay().getMetrics(display);
-        menuW = display.widthPixels / 2;
-        menuH = LinearLayout.LayoutParams.WRAP_CONTENT;
+
 
     }
 
@@ -52,7 +50,7 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
         }
 
 
-        View view = LayoutInflater.from(mContext).inflate(R.layout.sub_list_item, null);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.sub_asklistcontent_item, null);
         MyViewHolder holder = new MyViewHolder(view);
         return holder;
     }
@@ -67,14 +65,15 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
         final int pos = getRealPosition(holder);
 
 
-//        holder.text.setText(datas.get(pos));
-        holder.StrQuesition.setText(datas.get(pos).getStrQuesition());
-        holder.StrType.setText("推荐话题："+datas.get(pos).getStrType());
-        holder.IntListenNum.setText("听过："+datas.get(pos).getIntListenNum());
-        holder.StrName.setText("  "+datas.get(pos).getStrName());
-        holder.BtnAnswer.setText(datas.get(pos).getIntListenPrice()+"听币偷偷听");
 
-        Glide.with(mContext).load(Constant.headPics.get(pos % 3)).placeholder(R.drawable.profile).into(holder.StrAvatar);
+
+//        holder.text.setText(datas.get(pos));
+        holder.StrAskContent.setText(datas.get(pos).getStrAskContent());
+        holder.IntQuesitionPrice.setText(datas.get(pos).getIntQuesitionPrice()+"听币");
+        holder.StrDate.setText(datas.get(pos).getStrDate());
+        holder.StrAskPerson.setText("  "+datas.get(pos).getStrAskPerson());
+        holder.StrQuesitionState.setText(datas.get(pos).getStrQuesitionState());
+        Glide.with(mContext).load(Constant.headPics.get(pos % 3)).placeholder(R.drawable.profile).into(holder.StrAskAvatar);
 
     }
 
@@ -92,22 +91,25 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        CircleImageView StrAvatar;
-        TextView StrName;
-        TextView StrType;
-        TextView StrQuesition;
-        TextView IntListenNum;
-        TextView IntListenPrice;
-        Button BtnAnswer;
+
+        CircleImageView StrAskAvatar;
+        TextView StrAskContent;
+        TextView StrDate;
+        TextView StrQuesitionState;
+        TextView StrAskPerson;
+        TextView IntQuesitionPrice;
+
+
         public MyViewHolder(View itemView) {
             super(itemView);
             if (itemView == headView) return;
-            StrName = (TextView) itemView.findViewById(R.id.StrName);
-            StrType = (TextView) itemView.findViewById(R.id.StrType);
-            StrQuesition = (TextView) itemView.findViewById(R.id.StrQuesition);
-            IntListenNum = (TextView) itemView.findViewById(R.id.IntListenNum);
-            BtnAnswer = (Button) itemView.findViewById(R.id.BtnAnswer);
-            StrAvatar=(CircleImageView)itemView.findViewById(R.id.StrAvatar);
+
+            StrAskPerson = (TextView) itemView.findViewById(R.id.sub_ask_StrAskPerson);
+            StrAskContent = (TextView) itemView.findViewById(R.id.sub_ask_StrAskContent);
+            StrDate = (TextView) itemView.findViewById(R.id.sub_ask_StrDate);
+            StrQuesitionState = (TextView) itemView.findViewById(R.id.sub_ask_StrQuesitionState);
+            IntQuesitionPrice = (TextView) itemView.findViewById(R.id.sub_ask_IntQuesitionPrice);
+            StrAskAvatar=(CircleImageView)itemView.findViewById(R.id.sub_ask_StrAskAvatar);
 
         }
     }
