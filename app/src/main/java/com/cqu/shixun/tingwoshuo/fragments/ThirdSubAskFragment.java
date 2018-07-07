@@ -11,25 +11,25 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.cqu.shixun.tingwoshuo.model.PersonItem;
-import com.github.clans.fab.FloatingActionMenu;
+import com.cqu.shixun.tingwoshuo.R;
+import com.cqu.shixun.tingwoshuo.adapter.SubAskContentRecyclerViewAdapter;
+import com.cqu.shixun.tingwoshuo.adapter.SubContentRecyclerViewAdapter;
+import com.cqu.shixun.tingwoshuo.model.AskContentItem;
+import com.cqu.shixun.tingwoshuo.model.ListenContentItem;
+import com.github.clans.fab.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.cqu.shixun.tingwoshuo.R;
-import com.cqu.shixun.tingwoshuo.adapter.IndexRecyclerViewAdapter;
-
-public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class ThirdSubAskFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
     private Context mContext;
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
-    private IndexRecyclerViewAdapter adapter;
+    private SubAskContentRecyclerViewAdapter adapter;
     //
     private View rootView;
-    private FloatingActionMenu fam;
+    private FloatingActionButton fab;
 
     @Override
     public void onAttach(Context context) {
@@ -40,15 +40,13 @@ public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_index, null);
+        rootView = inflater.inflate(R.layout.fragment_second_sub, null);
         InitView();
         return rootView;
     }
 
     private void InitView() {
-        fam = (FloatingActionMenu) rootView.findViewById(R.id.menu_yellow);
-        //头像实现处
-        View headView = LayoutInflater.from(mContext).inflate(R.layout.index_list_headview, null);
+        fab = (FloatingActionButton) rootView.findViewById(R.id.sub_fab);
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         swipeRefreshLayout.setProgressViewOffset(false, 0, (int) (mContext.getResources().getDisplayMetrics().density * 64));
@@ -56,32 +54,19 @@ public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefr
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(manager);
-        List<PersonItem>datas=new ArrayList<>();
-        for(int i=0;i<5;i++){
-            PersonItem personItem=new PersonItem();
-            personItem.setAnsNum(30);
-            personItem.setAskPrice(50+i);
-            personItem.setImg("hahah");
-            personItem.setListenNum(500+2*i);
-            personItem.setName("余志荣");
-            personItem.setTitle("DNF肝帝,广东粤语倡导者，资深软件架构师,电脑清洗专家。");
-            datas.add(personItem);
+
+        List<AskContentItem>datas=new ArrayList<>();
+        for (int i=0;i<100;i++){
+            AskContentItem askContentItem=new AskContentItem();
+            askContentItem.setStrDate("2018-07-05");
+            askContentItem.setIntQuesitionPrice(13+i);
+            askContentItem.setStrAskPerson("梁宏观");
+            askContentItem.setStrQuesitionState("等待回答");
+            askContentItem.setStrAskContent("重庆大学创校多长时间了？");
+            datas.add(askContentItem);
         }
-//        List<String> datas = new ArrayList<>();
-//        for (int i = 0; i < 100; i++) {
-//            datas.add("This is item " + i);
-//        }
-        adapter = new IndexRecyclerViewAdapter(mContext, datas);
-        adapter.setHeadView(headView);
-//        adapter.setmItemClickListener((IndexRecyclerViewAdapter.OnItemClickListener) this);
 
-        adapter.setmItemClickListener(new IndexRecyclerViewAdapter.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(View position) {
-                Toast.makeText(getActivity().getApplicationContext(),"onItemClick:"+position.getTag(),Toast.LENGTH_SHORT).show();
-            }
-        });
+        adapter = new SubAskContentRecyclerViewAdapter(mContext, datas);
         recyclerView.setAdapter(adapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -89,19 +74,16 @@ public class IndexFragment extends Fragment implements SwipeRefreshLayout.OnRefr
                 super.onScrolled(recyclerView, dx, dy);
                 if (Math.abs(dy) > 5) {
                     if (dy > 0) {
-                        fam.hideMenu(true);
+                        fab.hide(true);
                     } else {
-                        fam.showMenu(true);
+                        fab.show(true);
                     }
                 }
             }
         });
 
-
     }
-//    public void  onItemClick(int position){
-//        Toast.makeText(getActivity().getApplicationContext(), ""+position, Toast.LENGTH_SHORT).show();
-//    }
+
 
     @Override
     public void onRefresh() {

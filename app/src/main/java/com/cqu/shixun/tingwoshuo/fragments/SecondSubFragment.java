@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.cqu.shixun.tingwoshuo.model.ContentItem;
+import com.cqu.shixun.tingwoshuo.model.PersonItem;
 import com.github.clans.fab.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -52,10 +54,18 @@ public class SecondSubFragment extends Fragment implements SwipeRefreshLayout.On
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(manager);
-        List<String> datas = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            datas.add("This is item " + i);
+        List<ContentItem>datas=new ArrayList<>();
+        for (int i=0;i<100;i++){
+            ContentItem contentItem=new ContentItem();
+            contentItem.setIntListenNum(30+i);
+            contentItem.setStrType("精选");
+            contentItem.setStrAvatar("hahah");
+            contentItem.setIntListenPrice(500+2*i);
+            contentItem.setStrName("陶友玮");
+            contentItem.setStrQuesition("重庆合川北新御龙湾的房产是否具有投资价值？升值空间多大？");
+            datas.add(contentItem);
         }
+
         adapter = new SubRecyclerViewAdapter(mContext, datas);
         recyclerView.setAdapter(adapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

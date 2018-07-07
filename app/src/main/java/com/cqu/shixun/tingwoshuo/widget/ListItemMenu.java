@@ -16,7 +16,7 @@ import com.cqu.shixun.tingwoshuo.R;
 public class ListItemMenu extends PopupWindow {
     private Context mContext ;
     private LinearLayout quit,share;
-
+    public boolean touched;
 
     public ListItemMenu(int width, int height, Context mContext) {
         super(width, height);
@@ -34,6 +34,7 @@ public class ListItemMenu extends PopupWindow {
         quit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                touched=true;
                 dismiss();
             }
         });
