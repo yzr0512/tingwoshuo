@@ -11,10 +11,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import android.widget.Toast;
 
 import com.cqu.shixun.tingwoshuo.model.Category;
-// import com.cqu.shixun.tingwoshuo.model.User;
+ import com.cqu.shixun.tingwoshuo.model.User;
 import com.cqu.shixun.tingwoshuo.presenter.iPresenter.IExpertListPrsenter;
 import com.cqu.shixun.tingwoshuo.presenter.impl.ExpertListPresentImpl;
 import com.cqu.shixun.tingwoshuo.ui.iView.IExpertListView;
@@ -105,6 +106,7 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
         });
 
         iExpertListPrsenter = new ExpertListPresentImpl(this);
+        iExpertListPrsenter.getCategoryList();
     }
 //    public void  onItemClick(int position){
 //        Toast.makeText(getActivity().getApplicationContext(), ""+position, Toast.LENGTH_SHORT).show();
@@ -128,10 +130,17 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
 
     }
 
+
+
     @Override
-    public void showExpertList(Category category, List<PersonItem> personItems) {
+    public void showExpertList(String categoryName, List<User> users) {
         // 前端完成此处的实现
 
     }
 
+    @Override
+    public void showMessage(String msg) {
+        Toast t = Toast.makeText(mContext, msg, Toast.LENGTH_LONG);
+        t.show();
+    }
 }

@@ -8,5 +8,6 @@ public interface IExpertListPrsenter {
     public void getCategoryList();
 
     // 获取某个板块的专家列表
-    public void getExpertList(Category category);
+    public void getExpertList(String categoryName);
+
 }

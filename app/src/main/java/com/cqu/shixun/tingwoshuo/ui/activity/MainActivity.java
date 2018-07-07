@@ -94,7 +94,7 @@ public class MainActivity extends FragmentActivity {
                 switch (index) {
                     case 0:
                         index_app_bar.setVisibility(View.VISIBLE); // 浮动顶部条
-                        break;
+                    break;
                     case 1:
                         break;
                     case 2:
