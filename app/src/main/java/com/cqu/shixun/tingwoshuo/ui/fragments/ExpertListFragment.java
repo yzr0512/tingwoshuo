@@ -1,6 +1,10 @@
 package com.cqu.shixun.tingwoshuo.ui.fragments;
 
+import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -17,6 +21,7 @@ import com.cqu.shixun.tingwoshuo.model.Category;
 // import com.cqu.shixun.tingwoshuo.model.User;
 import com.cqu.shixun.tingwoshuo.presenter.iPresenter.IExpertListPrsenter;
 import com.cqu.shixun.tingwoshuo.presenter.impl.ExpertListPresentImpl;
+import com.cqu.shixun.tingwoshuo.ui.activity.ExpertInformationActivity;
 import com.cqu.shixun.tingwoshuo.ui.iView.IExpertListView;
 import com.cqu.shixun.tingwoshuo.model.PersonItem;
 import com.github.clans.fab.FloatingActionMenu;
@@ -79,7 +84,7 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
 //            datas.add("This is item " + i);
 //        }
         adapter = new IndexRecyclerViewAdapter(mContext, datas);
-        adapter.setHeadView(headView);
+        adapter.setHeadView(headView);   //设置4个范围下面的灰块区域
 //        adapter.setmItemClickListener((IndexRecyclerViewAdapter.OnItemClickListener) this);
 
         adapter.setmItemClickListener(new IndexRecyclerViewAdapter.OnItemClickListener() {
@@ -87,6 +92,11 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
             @Override
             public void onItemClick(View position) {
                 Toast.makeText(getActivity().getApplicationContext(),"onItemClick:"+position.getTag(),Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent();
+                intent.setClass(getActivity(), ExpertInformationActivity.class);
+                getActivity().startActivityForResult(intent,1);
+//                intent.putExtra("is_back", "1");
+                startActivity(intent);
             }
         });
         recyclerView.setAdapter(adapter);
@@ -130,8 +140,12 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
 
     @Override
     public void showExpertList(Category category, List<PersonItem> personItems) {
+        
         // 前端完成此处的实现
 
     }
 
-}
+
+
+
+    }
