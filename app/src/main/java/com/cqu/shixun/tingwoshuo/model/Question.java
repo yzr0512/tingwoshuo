@@ -22,6 +22,16 @@ public class Question {
 
     float listenPrice;  // 偷听价格
 
+    String status;  // 状态
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public Question(int id){
         this.id = id;
     }
