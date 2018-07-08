@@ -3,6 +3,7 @@ package com.cqu.shixun.tingwoshuo.presenter.impl;
 
 import android.util.Log;
 
+import com.cqu.shixun.tingwoshuo.model.User;
 import com.cqu.shixun.tingwoshuo.presenter.iPresenter.ILoginPresenter;
 import com.cqu.shixun.tingwoshuo.ui.iView.ILoginView;
 import com.cqu.shixun.tingwoshuo.model.myokhttp.MyOkHttp;
@@ -43,9 +44,19 @@ public class LoginPresenterImpl implements ILoginPresenter {
                         //Log.d("Get成功：", "doPost onSuccess:" + response);
                         try{
                             String res = response.getString("result");
-                            Log.d("res=", res);
+//                            Log.d("res=", res);
                             if(res.equals("ture")){
-                                iLoginView.loginSuccess();
+                                JSONObject userInfoJson = response.getJSONObject("description");
+                                User user = new User(userInfoJson.getInt("id"));    // 答主
+                                user.setMd5(userInfoJson.getString("md5"));
+                                user.setPhone(userInfoJson.getString("phone"));
+                                user.setName(userInfoJson.getString("name"));
+                                user.setTitle(userInfoJson.getString("title"));
+                                user.setIntro(userInfoJson.getString("intro"));
+                                user.setBalance(Float.valueOf(userInfoJson.get("balance").toString()));
+                                user.setResponder(userInfoJson.getBoolean("isResponder"));
+
+                                iLoginView.loginSuccess(user);
                             }else{
                                 String description = response.getString("description");
                                 iLoginView.showMessage(description);

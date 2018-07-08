@@ -10,7 +10,9 @@ import android.widget.EditText;
 //import android.widget.TextView;
 import android.widget.Toast;
 
+import com.cqu.shixun.tingwoshuo.MyApplication;
 import com.cqu.shixun.tingwoshuo.R;
+import com.cqu.shixun.tingwoshuo.model.User;
 import com.cqu.shixun.tingwoshuo.ui.iView.ILoginView;
 import com.cqu.shixun.tingwoshuo.presenter.iPresenter.ILoginPresenter;
 import com.cqu.shixun.tingwoshuo.presenter.impl.LoginPresenterImpl;
@@ -93,7 +95,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
             case R.id.certen_bu_login: {
                 Log.d("btn", "loginBtn click");
 //                loginPresenter.login(editTextPhone.getText().toString(), editTextPwd.getText().toString());
-                loginSuccess();
+                loginSuccess(new User(1));
             }
                 break;
             case R.id.rigister_bu_login:
@@ -120,8 +122,11 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
     }
 
     @Override
-    public void loginSuccess() {
+    public void loginSuccess(User user) {
 //        Log.d("Login", "success");
+        MyApplication myApp = (MyApplication) getApplication();
+        myApp.setCurrUser(user);
+
         Intent intent = new Intent();
         intent.setClass(LoginActivity.this, MainActivity.class);
         //  intent.putExtra("id",2);

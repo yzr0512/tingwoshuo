@@ -29,7 +29,7 @@ public class ExpertInformationActivity extends AppCompatActivity implements IExp
         BtnBack=(Button)findViewById(R.id.back_bu_exim);
         BtnBack.setOnClickListener(this);
 
-        iExpertInfoPresenter = new ExpertInfoPresenterImpl();
+        iExpertInfoPresenter = new ExpertInfoPresenterImpl(this);
     }
 
 

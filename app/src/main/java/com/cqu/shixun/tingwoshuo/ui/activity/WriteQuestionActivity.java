@@ -1,20 +1,21 @@
 package com.cqu.shixun.tingwoshuo.ui.activity;
 
-import android.content.Intent;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.cqu.shixun.tingwoshuo.MyApplication;
 import com.cqu.shixun.tingwoshuo.R;
 import com.cqu.shixun.tingwoshuo.model.Question;
+import com.cqu.shixun.tingwoshuo.model.User;
 import com.cqu.shixun.tingwoshuo.presenter.iPresenter.IAskPresenter;
+import com.cqu.shixun.tingwoshuo.presenter.impl.AskPresenterImpl;
 import com.cqu.shixun.tingwoshuo.ui.iView.IAskView;
 
-public class WriteQuestionActivity extends AppCompatActivity implements IAskView,View.OnClickListener{
+public class WriteQuestionActivity extends AppCompatActivity implements IAskView {
+
+    IAskPresenter iAskPresenter;
 
     private Button buask;
     private EditText editcontent;
@@ -84,6 +85,7 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
 
     @Override
     public void showMessage(String msg) {
-
+        Toast t = Toast.makeText(this, msg, Toast.LENGTH_LONG);
+        t.show();
     }
 }
