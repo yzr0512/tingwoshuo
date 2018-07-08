@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.cqu.shixun.tingwoshuo.MyApplication;
 import com.cqu.shixun.tingwoshuo.R;
 import com.cqu.shixun.tingwoshuo.presenter.iPresenter.IChangePswPresenter;
 import com.cqu.shixun.tingwoshuo.ui.iView.IChangePswView;
@@ -58,7 +59,8 @@ public class ChangePswActivity extends AppCompatActivity implements IChangePswVi
                     return;
                     }else{
                             //如何获得自己的手机号
-                   // changepswPresenter.changepsw(editTextPhone.getText().toString(), edittextpsw2.getText().toString());
+                    String phonenumber=((MyApplication)getApplication()).user.getPhone();
+                    changepswPresenter.changepsw(phonenumber, edittextpsw2.getText().toString());
                 }
 
             }

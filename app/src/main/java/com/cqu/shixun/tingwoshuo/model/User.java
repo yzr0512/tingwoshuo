@@ -14,7 +14,7 @@ public class User {
 
     float balance;  // 用户钱包余额
 
-    Category category;  // 擅长的分类
+    String category;  // 擅长的分类
 
     String md5;     // 用于http通信
 
@@ -65,11 +65,34 @@ public class User {
         this.ansNum = ansNum;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
     public float getAskPrice() {
         return askPrice;
+    }
+
+    public float getBalance() {
+        return balance;
     }
 
     public void setAskPrice(float askPrice) {
         this.askPrice = askPrice;
     }
+
+
+
 }

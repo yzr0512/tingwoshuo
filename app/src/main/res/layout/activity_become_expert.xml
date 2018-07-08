@@ -65,8 +65,29 @@
                 />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/title_tex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:text="　　你的头衔"/>
+            <EditText
+                android:id="@+id/title_becexp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/jianjieone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="100dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -78,13 +99,24 @@
                 android:layout_marginTop="10dp"
                 android:textSize="20dp"
                 android:text="擅长回答类型"/>
-            <EditText
-                android:id="@+id/Types"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/jiejietwo"
+            <!--<Spinner-->
+                <!--android:id="@+id/category_becexp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:entries="@array/nameArray"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+
+            <!--</Spinner>-->
+            <Spinner
+                android:id="@+id/spinner2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+
+                android:layout_marginTop="10dp"
+                android:paddingTop="20dp">
+
+            </Spinner>
+
 
         </LinearLayout>
 

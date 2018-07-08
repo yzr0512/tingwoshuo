@@ -5,25 +5,120 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.content.Intent;
 import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.cqu.shixun.tingwoshuo.MyApplication;
 import com.cqu.shixun.tingwoshuo.R;
+import com.cqu.shixun.tingwoshuo.model.User;
+import com.cqu.shixun.tingwoshuo.presenter.iPresenter.IRechargePresenter;
+import com.cqu.shixun.tingwoshuo.ui.iView.IRechargeView;
 
-public class RechargeActivity extends AppCompatActivity {
+public class RechargeActivity extends AppCompatActivity implements IRechargeView,View.OnClickListener{
     public Button myset_bu;
+    public Button buTen;//10
+    public Button buTwenty;//20
+    public Button buFifty;//50
+    public Button buHundred;//100
+    private TextView textBalance;//余额
+    String phone;
+
+    IRechargePresenter rechargePresenter; // MVP模式
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recharge);
-        myset_bu=(Button)findViewById(R.id.button_backward);
 
-        myset_bu.setOnClickListener(new android.view.View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+
+        phone=((MyApplication)getApplication()).user.getPhone();//获取用户手机
+
+        myset_bu=(Button)findViewById(R.id.button_backward);
+        myset_bu.setOnClickListener(this);
+
+        buTen=(Button)findViewById(R.id.tenTB);
+        buTen.setOnClickListener(this);
+
+        buTwenty=(Button)findViewById(R.id.twentyTB);
+        buTwenty.setOnClickListener(this);
+
+        buFifty=(Button)findViewById(R.id.fiftyTB);
+        buFifty.setOnClickListener(this);
+
+        buHundred=(Button)findViewById(R.id.hundredTB);
+        buHundred.setOnClickListener(this);
+
+        textBalance=(TextView)findViewById(R.id.money_count);
+        textBalance.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.button_backward:
+            {
+
                 Intent intent = new Intent();
                 intent.setClass(RechargeActivity.this, MainActivity.class);
-              //  intent.putExtra("id",2);
-               startActivity(intent);
+                //  intent.putExtra("id",2);
+                startActivity(intent);
+
             }
-        });
+            break;
+            case R.id.tenTB:
+            {
+                //支付密码判断什么的，不知道有没有
+
+                rechargePresenter.recharge(phone,10);
+
+
+            }
+            break;
+            case R.id.twentyTB:
+            {
+                rechargePresenter.recharge(phone,20);
+            }
+            break;
+            case R.id.fiftyTB:
+            {
+                rechargePresenter.recharge(phone,50);
+            }
+            break;
+            case R.id.hundredTB:
+            {
+                rechargePresenter.recharge(phone,100);
+            }
+            break;
+
+        }
+
+
+
+
+    }
+
+    @Override
+    public void rechargeInformation(User user) {
+
+        float balance=user.getBalance();
+
+        textBalance.setText(Float.toString(balance));
+
+
+    }
+
+    @Override
+    public void rechargeSuccess() {
+
+        Toast.makeText(RechargeActivity.this,"充值成功！",Toast.LENGTH_SHORT).show();
+
+    }
+
+    @Override
+    public void showMessage(String msg) {
+
+        Toast t = Toast.makeText(this, msg, Toast.LENGTH_LONG);
+        t.show();
+
     }
 }
