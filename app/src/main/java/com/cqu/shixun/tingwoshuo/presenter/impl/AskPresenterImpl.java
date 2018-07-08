@@ -92,4 +92,37 @@ public class AskPresenterImpl implements IAskPresenter {
                 });
 
     }
+
+
+    @Override
+    public void getExpertInfo(int userID) {
+
+        MyOkHttp myOkHttp = new MyOkHttp();
+        myOkHttp.get().url("http://119.29.105.37:8000/expertInfo").addParam("userID", Integer.toString(userID))
+                .enqueue(new JsonResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, JSONObject response) {
+                        //Log.d("Get成功：", "doPost onSuccess:" + response);
+                        try{
+                            JSONObject userInfoJson = response.getJSONObject("userInfo");
+                            User user = new User(userInfoJson.getInt("id"));    // 答主
+                            user.setName(userInfoJson.getString("name"));
+                            user.setTitle(userInfoJson.getString("title"));
+                            user.setAnsNum(userInfoJson.getInt("ansNum"));
+                            user.setAskPrice(Float.valueOf(userInfoJson.get("askPrice").toString()));
+                            user.setCategory(userInfoJson.getString("categoryName"));
+
+                            iAskView.showExpertInfo(user);
+                        }catch (JSONException e){
+//                            Log.d("JSONException：", e.getMessage());
+                            iAskView.showMessage("JSONException：" + e.getMessage());
+                        }
+                    }
+                    @Override
+                    public void onFailure(int statusCode, String error_msg) {
+//                        Log.d("Get失败：", Integer.toString(statusCode));
+                        iAskView.showMessage(error_msg);
+                    }
+                });
+    }
 }

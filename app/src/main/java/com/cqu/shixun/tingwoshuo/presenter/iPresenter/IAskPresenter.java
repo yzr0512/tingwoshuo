@@ -18,6 +18,7 @@ public interface IAskPresenter {
             --content : 问题内容
             --category : 问题分类
      */
-    void postQuestion(User user, Question question);
+    public void postQuestion(User user, Question question);
 
+    public void getExpertInfo( int userID);
 }

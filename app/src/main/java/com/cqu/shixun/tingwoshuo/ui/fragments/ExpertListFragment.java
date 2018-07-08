@@ -73,7 +73,7 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
 
         iExpertListPrsenter = new ExpertListPresentImpl(this);
         //iExpertListPrsenter.getCategoryList();
-        iExpertListPrsenter.getExpertList("法律");
+        iExpertListPrsenter.getExpertList("房产");
     }
 //    public void  onItemClick(int position){
 //        Toast.makeText(getActivity().getApplicationContext(), ""+position, Toast.LENGTH_SHORT).show();
