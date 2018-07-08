@@ -45,7 +45,7 @@ public class LoginPresenterImpl implements ILoginPresenter {
                         try{
                             String res = response.getString("result");
 //                            Log.d("res=", res);
-                            if(res.equals("ture")){
+                            if(res.equals("true")){
                                 JSONObject userInfoJson = response.getJSONObject("description");
                                 User user = new User(userInfoJson.getInt("id"));    // 答主
                                 user.setMd5(userInfoJson.getString("md5"));
