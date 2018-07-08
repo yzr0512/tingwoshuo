@@ -85,7 +85,7 @@ public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<IndexRecycler
 
         if(pos>=0){
 
-            holder.itemView.setTag(pos);
+            holder.itemView.setTag(datas.get(pos).getId());
         }
 
         if (pos == 1) {

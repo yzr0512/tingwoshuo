@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -102,7 +103,7 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
     @Override
     public void showExpertList(String categoryName, List<User> users) {
         // 前端完成此处的实现
-        List<PersonItem>datas=new ArrayList<>();
+        final List<PersonItem>datas=new ArrayList<>();
         for(User user : users){
             PersonItem personItem=new PersonItem(user.getId());
             personItem.setAnsNum(user.getAnsNum());
@@ -124,11 +125,12 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
 
             @Override
             public void onItemClick(View position) {
-                Toast.makeText(getActivity().getApplicationContext(),"onItemClick:"+position.getTag(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(),"onItemClick:"+position.getTag().toString(),Toast.LENGTH_SHORT).show();
+                Log.d("positon.getid():",position.getTag().toString());
                 Intent intent=new Intent();
                 intent.setClass(getActivity(), ExpertInformationActivity.class);
                 getActivity().startActivityForResult(intent,1);
-//                intent.putExtra("is_back", "1");
+                intent.putExtra("item_id",position.getTag().toString());
                 startActivity(intent);
             }
         });
