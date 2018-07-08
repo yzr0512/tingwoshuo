@@ -160,32 +160,8 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
         t.show();
     }
 
-    @Override
-    public void showCategoryList(List<Category> categories) {
-        // 前端完成此处的实现
-
-        for( Category   category: categories) {
-
-            category.getName();//分类名
-
-            //显示出来到前端
 
 
 
-
-
-        }
-
-
-
-    }
-
-    @Override
-    public void showExpertList(Category category, List<PersonItem> personItems) {
-        // 前端完成此处的实现
-
-
-
-    }
 
 }

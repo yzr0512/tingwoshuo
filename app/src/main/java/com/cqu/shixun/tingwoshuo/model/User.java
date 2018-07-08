@@ -6,6 +6,8 @@ public class User {
 
     String name;    // 用户名
 
+    String pwd;//密码
+
     String phone;   // 用户手机号码
 
     String title;   // 用户头衔
@@ -109,27 +111,14 @@ public class User {
         this.askPrice = askPrice;
     }
 
-    public String getCategory() {
-        return category;
-    }
 
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public String getIntro() {
-        return intro;
-    }
-
-    public void setIntro(String intro) {
-        this.intro = intro;
-    }
-
-    public float getBalance() {
-        return balance;
-    }
 
     public void setBalance(float balance) {
         this.balance = balance;
     }
+
+    public String getPwd() { return pwd; }
+
+    public void setPwd(String pwd) { this.pwd = pwd; }
+
 }

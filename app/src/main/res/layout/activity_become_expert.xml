@@ -121,15 +121,16 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="180dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
                 android:id="@+id/certain_bu_becex"
-                android:layout_gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/shape_red"
                 android:text="确定开通"
                 />
