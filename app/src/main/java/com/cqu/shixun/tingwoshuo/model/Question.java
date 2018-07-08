@@ -12,18 +12,22 @@ public class Question {
 
     String responderName;   // 回答者名字
 
-    String content;     // 问题内容
+    String content;     // 问题内容 250字以内
 
     int listenNum;  // 偷听人数
 
     String category;    // 分类
 
-    public int getId() {
-        return id;
+    float price;    // 问题价格
+
+    float listenPrice;  // 偷听价格
+
+    public Question(int id){
+        this.id = id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getId() {
+        return id;
     }
 
     public int getQuestionerID() {
@@ -80,5 +84,21 @@ public class Question {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public float getListenPrice() {
+        return listenPrice;
+    }
+
+    public void setListenPrice(float listenPrice) {
+        this.listenPrice = listenPrice;
     }
 }
