@@ -1,7 +1,11 @@
 package com.cqu.shixun.tingwoshuo.ui.activity;
 
 
+import android.annotation.SuppressLint;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
@@ -29,7 +33,7 @@ import com.cqu.shixun.tingwoshuo.ui.fragments.ThirdFragment;
 public class MainActivity extends FragmentActivity {
     private final String TAG = MainActivity.class.getSimpleName();
     private Context mContext;
-   // private  ViewPager mViewPager;
+    // private  ViewPager mViewPager;
 
     private FrameLayout content;
     private AppBarLayout index_app_bar;
@@ -63,7 +67,6 @@ public class MainActivity extends FragmentActivity {
 */
 
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +87,7 @@ public class MainActivity extends FragmentActivity {
         fragments.add(new FourFragment());
 
         FragmentTabAdapter tabAdapter = new FragmentTabAdapter(this, fragments, R.id.content, rgs);
+
         tabAdapter.setOnRgsExtraCheckedChangedListener(new FragmentTabAdapter.OnRgsExtraCheckedChangedListener() {
             @Override
             public void OnRgsExtraCheckedChanged(RadioGroup radioGroup, int checkedId, int index) {
@@ -93,7 +97,7 @@ public class MainActivity extends FragmentActivity {
                 resetView();
                 switch (index) {
                     case 0:
-                        index_app_bar.setVisibility(View.VISIBLE); // 浮动顶部条
+//                        index_app_bar.setVisibility(View.GONE); // 浮动顶部条
                         break;
                     case 1:
                         break;
@@ -107,8 +111,6 @@ public class MainActivity extends FragmentActivity {
                 }
             }
         });
-
-
 
 
     }
@@ -126,4 +128,29 @@ public class MainActivity extends FragmentActivity {
             super.onBackPressed();
         }
     }
+
+
+    private android.support.v4.app.FragmentManager fmanager;
+    private android.support.v4.app.FragmentTransaction ftransaction;
+
+//    @SuppressLint("ResourceType")
+//    public void gotoDownloadFragment() {    //去下载页面
+//        fmanager = getSupportFragmentManager();
+//        ftransaction = fmanager.beginTransaction();
+//        ExpertListFragment mExpertListFragment = new ExpertListFragment();
+//        final android.support.v4.app.FragmentTransaction replace = ftransaction.replace(R.layout.fragment_index, ExpertListFragment);
+//        ftransaction.commit();
+//
+//    }
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+
+        if(requestCode==1 && resultCode==2){
+            fmanager=getSupportFragmentManager();
+            ftransaction=fmanager.beginTransaction();
+            ftransaction.replace(R.id.content,new ExpertListFragment());
+            ftransaction.commit();
+        }
+    }
+
 }

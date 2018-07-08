@@ -33,6 +33,22 @@ public class User {
         return id;
     }
 
+    public Boolean getResponder() {
+        return isResponder;
+    }
+
+    public void setResponder(Boolean responder) {
+        isResponder = responder;
+    }
+
+    public String getMd5() {
+        return md5;
+    }
+
+    public void setMd5(String md5) {
+        this.md5 = md5;
+    }
+
     public String getName() {
         return name;
     }
@@ -93,6 +109,27 @@ public class User {
         this.askPrice = askPrice;
     }
 
+    public String getCategory() {
+        return category;
+    }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
+    }
+
+    public float getBalance() {
+        return balance;
+    }
+
+    public void setBalance(float balance) {
+        this.balance = balance;
+    }
 }
