@@ -28,9 +28,9 @@ public class RechargeActivity extends AppCompatActivity implements IRechargeView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recharge);
+       // MyApplication myApp = (MyApplication) getApplication();
 
-
-        phone=((MyApplication)getApplication()).user.getPhone();//获取用户手机
+       // phone=(myApp.getCurrUser().getPhone());//获取用户手机
 
         myset_bu=(Button)findViewById(R.id.button_backward);
         myset_bu.setOnClickListener(this);
@@ -51,9 +51,10 @@ public class RechargeActivity extends AppCompatActivity implements IRechargeView
         textBalance.setOnClickListener(this);
 
     }
-
+    MyApplication myApp = (MyApplication) getApplication();
     @Override
     public void onClick(View view) {
+
         switch (view.getId()){
             case R.id.button_backward:
             {
@@ -69,24 +70,24 @@ public class RechargeActivity extends AppCompatActivity implements IRechargeView
             {
                 //支付密码判断什么的，不知道有没有
 
-                rechargePresenter.recharge(phone,10);
+                rechargePresenter.recharge(myApp.getCurrUser(),10);
 
 
             }
             break;
             case R.id.twentyTB:
             {
-                rechargePresenter.recharge(phone,20);
+                rechargePresenter.recharge(myApp.getCurrUser(),20);
             }
             break;
             case R.id.fiftyTB:
             {
-                rechargePresenter.recharge(phone,50);
+                rechargePresenter.recharge(myApp.getCurrUser(),50);
             }
             break;
             case R.id.hundredTB:
             {
-                rechargePresenter.recharge(phone,100);
+                rechargePresenter.recharge(myApp.getCurrUser(),100);
             }
             break;
 

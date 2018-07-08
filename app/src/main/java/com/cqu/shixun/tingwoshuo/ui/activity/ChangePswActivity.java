@@ -26,6 +26,7 @@ public class ChangePswActivity extends AppCompatActivity implements IChangePswVi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_psw);
 
+
         edittextpsw1 = (EditText) findViewById(R.id.mima_text_changpsw);
         edittextpsw1.setOnClickListener(this);
         edittextpsw2 = (EditText) findViewById(R.id.mima2_text_changpsw);
@@ -60,10 +61,11 @@ public class ChangePswActivity extends AppCompatActivity implements IChangePswVi
                     return;
                     }else{
                             //如何获得自己的手机号
-                    String phonenumber=((MyApplication)getApplication()).user.getPhone();
+                    MyApplication myApp = (MyApplication) getApplication();
+                    //String phonenumber=((MyApplication)getApplication()).user.getPhone();
                     String psw=edittextpsw2.getText().toString();
-                    ((MyApplication) getApplication()).user.setPwd(psw);
-                    changepswPresenter.changePsw(((MyApplication) getApplication()).user);
+                    myApp.getCurrUser().setPwd(psw);//更换密码
+                    changepswPresenter.changePsw( myApp.getCurrUser());
                 }
 
             }

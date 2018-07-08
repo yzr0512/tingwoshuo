@@ -32,7 +32,7 @@ public class BecomeExpertActivity extends AppCompatActivity implements IBecomeEx
    // private ArrayAdapter adapter;
     private static final String[] m={"房产","理财","情感","法律"};
     private ArrayAdapter<String> adapter;
-
+    MyApplication myApp = (MyApplication) getApplication();//当前用户APP
 
     IBecomeExpertPresenter becomeExpertPresenter; // MVP模式
     @Override
@@ -110,13 +110,13 @@ public class BecomeExpertActivity extends AppCompatActivity implements IBecomeEx
                 else
                 {
                     String selectecategory =spinner.getSelectedItem().toString();//获取当前值
-                    ((MyApplication)getApplication()).user.setCategory(selectecategory);//调用全部变量
+                    myApp.getCurrUser().setCategory(selectecategory);//调用全部变量，填写分类
 
-                    ((MyApplication)getApplication()).user.setIntro(editTextinfo.getText().toString());
+                    myApp.getCurrUser().setIntro(editTextinfo.getText().toString());//简介
 
-                    ((MyApplication)getApplication()).user.setTitle(editTexttitle.getText().toString());
+                    myApp.getCurrUser().setTitle(editTexttitle.getText().toString());//头衔
 
-                    becomeExpertPresenter.getUser(((MyApplication)getApplication()).user);
+                    becomeExpertPresenter.getUser(myApp.getCurrUser());//传回类
                 }
 
 
