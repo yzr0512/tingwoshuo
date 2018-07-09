@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.cqu.shixun.tingwoshuo.R;
+import com.cqu.shixun.tingwoshuo.ui.ChangePwdView.ChangePswActivity;
+import com.cqu.shixun.tingwoshuo.ui.LoginView.LoginActivity;
 
 public class MySettingActivity extends AppCompatActivity {
     public Button myback_bu;
