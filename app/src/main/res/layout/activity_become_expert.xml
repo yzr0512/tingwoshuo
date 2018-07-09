@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.BecomeExpertActivity">
+    tools:context=".ui.BecomeExpertView.BecomeExpertActivity">
     <RelativeLayout
         android:id="@+id/layout_titlebar"
         android:layout_width="match_parent"
@@ -65,8 +65,29 @@
                 />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/title_tex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:text="　　你的头衔"/>
+            <EditText
+                android:id="@+id/title_becexp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/jianjieone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="100dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -78,26 +99,38 @@
                 android:layout_marginTop="10dp"
                 android:textSize="20dp"
                 android:text="擅长回答类型"/>
-            <EditText
-                android:id="@+id/Types"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/jiejietwo"
+            <!--<Spinner-->
+                <!--android:id="@+id/category_becexp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:entries="@array/nameArray"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content">-->
+
+            <!--</Spinner>-->
+            <Spinner
+                android:id="@+id/spinner2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+
+                android:layout_marginTop="10dp"
+                android:paddingTop="20dp">
+
+            </Spinner>
+
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="180dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
                 android:id="@+id/certain_bu_becex"
-                android:layout_gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:background="@drawable/shape_red"
                 android:text="确定开通"
                 />

@@ -6,6 +6,8 @@ public class User {
 
     String name;    // 用户名
 
+    String pwd;//密码
+
     String phone;   // 用户手机号码
 
     String title;   // 用户头衔
@@ -81,14 +83,6 @@ public class User {
         this.ansNum = ansNum;
     }
 
-    public float getAskPrice() {
-        return askPrice;
-    }
-
-    public void setAskPrice(float askPrice) {
-        this.askPrice = askPrice;
-    }
-
     public String getCategory() {
         return category;
     }
@@ -105,11 +99,26 @@ public class User {
         this.intro = intro;
     }
 
+    public float getAskPrice() {
+        return askPrice;
+    }
+
     public float getBalance() {
         return balance;
     }
 
+    public void setAskPrice(float askPrice) {
+        this.askPrice = askPrice;
+    }
+
+
+
     public void setBalance(float balance) {
         this.balance = balance;
     }
+
+    public String getPwd() { return pwd; }
+
+    public void setPwd(String pwd) { this.pwd = pwd; }
+
 }

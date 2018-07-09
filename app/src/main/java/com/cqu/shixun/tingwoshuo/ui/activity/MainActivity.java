@@ -1,9 +1,6 @@
 package com.cqu.shixun.tingwoshuo.ui.activity;
 
 
-import android.annotation.SuppressLint;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
