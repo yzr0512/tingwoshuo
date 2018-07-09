@@ -119,32 +119,5 @@ public class AnswerPresenterImpl implements IAnswerPresenter {
                     }
                 });
 
-
-//
-//        mMyOkhttp.upload()
-//                .url(url)
-//                .addParam("name", "tsy")
-//                .addFile("avatar",
-//                        new File(Environment.getExternalStorageDirectory()
-//                                + "/ahome/sasas.jpg"))        //上传已经存在的File
-////                .addFile("avatar2", "asdsda.png", byteContents)    //直接上传File bytes
-//                .tag(this)
-//                .enqueue(new GsonResponseHandler<UploadModel>() {
-//                    @Override
-//                    public void onFailure(int statusCode, String error_msg) {
-//                        Log.d(TAG, "doUpload onFailure:" + error_msg);
-//                    }
-//
-//                    @Override
-//                    public void onProgress(long currentBytes, long totalBytes) {
-//                        Log.d(TAG, "doUpload onProgress:" + currentBytes + "/" + totalBytes);
-//                    }
-//
-//                    @Override
-//                    public void onSuccess(int statusCode, UploadModel response) {
-//                        Log.d(TAG, "doUpload onSuccess:" + response.ret + " " + response.msg);
-//                    }
-//                });
-
     }
 }

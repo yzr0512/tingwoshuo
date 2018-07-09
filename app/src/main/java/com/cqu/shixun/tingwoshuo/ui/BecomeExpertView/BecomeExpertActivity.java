@@ -28,9 +28,8 @@ public class BecomeExpertActivity extends AppCompatActivity implements IBecomeEx
    // private ArrayAdapter adapter;
     private static final String[] m={"房产","理财","情感","法律"};
     private ArrayAdapter<String> adapter;
-    MyApplication myApp = (MyApplication) getApplication();//当前用户APP
 
-    IBecomeExpertPresenter becomeExpertPresenter; // MVP模式
+    IBecomeExpertPresenter iBecomeExpertPresenter; // MVP模式
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,7 +57,7 @@ public class BecomeExpertActivity extends AppCompatActivity implements IBecomeEx
 
 
 
-        becomeExpertPresenter = new BecomeExpertPresentImpl(this);  // 绑定presenter
+        iBecomeExpertPresenter = new BecomeExpertPresentImpl(this);  // 绑定presenter
 
         editTextinfo = (EditText) findViewById(R.id.Introduction);
         editTextinfo.setOnClickListener(this);
@@ -105,14 +104,16 @@ public class BecomeExpertActivity extends AppCompatActivity implements IBecomeEx
                 }
                 else
                 {
-                    String selectecategory =spinner.getSelectedItem().toString();//获取当前值
+                    MyApplication myApp = (MyApplication) getApplication();//当前用户APP
+
+                    String selectecategory = spinner.getSelectedItem().toString();//获取当前值
                     myApp.getCurrUser().setCategory(selectecategory);//调用全部变量，填写分类
 
                     myApp.getCurrUser().setIntro(editTextinfo.getText().toString());//简介
 
                     myApp.getCurrUser().setTitle(editTexttitle.getText().toString());//头衔
 
-                    becomeExpertPresenter.getUser(myApp.getCurrUser());//传回类
+                    iBecomeExpertPresenter.postUser(myApp.getCurrUser());
                 }
 
 
@@ -143,12 +144,9 @@ public class BecomeExpertActivity extends AppCompatActivity implements IBecomeEx
 
     //开通成功页面跳转
     @Override
-    public void openSuccess() {
-
+    public void success() {
 
         Toast.makeText(BecomeExpertActivity.this,"开通成功！",Toast.LENGTH_SHORT).show();
-
-
 
 //
     }
