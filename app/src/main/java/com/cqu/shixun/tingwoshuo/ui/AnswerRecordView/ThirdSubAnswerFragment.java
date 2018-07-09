@@ -13,10 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.cqu.shixun.tingwoshuo.MyApplication;
 import com.cqu.shixun.tingwoshuo.R;
 import com.cqu.shixun.tingwoshuo.adapter.SubAnswerContentRecyclerViewAdapter;
 import com.cqu.shixun.tingwoshuo.model.AnswerContentItem;
 import com.cqu.shixun.tingwoshuo.model.Question;
+import com.cqu.shixun.tingwoshuo.model.User;
 import com.cqu.shixun.tingwoshuo.ui.AnswerRecordView.IAnswerRecordView;
 import com.github.clans.fab.FloatingActionButton;
 
@@ -28,7 +30,7 @@ public class ThirdSubAnswerFragment extends Fragment implements SwipeRefreshLayo
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private SubAnswerContentRecyclerViewAdapter adapter;
-    //
+    IAnswerRecordPresenter iAnswerRecordPresenter;
     private View rootView;
     private FloatingActionButton fab;
 
@@ -56,13 +58,13 @@ public class ThirdSubAnswerFragment extends Fragment implements SwipeRefreshLayo
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(manager);
 
-        List<AnswerContentItem>datas=new ArrayList<>();
+     /*   List<AnswerContentItem>datas=new ArrayList<>();
         for (int i=0;i<100;i++){
             AnswerContentItem answerContentItem=new AnswerContentItem();
             answerContentItem.setStrDate("2018-07-06");
             answerContentItem.setStrAskPerson("彭小双");
-            answerContentItem.setIntQuesitionPrice(i*2);
-            answerContentItem.setIntListenContentNum(i*3-2);
+            answerContentItem.setIntQuesitionPrice(i*2);//
+            answerContentItem.setIntListenContentNum(i*3-2);//听的人数
             answerContentItem.setStrAskContent("Python在机器学习中的优势有哪些？");
             datas.add(answerContentItem);
         }
@@ -84,7 +86,7 @@ public class ThirdSubAnswerFragment extends Fragment implements SwipeRefreshLayo
                 }
             }
         });
-
+        */
     }
 
 
@@ -102,6 +104,40 @@ public class ThirdSubAnswerFragment extends Fragment implements SwipeRefreshLayo
 
     @Override
     public void showAnswerRecordList(List<Question> questions) {
+
+        List<AnswerContentItem>datas=new ArrayList<>();
+        for(Question question : questions){
+            AnswerContentItem answerContentItem=new AnswerContentItem(question.getId());
+            answerContentItem.setStrDate("刚刚");
+            answerContentItem.setStrAskPerson(question.getQuestionerName());
+
+            answerContentItem.setIntQuesitionPrice((int) question.getPrice());//价格
+            answerContentItem.setIntListenContentNum(question.getListenNum());//听的人数
+            answerContentItem.setStrAskContent(question.getContent());
+            datas.add(answerContentItem);
+
+        }
+        adapter = new SubAnswerContentRecyclerViewAdapter(mContext, datas);
+        recyclerView.setAdapter(adapter);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (Math.abs(dy) > 5) {
+                    if (dy > 0) {
+                        fab.hide(true);
+                    } else {
+                        fab.show(true);
+                    }
+                }
+            }
+        });
+
+        iAnswerRecordPresenter =new AnswerRecordPresenterImpl(this);
+        iAnswerRecordPresenter.getAnswerRecordList(((MyApplication) getActivity().getApplication()).getCurrUser());
+
+
+
 
     }
 

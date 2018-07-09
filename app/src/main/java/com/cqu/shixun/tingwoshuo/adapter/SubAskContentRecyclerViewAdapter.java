@@ -86,7 +86,9 @@ public class SubAskContentRecyclerViewAdapter extends RecyclerView.Adapter<SubAs
 
     @Override
     public int getItemCount() {
-        return headView == null ? datas.size() : datas.size() + 1;
+
+        //return headView == null ? datas.size() : datas.size() + 1;
+        return datas.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

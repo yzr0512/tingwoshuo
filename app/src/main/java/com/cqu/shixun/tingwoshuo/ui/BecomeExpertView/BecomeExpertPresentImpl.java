@@ -11,7 +11,7 @@ public class BecomeExpertPresentImpl implements IBecomeExpertPresenter {
         this.iBecomeExpertView = iBecomeExpertView;
     }
     @Override
-    public void getUser(User user) {
+    public void postUser(User user) {
 
     }
 

@@ -20,6 +20,7 @@ public class RechargeActivity extends AppCompatActivity implements IRechargeView
     public Button buFifty;//50
     public Button buHundred;//100
     private TextView textBalance;//余额
+    MyApplication myApp;
     String phone;
 
     IRechargePresenter rechargePresenter; // MVP模式
@@ -30,6 +31,7 @@ public class RechargeActivity extends AppCompatActivity implements IRechargeView
        // MyApplication myApp = (MyApplication) getApplication();
 
        // phone=(myApp.getCurrUser().getPhone());//获取用户手机
+        myApp = (MyApplication) getApplication();
 
         myset_bu=(Button)findViewById(R.id.button_backward);
         myset_bu.setOnClickListener(this);
@@ -50,7 +52,7 @@ public class RechargeActivity extends AppCompatActivity implements IRechargeView
         textBalance.setOnClickListener(this);
 
     }
-    MyApplication myApp = (MyApplication) getApplication();
+
     @Override
     public void onClick(View view) {
 

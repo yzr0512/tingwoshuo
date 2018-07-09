@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.cqu.shixun.tingwoshuo.MyApplication;
 import com.cqu.shixun.tingwoshuo.R;
 import com.cqu.shixun.tingwoshuo.adapter.SubContentRecyclerViewAdapter;
 import com.cqu.shixun.tingwoshuo.adapter.SubRecyclerViewAdapter;
@@ -29,7 +30,6 @@ public class ThirdSubListenFragment extends Fragment implements SwipeRefreshLayo
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private SubContentRecyclerViewAdapter adapter;
-    //
     private View rootView;
     private FloatingActionButton fab;
 
@@ -60,7 +60,7 @@ public class ThirdSubListenFragment extends Fragment implements SwipeRefreshLayo
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(manager);
 
-        List<ListenContentItem>datas=new ArrayList<>();
+    /*    List<ListenContentItem>datas=new ArrayList<>();
         for (int i=0;i<100;i++){
             ListenContentItem listenContentItem=new ListenContentItem();
             listenContentItem.setStrDate("2018-07-05");
@@ -84,7 +84,7 @@ public class ThirdSubListenFragment extends Fragment implements SwipeRefreshLayo
                 }
             }
         });
-
+            */
     }
 
 
@@ -103,6 +103,34 @@ public class ThirdSubListenFragment extends Fragment implements SwipeRefreshLayo
     @Override
     public void showListenRecordList(List<Question> questions) {
 
+        List<ListenContentItem>datas=new ArrayList<>();
+        for(Question question : questions){
+
+            ListenContentItem listenContentItem=new ListenContentItem(question.getId());
+            listenContentItem.setStrDate("刚刚");
+            listenContentItem.setIntListenContentNum(question.getListenNum());
+            listenContentItem.setStrAskContent(question.getContent());
+            datas.add(listenContentItem);
+
+        }
+        adapter = new SubContentRecyclerViewAdapter(mContext, datas);
+        recyclerView.setAdapter(adapter);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (Math.abs(dy) > 5) {
+                    if (dy > 0) {
+                        fab.hide(true);
+                    } else {
+                        fab.show(true);
+                    }
+                }
+            }
+        });
+
+        iListenRecordPresenter=new ListenRecordPresenterImpl(this);
+        iListenRecordPresenter.getListenRecordList(((MyApplication) getActivity().getApplication()).getCurrUser());
     }
 
     @Override

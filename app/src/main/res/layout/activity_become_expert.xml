@@ -46,7 +46,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
@@ -67,7 +67,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="60dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
@@ -86,8 +86,29 @@
                 />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_marginTop="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:text="　　提问价格"/>
+            <EditText
+                android:id="@+id/price_becexp"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/jianjieone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="150dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -99,14 +120,7 @@
                 android:layout_marginTop="10dp"
                 android:textSize="20dp"
                 android:text="擅长回答类型"/>
-            <!--<Spinner-->
-                <!--android:id="@+id/category_becexp"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:entries="@array/nameArray"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content">-->
 
-            <!--</Spinner>-->
             <Spinner
                 android:id="@+id/spinner2"
                 android:layout_width="match_parent"
@@ -120,8 +134,10 @@
 
         </LinearLayout>
 
+
+
         <LinearLayout
-            android:layout_marginTop="180dp"
+            android:layout_marginTop="220dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

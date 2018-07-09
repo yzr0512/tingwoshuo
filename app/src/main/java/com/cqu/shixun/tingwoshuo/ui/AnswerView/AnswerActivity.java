@@ -52,11 +52,16 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
             @Override
             public void onStart() {
                 // 开始
+                btnRecord.setBackgroundResource(R.drawable.microphone_red);
+
+
             }
 
             @Override
             public void onPause() {
                 // 暂停
+
+
             }
 
             @Override
@@ -67,6 +72,8 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
             @Override
             public void onStop(int i) {
                 // 停止
+                btnRecord.setBackgroundResource(R.drawable.microphone);
+
             }
 
             @Override

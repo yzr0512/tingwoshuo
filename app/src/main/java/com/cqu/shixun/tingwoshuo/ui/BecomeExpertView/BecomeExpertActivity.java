@@ -23,6 +23,7 @@ public class BecomeExpertActivity extends AppCompatActivity implements IBecomeEx
     public Button butcerten;
     public EditText editTextinfo;
     public EditText editTexttitle;
+    public EditText editTextprice;
     private TextView view;
     private Spinner spinner;
    // private ArrayAdapter adapter;
@@ -65,6 +66,9 @@ public class BecomeExpertActivity extends AppCompatActivity implements IBecomeEx
 
         editTexttitle = (EditText) findViewById(R.id.title_becexp);
         editTexttitle.setOnClickListener(this);
+
+        editTextprice = (EditText) findViewById(R.id.price_becexp);
+        editTextprice.setOnClickListener(this);
 
         butcerten=(Button)findViewById(R.id.certain_bu_becex);
         butcerten.setOnClickListener(this);
@@ -112,7 +116,10 @@ public class BecomeExpertActivity extends AppCompatActivity implements IBecomeEx
 
                     myApp.getCurrUser().setTitle(editTexttitle.getText().toString());//头衔
 
-                    becomeExpertPresenter.getUser(myApp.getCurrUser());//传回类
+                    float  price  =  Float.parseFloat(editTextprice.getText().toString());
+                    myApp.getCurrUser().setAskPrice(price);//提问价格
+
+                    becomeExpertPresenter.postUser(myApp.getCurrUser());//传回类
                 }
 
 

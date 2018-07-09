@@ -205,7 +205,9 @@ public class FindPswActivity extends AppCompatActivity implements IFindPswView, 
                     Toast.makeText(FindPswActivity.this,"请输入验证码",Toast.LENGTH_SHORT).show();
                     return;
                 }
+
             }
+
             SMSSDK.submitVerificationCode("+86",editTextphone.getText().toString().trim(),editTextcomf.getText().toString().trim());
             break;
         }

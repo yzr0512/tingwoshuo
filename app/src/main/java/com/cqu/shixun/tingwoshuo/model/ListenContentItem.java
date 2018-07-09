@@ -7,12 +7,20 @@ import android.widget.Button;
  */
 
 public class ListenContentItem {
+    int id;
     private String StrAskAvatar;
     private String StrListenAvatar;
     private String StrAskContent;
     private Button BtnListenContent;
     private String StrDate;
     private int IntListenContentNum;
+
+    public ListenContentItem(int id){
+        this.id = id;
+    }
+    public int getId() {
+        return id;
+    }
 
     public String getStrAskAvatar() {
         return StrAskAvatar;
