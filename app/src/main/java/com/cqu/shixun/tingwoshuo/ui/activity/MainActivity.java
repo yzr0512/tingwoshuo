@@ -22,6 +22,7 @@ import java.util.List;
 
 import com.cqu.shixun.tingwoshuo.R;
 import com.cqu.shixun.tingwoshuo.adapter.FragmentTabAdapter;
+import com.cqu.shixun.tingwoshuo.fragments.ThirdSubAnswerFragment;
 import com.cqu.shixun.tingwoshuo.ui.fragments.FourFragment;
 import com.cqu.shixun.tingwoshuo.ui.fragments.ExpertListFragment;
 import com.cqu.shixun.tingwoshuo.ui.fragments.SecondFragment;
@@ -149,6 +150,12 @@ public class MainActivity extends FragmentActivity {
             fmanager=getSupportFragmentManager();
             ftransaction=fmanager.beginTransaction();
             ftransaction.replace(R.id.content,new ExpertListFragment());
+            ftransaction.commit();
+        }
+        if(requestCode==3 && resultCode==4){
+            fmanager=getSupportFragmentManager();
+            ftransaction=fmanager.beginTransaction();
+            ftransaction.replace(R.id.content,new ThirdSubAnswerFragment());
             ftransaction.commit();
         }
     }

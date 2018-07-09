@@ -18,13 +18,17 @@ public class Question {
 
     String category;    // 分类
 
+    public Question(int id){
+        this.id = id;
+    }
+
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 
     public int getQuestionerID() {
         return questionerID;

@@ -20,7 +20,7 @@ public class ExpertInfoPresenterImpl implements IExpertInfoPresenter {
 
     IExpertInfoView iExpertInfoView;
 
-    public void ExpertListPresentImpl(IExpertInfoView iExpertInfoView){
+    public ExpertInfoPresenterImpl(IExpertInfoView iExpertInfoView){
         this.iExpertInfoView = iExpertInfoView;
     }
 
@@ -44,12 +44,11 @@ public class ExpertInfoPresenterImpl implements IExpertInfoPresenter {
 
                             JSONObject questionListJson = response.getJSONObject("questionList");
                             List<Question> questions = new ArrayList<Question>();
-                            int n = response.getInt("total");
+                            int n = questionListJson.getInt("total");
                             for(int i = 1; i <= n; i++) {
                                 JSONObject questionJson = questionListJson.getJSONObject(Integer.toString(i));
-                                Question question = new Question();
-                                question.setId(questionJson.getInt("id"));
-                                question.setQuestionerName(questionJson.getString("questionName"));
+                                Question question = new Question(questionJson.getInt("id"));
+                                question.setQuestionerName(questionJson.getString("questionerName"));
                                 question.setContent(questionJson.getString("content"));
                                 question.setResponderName(user.getName());
                                 question.setResponderID(user.getId());
