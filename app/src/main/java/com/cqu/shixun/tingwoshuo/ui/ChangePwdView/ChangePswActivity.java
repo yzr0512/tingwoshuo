@@ -18,7 +18,7 @@ public class ChangePswActivity extends AppCompatActivity implements IChangePswVi
     private Button buback;
     private EditText edittextpsw1;
     private EditText edittextpsw2;
-    IChangePswPresenter changepswPresenter; // MVP模式
+    IChangePswPresenter iChangepswPresenter; // MVP模式
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,8 @@ public class ChangePswActivity extends AppCompatActivity implements IChangePswVi
         buchangepsw.setOnClickListener(this);
         buback=(Button)findViewById(R.id.back_bu_changepsw);
         buback.setOnClickListener(this);
+
+        iChangepswPresenter = new ChangePswPresenterImpl(this);
     }
 
     @Override
@@ -58,13 +60,13 @@ public class ChangePswActivity extends AppCompatActivity implements IChangePswVi
                 else if(!edittextpsw1.getText().toString().equals(edittextpsw2.getText().toString())){
                     Toast.makeText(ChangePswActivity.this,"密码和确认密码不一致",Toast.LENGTH_SHORT).show();
                     return;
-                    }else{
-                            //如何获得自己的手机号
+                }else{
+                    //如何获得自己的手机号
                     MyApplication myApp = (MyApplication) getApplication();
                     //String phonenumber=((MyApplication)getApplication()).user.getPhone();
                     String psw=edittextpsw2.getText().toString();
                     myApp.getCurrUser().setPwd(psw);//更换密码
-                    changepswPresenter.changePsw( myApp.getCurrUser());
+                    iChangepswPresenter.changePsw(myApp.getCurrUser());
                 }
 
             }
@@ -82,6 +84,8 @@ public class ChangePswActivity extends AppCompatActivity implements IChangePswVi
 
     @Override
     public void changeSuccess() {
+        Toast t = Toast.makeText(this, "密码修改成功，请重新登录", Toast.LENGTH_LONG);
+        t.show();
         Intent intent = new Intent();
         intent.setClass(ChangePswActivity.this, LoginActivity.class);
         //  intent.putExtra("id",2);

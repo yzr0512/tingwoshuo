@@ -51,12 +51,11 @@ public class ThirdSubAskFragment extends Fragment implements SwipeRefreshLayout.
       //  manager.setOrientation(OrientationHelper.VERTICAL);
       //  recyclerView.setLayoutManager(manager);
 
-
+        iAskRecordPresenter = new AskRecordPresenterImpl(this);
+        iAskRecordPresenter.getAskRecordList(((MyApplication)getActivity().getApplication()).getCurrUser());
 
 
         return rootView;
-
-
 
     }
 
@@ -127,9 +126,6 @@ public class ThirdSubAskFragment extends Fragment implements SwipeRefreshLayout.
             datas.add(askContentItem);
 
         }
-        iAskRecordPresenter =new AskRecordPresenterImpl(this);
-
-        iAskRecordPresenter.getAskRecordList(((MyApplication) getActivity().getApplication()).getCurrUser());
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
@@ -149,8 +145,6 @@ public class ThirdSubAskFragment extends Fragment implements SwipeRefreshLayout.
                 }
             }
         });
-
-
 
      }
 
