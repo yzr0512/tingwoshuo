@@ -1,9 +1,6 @@
 package com.cqu.shixun.tingwoshuo.ui.activity;
 
 
-import android.annotation.SuppressLint;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,10 +19,10 @@ import java.util.List;
 
 import com.cqu.shixun.tingwoshuo.R;
 import com.cqu.shixun.tingwoshuo.adapter.FragmentTabAdapter;
-import com.cqu.shixun.tingwoshuo.ui.fragments.FourFragment;
-import com.cqu.shixun.tingwoshuo.ui.fragments.ExpertListFragment;
-import com.cqu.shixun.tingwoshuo.ui.fragments.SecondFragment;
-import com.cqu.shixun.tingwoshuo.ui.fragments.ThirdFragment;
+import com.cqu.shixun.tingwoshuo.fragments.FourFragment;
+import com.cqu.shixun.tingwoshuo.ui.ExpertListView.ExpertListFragment;
+import com.cqu.shixun.tingwoshuo.fragments.SecondFragment;
+import com.cqu.shixun.tingwoshuo.fragments.ThirdFragment;
 
 /**
  * Created by engineer on 2016/9/13.

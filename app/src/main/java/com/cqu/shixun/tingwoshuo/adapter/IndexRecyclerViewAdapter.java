@@ -88,20 +88,19 @@ public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<IndexRecycler
             holder.itemView.setTag(pos);
         }
 
-        if (pos == 1) {
-            holder.liveList.setVisibility(View.VISIBLE);
-            holder.normalShell.setVisibility(View.GONE);
-        } else {
-            holder.liveList.setVisibility(View.GONE);
-            holder.normalShell.setVisibility(View.VISIBLE);
-        }
+//        if (pos == 1) {
+//            holder.liveList.setVisibility(View.VISIBLE);
+//            holder.normalShell.setVisibility(View.GONE);
+//        } else {
+//            holder.liveList.setVisibility(View.GONE);
+//            holder.normalShell.setVisibility(View.VISIBLE);
+//        }
 
         holder.ansNum.setText(datas.get(pos).getAnsNum()+"个回答 ");
         holder.askPrice.setText(datas.get(pos).getAskPrice()+"提问");
         holder.listenNum.setText(datas.get(pos).getListenNum()+"人收听 ");
         holder.title.setText(datas.get(pos).getTitle());
         holder.nametext.setText(datas.get(pos).getName());
-
 
 
         Glide.with(mContext).load(Constant.headPics.get(pos % 3)).placeholder(R.drawable.profile).into(holder.avatar);
@@ -116,15 +115,14 @@ public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<IndexRecycler
                 int offy = ScreenUtil.dip2px(mContext, 24);
                 menu.setAnimationStyle(R.style.MenuAnim);
                 menu.showAsDropDown(holder.menu, -menuW + offx, -offy);
-
             }
         });
 
-        LinearLayoutManager manager = new LinearLayoutManager(mContext);
-        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        holder.liveList.setLayoutManager(manager);
-        final IndexLiveHListAdapter adapter = new IndexLiveHListAdapter(datas);
-        holder.liveList.setAdapter(adapter);
+//        LinearLayoutManager manager = new LinearLayoutManager(mContext);
+//        manager.setOrientation(LinearLayoutManager.HORIZONTAL);
+//        holder.liveList.setLayoutManager(manager);
+//        final IndexLiveHListAdapter adapter = new IndexLiveHListAdapter(datas);
+//        holder.liveList.setAdapter(adapter);
 
 //        holder.hidequesition.setOnClickListener(new View.OnClickListener() {
 //            @Override

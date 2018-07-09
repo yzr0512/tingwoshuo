@@ -15,25 +15,25 @@
         android:name=".MyApplication">
 
         <activity
-            android:name=".ui.activity.LoginActivity"
+            android:name=".ui.LoginView.LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activity.RechargeActivity" />
-        <activity android:name=".ui.activity.BecomeExpertActivity" />
+        <activity android:name=".ui.RechargeView.RechargeActivity" />
+        <activity android:name=".ui.BecomeExpertView.BecomeExpertActivity" />
         <activity android:name=".ui.activity.MySettingActivity" />
         <activity android:name=".ui.activity.ChangePhoneActivity" />
-        <activity android:name=".ui.activity.ChangePswActivity" />
+        <activity android:name=".ui.ChangePwdView.ChangePswActivity" />
         <activity android:name=".ui.activity.AboutUsActivity" />
         <activity android:name=".ui.activity.MainActivity" />
-        <activity android:name=".ui.activity.RegisterActivity" />
-        <activity android:name=".ui.activity.FindPswActivity" />
-        <activity android:name=".ui.activity.ExpertInformationActivity" />
-        <activity android:name=".ui.activity.WriteQuestionActivity" />
-        <activity android:name=".ui.activity.AnswerActivity"></activity>
+        <activity android:name=".ui.RegisterView.RegisterActivity" />
+        <activity android:name=".ui.FindPwdView.FindPswActivity" />
+        <activity android:name=".ui.ExpertInfoView.ExpertInformationActivity" />
+        <activity android:name=".ui.AskView.WriteQuestionActivity" />
+        <activity android:name=".ui.AnswerView.AnswerActivity"></activity>
     </application>
 
 </manifest>

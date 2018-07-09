@@ -24,6 +24,16 @@ public class Question {
 
     String status;  // 状态
 
+    int answerID;   // 回答的ID
+
+    public int getAnswerID() {
+        return answerID;
+    }
+
+    public void setAnswerID(int answerID) {
+        this.answerID = answerID;
+    }
+
     public String getStatus() {
         return status;
     }
