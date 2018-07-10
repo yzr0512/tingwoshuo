@@ -157,32 +157,6 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.refuse_bu:{
-
-<<<<<<< HEAD
-                }else{
-                    // 下面两句要替换效果
-                    Toast t = Toast.makeText(this, "Stop", Toast.LENGTH_LONG);
-                    t.show();
-
-                    isRecording = 0;
-                    mMp3Recorder.stop(Mp3Recorder.ACTION_STOP_ONLY);
-                    mMp3Recorder.reset();
-
-                    // 提交答案
-                    Answer answer = new Answer(0);
-                    answer.setAnswerPath(filePath);
-                    answer.setQuestionID(question.getId());
-                    answer.setAppend(false);
-                    iAnswerPresenter.postAnswer(((MyApplication)getApplication()).getCurrUser(), answer);
-=======
-            }
-            case R.id.back_bu_answer:
-            {
-                com.cqu.shixun.tingwoshuo.ui.AnswerView.AnswerActivity.this.setResult(3);
-                com.cqu.shixun.tingwoshuo.ui.AnswerView.AnswerActivity.this.finish();
-            }
-               break;
             case R.id.play_bu:
                 if(isRecording==0){
                     try {
@@ -200,7 +174,6 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
                     isRecording=0;
                     mediaPlayer.pause();
                     btnPlay.setText("暂停中");
->>>>>>> pxs
                 }
                 break;
         }
@@ -215,16 +188,16 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
     public void showQuestionInfo(Question question) {
         // 获取到问题时调用此函数
         this.question = question;
-<<<<<<< HEAD
+
         filePath = this.getExternalFilesDir("").getAbsolutePath() + "/" + "question_"  + question.getId() + ".mp3";
 
-=======
+
         filePath = this.getExternalFilesDir("").getAbsolutePath() + "/" + "question_"  + question.getId() + "_" + new Date().getTime() +".mp3";
         Log.d("路径",filePath);
         name_answer.setText(question.getQuestionerName());
         question_answer.setText(question.getContent());
         money_answer.setText(Float.toString(question.getPrice()));
->>>>>>> pxs
+
     }
 
     @Override

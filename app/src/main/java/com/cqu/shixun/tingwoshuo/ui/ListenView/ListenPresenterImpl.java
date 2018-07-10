@@ -35,7 +35,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 
-public class ListenPresenterImpl {
+public class ListenPresenterImpl implements IListenPresenter{
 
     IListenView iListenView;
     Context context;

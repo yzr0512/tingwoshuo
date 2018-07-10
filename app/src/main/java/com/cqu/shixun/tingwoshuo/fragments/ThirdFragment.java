@@ -57,15 +57,15 @@ public class ThirdFragment extends Fragment {
 
         List<String> titles = new ArrayList<>();
         titles.add("我问");
-//        titles.add("我听");
-//        titles.add("我答");
+        titles.add("我听");
+        titles.add("我答");
 //        titles.add("收藏");
 
         //初始化ViewPager的数据集
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new ThirdSubAskFragment());
-//        fragments.add(new ThirdSubListenFragment());
-//        fragments.add(new ThirdSubAnswerFragment());
+        fragments.add(new ThirdSubListenFragment());
+        fragments.add(new ThirdSubAnswerFragment());
 //        fragments.add(new SecondSubFragment());
         //创建ViewPager的adapter
         FragmentAdapter adapter = new FragmentAdapter(getChildFragmentManager(), fragments, titles);
