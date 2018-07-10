@@ -23,28 +23,54 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/icons8_cell_phone_50" />
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
+            <!--<EditText-->
+                <!--android:id="@+id/phone_text_fsw"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:inputType="number"-->
+                <!--android:hint="手机" />-->
+
+            <!--<Button-->
+                <!--android:id="@+id/getinf_bu_fsw"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_height="37dp"-->
+                <!--android:text="获取验证码"-->
+                <!--android:background="@drawable/shape2_bule"-->
+                <!--android:textColor="#55000000" />-->
+           <!--</RelativeLayout>-->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <!--<EditText-->
+                <!--android:id="@+id/phone_text_fsw"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:inputType="number"-->
+                <!--android:hint="手机" />-->
             <EditText
                 android:id="@+id/phone_text_fsw"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:hint="手机" />
+                android:minWidth="200px"
+                android:hint="手机"
+                android:minLines="1"
+                android:maxLines="2"
+                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/getinf_bu_fsw"
                 android:layout_width="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_height="37dp"
-                android:text="获取验证码"
-                android:background="@drawable/shape2_bule"
-                android:textColor="#55000000" />
-           </RelativeLayout>
-
+                android:layout_height="wrap_content"
+                android:text="获取验证码" />
+        </LinearLayout>
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"

@@ -13,7 +13,11 @@ import android.widget.Toast;
 import com.cqu.shixun.tingwoshuo.MyApplication;
 import com.cqu.shixun.tingwoshuo.R;
 import com.cqu.shixun.tingwoshuo.model.User;
+import com.cqu.shixun.tingwoshuo.ui.BecomeExpertView.BecomeExpertActivity;
+import com.cqu.shixun.tingwoshuo.ui.ChangePwdView.ChangePswActivity;
+import com.cqu.shixun.tingwoshuo.ui.ChangePwdView.ChangePswPresenterImpl;
 import com.cqu.shixun.tingwoshuo.ui.FindPwdView.FindPswActivity;
+import com.cqu.shixun.tingwoshuo.ui.RechargeView.RechargeActivity;
 import com.cqu.shixun.tingwoshuo.ui.activity.MainActivity;
 import com.cqu.shixun.tingwoshuo.ui.RegisterView.RegisterActivity;
 
@@ -92,6 +96,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
 
         Intent intent = new Intent();
         intent.setClass(LoginActivity.this, MainActivity.class);
+//        intent.setClass(LoginActivity.this, FindPswActivity.class);
         //  intent.putExtra("id",2);
         startActivity(intent);
     }

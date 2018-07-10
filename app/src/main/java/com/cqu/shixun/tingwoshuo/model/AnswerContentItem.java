@@ -7,6 +7,7 @@ import android.widget.Button;
  */
 
 public class AnswerContentItem {
+    int id;
     private String StrAskAvatar;
     private String StrAskPerson;
     private String StrListenAvatar;
@@ -16,6 +17,12 @@ public class AnswerContentItem {
     private int IntQuesitionPrice;
     private int IntListenContentNum;
     private Button BtnReAnswer;
+
+
+    public  AnswerContentItem(int id){this.id=id;}
+    public int getId() {
+        return id;
+    }
 
     public String getStrAskAvatar() {
         return StrAskAvatar;

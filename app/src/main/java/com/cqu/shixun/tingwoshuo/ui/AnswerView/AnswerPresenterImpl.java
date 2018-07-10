@@ -76,7 +76,7 @@ public class AnswerPresenterImpl implements IAnswerPresenter {
         try {
             answerObject.put("questionID", answer.getQuestionID());
             answerObject.put("isAppend", answer.getAppend());
-            answerObject.put("answer", answer.getAnswer());
+//            answerObject.put("answer", answer.getAnswer());
             answerObject.put("userID", user.getId());
 
             params.put("phone", user.getPhone());
@@ -89,7 +89,7 @@ public class AnswerPresenterImpl implements IAnswerPresenter {
 
         myOkHttp.upload().url(url)
                 .params(params)
-                .addFile("answer", new File(answer.getAnswer()))
+                .addFile("answerAudio", new File(answer.getAnswerPath()))
                 .enqueue(new JsonResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, JSONObject response) {
@@ -118,33 +118,6 @@ public class AnswerPresenterImpl implements IAnswerPresenter {
                         iAnswerView.showMessage(error_msg);
                     }
                 });
-
-
-//
-//        mMyOkhttp.upload()
-//                .url(url)
-//                .addParam("name", "tsy")
-//                .addFile("avatar",
-//                        new File(Environment.getExternalStorageDirectory()
-//                                + "/ahome/sasas.jpg"))        //上传已经存在的File
-////                .addFile("avatar2", "asdsda.png", byteContents)    //直接上传File bytes
-//                .tag(this)
-//                .enqueue(new GsonResponseHandler<UploadModel>() {
-//                    @Override
-//                    public void onFailure(int statusCode, String error_msg) {
-//                        Log.d(TAG, "doUpload onFailure:" + error_msg);
-//                    }
-//
-//                    @Override
-//                    public void onProgress(long currentBytes, long totalBytes) {
-//                        Log.d(TAG, "doUpload onProgress:" + currentBytes + "/" + totalBytes);
-//                    }
-//
-//                    @Override
-//                    public void onSuccess(int statusCode, UploadModel response) {
-//                        Log.d(TAG, "doUpload onSuccess:" + response.ret + " " + response.msg);
-//                    }
-//                });
 
     }
 }

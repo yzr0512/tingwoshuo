@@ -20,16 +20,18 @@ public class RechargeActivity extends AppCompatActivity implements IRechargeView
     public Button buFifty;//50
     public Button buHundred;//100
     private TextView textBalance;//余额
+    MyApplication myApp;
     String phone;
 
-    IRechargePresenter rechargePresenter; // MVP模式
+    IRechargePresenter iRechargePresenter; // MVP模式
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recharge);
-       // MyApplication myApp = (MyApplication) getApplication();
 
        // phone=(myApp.getCurrUser().getPhone());//获取用户手机
+        myApp = (MyApplication) getApplication();
 
         myset_bu=(Button)findViewById(R.id.button_backward);
         myset_bu.setOnClickListener(this);
@@ -49,8 +51,11 @@ public class RechargeActivity extends AppCompatActivity implements IRechargeView
         textBalance=(TextView)findViewById(R.id.money_count);
         textBalance.setOnClickListener(this);
 
+        iRechargePresenter = new RechargePresenterImpl(this);
+        iRechargePresenter.getBalance(((MyApplication) getApplication()).getCurrUser());
+
     }
-    MyApplication myApp = (MyApplication) getApplication();
+
     @Override
     public void onClick(View view) {
 
@@ -69,24 +74,23 @@ public class RechargeActivity extends AppCompatActivity implements IRechargeView
             {
                 //支付密码判断什么的，不知道有没有
 
-                rechargePresenter.recharge(myApp.getCurrUser(),10);
-
+                iRechargePresenter.recharge(myApp.getCurrUser(),10);
 
             }
             break;
             case R.id.twentyTB:
             {
-                rechargePresenter.recharge(myApp.getCurrUser(),20);
+                iRechargePresenter.recharge(myApp.getCurrUser(),20);
             }
             break;
             case R.id.fiftyTB:
             {
-                rechargePresenter.recharge(myApp.getCurrUser(),50);
+                iRechargePresenter.recharge(myApp.getCurrUser(),50);
             }
             break;
             case R.id.hundredTB:
             {
-                rechargePresenter.recharge(myApp.getCurrUser(),100);
+                iRechargePresenter.recharge(myApp.getCurrUser(),100);
             }
             break;
 
@@ -103,7 +107,6 @@ public class RechargeActivity extends AppCompatActivity implements IRechargeView
         float balance=user.getBalance();
 
         textBalance.setText(Float.toString(balance));
-
 
     }
 

@@ -90,6 +90,7 @@ public class FourFragment extends Fragment {
     }
     super.onResume();
         }*/
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

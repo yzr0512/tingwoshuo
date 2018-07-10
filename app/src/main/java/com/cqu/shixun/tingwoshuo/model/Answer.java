@@ -3,11 +3,11 @@ package com.cqu.shixun.tingwoshuo.model;
 public class Answer {
     int id;
 
-    int questionID; // 回答者的ID
+    int questionID; // 问题的ID
 
     Boolean isAppend; // 是否追问（）
 
-    String answer; // 回答内容 文件路径
+    String answerPath; // 回答内容 文件路径
 
     public Answer(int id){
         this.id = id;
@@ -25,12 +25,12 @@ public class Answer {
         isAppend = append;
     }
 
-    public String getAnswer() {
-        return answer;
+    public String getAnswerPath() {
+        return answerPath;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setAnswerPath(String answerPath) {
+        this.answerPath = answerPath;
     }
 
     public int getQuestionID() {

@@ -128,6 +128,7 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
                 startActivity(intent);
             }
         });
+
         recyclerView.setAdapter(adapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

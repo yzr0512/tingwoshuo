@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IBecomeExpertView {
 
-    void openSuccess();
+    void success();
     void showMessage(String msg);
 
 }

@@ -52,11 +52,16 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
             @Override
             public void onStart() {
                 // 开始
+                btnRecord.setBackgroundResource(R.drawable.microphone_red);
+
+
             }
 
             @Override
             public void onPause() {
                 // 暂停
+
+
             }
 
             @Override
@@ -67,6 +72,8 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
             @Override
             public void onStop(int i) {
                 // 停止
+                btnRecord.setBackgroundResource(R.drawable.microphone);
+
             }
 
             @Override
@@ -130,7 +137,7 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
 
                     // 提交答案
                     Answer answer = new Answer(0);
-                    answer.setAnswer(filePath);
+                    answer.setAnswerPath(filePath);
                     answer.setQuestionID(question.getId());
                     answer.setAppend(false);
                     iAnswerPresenter.postAnswer(((MyApplication)getApplication()).getCurrUser(), answer);
@@ -148,7 +155,7 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
     public void showQuestionInfo(Question question) {
         // 获取到问题时调用此函数
         this.question = question;
-        filePath = this.getExternalFilesDir("").getAbsolutePath() + "/" + "question_"  + question.getId() + "_" + new Date().getTime() +".mp3";
+        filePath = this.getExternalFilesDir("").getAbsolutePath() + "/" + "question_"  + question.getId() + ".mp3";
 
     }
 

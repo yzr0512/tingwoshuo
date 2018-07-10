@@ -139,7 +139,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(RegisterActivity.this,"111",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(RegisterActivity.this,"111",Toast.LENGTH_SHORT).show();
         switch (view.getId()){
             case R.id.getinf_bu_rge:
 
@@ -210,12 +210,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void registerSuccess() {
+
         startActivity(new Intent(RegisterActivity.this, LoginActivity.class)); //页面跳转
     }
 
     @Override
     public void showMessage(String msg) {
         Log.d("Register", msg);
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show();
 
     }
 }

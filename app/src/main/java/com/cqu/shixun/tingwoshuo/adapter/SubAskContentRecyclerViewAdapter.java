@@ -29,7 +29,7 @@ public class SubAskContentRecyclerViewAdapter extends RecyclerView.Adapter<SubAs
     private static final int TYPE_NORMAL = 1;
     private View headView;
 
-    private List<AskContentItem> datas = new ArrayList<>();
+    private List<AskContentItem> datas;
     private Context mContext;
 
 
@@ -86,7 +86,9 @@ public class SubAskContentRecyclerViewAdapter extends RecyclerView.Adapter<SubAs
 
     @Override
     public int getItemCount() {
-        return headView == null ? datas.size() : datas.size() + 1;
+
+        //return headView == null ? datas.size() : datas.size() + 1;
+        return datas.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
