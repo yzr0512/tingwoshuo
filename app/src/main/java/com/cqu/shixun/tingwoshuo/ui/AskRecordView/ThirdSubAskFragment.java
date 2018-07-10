@@ -57,7 +57,7 @@ public class ThirdSubAskFragment extends Fragment implements SwipeRefreshLayout.
 
         List<AskContentItem>datas=new ArrayList<>();
         for (int i=0;i<100;i++){
-            AskContentItem askContentItem=new AskContentItem();
+            AskContentItem askContentItem=new AskContentItem(i);
             askContentItem.setStrDate("2018-07-05");
             askContentItem.setIntQuesitionPrice(13+i);
             askContentItem.setStrAskPerson("梁宏观");

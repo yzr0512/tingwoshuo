@@ -7,12 +7,20 @@ import android.widget.Button;
  */
 
 public class AskContentItem {
+    int  id;
     private String StrAskAvatar;
     private String StrAskPerson;
     private String StrAskContent;
     private String StrQuesitionState;
     private String StrDate;
     private int IntQuesitionPrice;
+    public AskContentItem(int id){
+        this.id=id;
+    }
+
+    public int getId() {
+        return id;
+    }
 
     public String getStrAskAvatar() {
         return StrAskAvatar;

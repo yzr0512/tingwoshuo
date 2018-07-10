@@ -18,8 +18,8 @@ import com.cqu.shixun.tingwoshuo.R;
 import com.cqu.shixun.tingwoshuo.adapter.SubAnswerContentRecyclerViewAdapter;
 import com.cqu.shixun.tingwoshuo.model.AnswerContentItem;
 import com.cqu.shixun.tingwoshuo.model.AskContentItem;
-import com.cqu.shixun.tingwoshuo.ui.activity.AnswerActivity;
-import com.cqu.shixun.tingwoshuo.ui.activity.ExpertInformationActivity;
+import com.cqu.shixun.tingwoshuo.ui.AnswerView.AnswerActivity;
+import com.cqu.shixun.tingwoshuo.ui.ExpertInfoView.ExpertInformationActivity;
 import com.cqu.shixun.tingwoshuo.model.Question;
 import com.cqu.shixun.tingwoshuo.ui.AnswerRecordView.IAnswerRecordView;
 import com.github.clans.fab.FloatingActionButton;
@@ -79,9 +79,10 @@ public class ThirdSubAnswerFragment extends Fragment implements SwipeRefreshLayo
             public void onItemClick(View position) {
                 Toast.makeText(getActivity().getApplicationContext(),"onAnswerItemClick:"+position.getTag().toString(),Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent();
+
                 intent.setClass(getActivity(), AnswerActivity.class);
                 getActivity().startActivityForResult(intent,3);
-                intent.putExtra("AnswerQuesitionID",Integer.valueOf(position.getTag().toString()));
+                intent.putExtra("questionID",Integer.valueOf(position.getTag().toString()));
 
                 startActivity(intent);
             }

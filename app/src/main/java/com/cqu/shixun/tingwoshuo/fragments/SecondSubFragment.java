@@ -53,6 +53,10 @@ public class SecondSubFragment extends Fragment implements SwipeRefreshLayout.On
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(manager);
+
+
+
+
         List<ContentItem>datas=new ArrayList<>();
         for (int i=0;i<100;i++){
             ContentItem contentItem=new ContentItem();
