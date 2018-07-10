@@ -80,8 +80,6 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
 
 
 
-
-
     }
 //    public void  onItemClick(int position){
 //        Toast.makeText(getActivity().getApplicationContext(), ""+position, Toast.LENGTH_SHORT).show();

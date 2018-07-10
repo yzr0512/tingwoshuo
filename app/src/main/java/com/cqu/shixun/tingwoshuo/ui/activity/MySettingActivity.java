@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AlertDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.content.Intent;
 import android.view.View;
@@ -106,8 +107,6 @@ public class MySettingActivity extends AppCompatActivity {
                     }
                 });
                 builder.show();
-
-
 
             }
         });

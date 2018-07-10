@@ -2,15 +2,20 @@ package com.cqu.shixun.tingwoshuo.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.media.MediaPlayer;
+import android.media.MediaRecorder;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +33,7 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_NORMAL = 1;
     private View headView;
-
+    Boolean isrecord = false;
     private List<ContentItem> datas = new ArrayList<>();
     private Context mContext;
 
@@ -90,7 +95,7 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
         return headView == null ? datas.size() : datas.size() + 1;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         CircleImageView StrAvatar;
         TextView StrName;
@@ -98,6 +103,7 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
         TextView StrQuesition;
         TextView IntListenNum;
         TextView IntListenPrice;
+        MediaPlayer mediaPlayer;
         Button BtnAnswer;
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -109,7 +115,45 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
             BtnAnswer = (Button) itemView.findViewById(R.id.BtnAnswer);
             StrAvatar=(CircleImageView)itemView.findViewById(R.id.StrAvatar);
 
+            itemView.setOnClickListener(this);
+            BtnAnswer.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View v) {
+            if(v.getId()==R.id.BtnAnswer){
+                int i = getLayoutPosition();
+                Log.d("debug", Integer.toString(i));
+                test(i);
+//                if(isrecord==true){
+//                    mediaPlayer=new MediaPlayer();
+//                    try {
+//
+////                        mediaPlayer.setDataSource(datas.get(getAdapterPosition()).getFilePath());
+//                        mediaPlayer.setDataSource("111");
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                    try {
+//                        mediaPlayer.prepare();
+//                        mediaPlayer.setLooping(false);
+//                        mediaPlayer.start();
+//                        isrecord=false;
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                }
+
+            }else {
+                Toast.makeText(mContext,"item"+getAdapterPosition(),Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void test(int i){
+        Log.d("debug1", Integer.toString(i));
+
     }
 
     public void setHeadView(View view) {

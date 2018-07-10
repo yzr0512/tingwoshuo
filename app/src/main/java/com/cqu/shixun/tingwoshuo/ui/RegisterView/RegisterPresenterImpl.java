@@ -47,6 +47,7 @@ public class RegisterPresenterImpl implements IRegisterPresenter {
                             String res = response.getString("result");
                             Log.d("res=", res);
                             if(res.equals("true")){
+                                iRegisterView.showMessage("注册成功");
                                 iRegisterView.registerSuccess();
                             }else{
                                 String description = response.getString("description");
