@@ -45,8 +45,11 @@ public class ThirdSubAnswerFragment extends Fragment implements SwipeRefreshLayo
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_second_sub, null);
         InitView();
-        iAnswerRecordPresenter = new AnswerRecordPresenterImpl(this);
+
+
+        iAnswerRecordPresenter =new AnswerRecordPresenterImpl(this);
         iAnswerRecordPresenter.getAnswerRecordList(((MyApplication) getActivity().getApplication()).getCurrUser());
+
         return rootView;
     }
 
@@ -56,39 +59,8 @@ public class ThirdSubAnswerFragment extends Fragment implements SwipeRefreshLayo
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         swipeRefreshLayout.setProgressViewOffset(false, 0, (int) (mContext.getResources().getDisplayMetrics().density * 64));
         swipeRefreshLayout.setOnRefreshListener(this);
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
-        LinearLayoutManager manager = new LinearLayoutManager(mContext);
-        recyclerView.setLayoutManager(manager);
-
-     /*   List<AnswerContentItem>datas=new ArrayList<>();
-        for (int i=0;i<100;i++){
-            AnswerContentItem answerContentItem=new AnswerContentItem();
-            answerContentItem.setStrDate("2018-07-06");
-            answerContentItem.setStrAskPerson("彭小双");
-            answerContentItem.setIntQuesitionPrice(i*2);//
-            answerContentItem.setIntListenContentNum(i*3-2);//听的人数
-            answerContentItem.setStrAskContent("Python在机器学习中的优势有哪些？");
-            datas.add(answerContentItem);
-        }
 
 
-
-        adapter = new SubAnswerContentRecyclerViewAdapter(mContext, datas);
-        recyclerView.setAdapter(adapter);
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                if (Math.abs(dy) > 5) {
-                    if (dy > 0) {
-                        fab.hide(true);
-                    } else {
-                        fab.show(true);
-                    }
-                }
-            }
-        });
-        */
     }
 
 
@@ -119,6 +91,9 @@ public class ThirdSubAnswerFragment extends Fragment implements SwipeRefreshLayo
             datas.add(answerContentItem);
 
         }
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
+        LinearLayoutManager manager = new LinearLayoutManager(mContext);
+        recyclerView.setLayoutManager(manager);
         adapter = new SubAnswerContentRecyclerViewAdapter(mContext, datas);
         recyclerView.setAdapter(adapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
