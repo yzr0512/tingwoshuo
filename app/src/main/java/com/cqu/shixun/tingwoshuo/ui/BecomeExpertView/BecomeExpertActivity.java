@@ -120,7 +120,7 @@ public class BecomeExpertActivity extends AppCompatActivity implements IBecomeEx
                     float  price  =  Float.parseFloat(editTextprice.getText().toString());
                     myApp.getCurrUser().setAskPrice(price);//提问价格
 
-                    becomeExpertPresenter.postUser(myApp.getCurrUser());
+                    iBecomeExpertPresenter.postUser(myApp.getCurrUser());
                 }
 
 

@@ -45,6 +45,8 @@ public class ThirdSubAnswerFragment extends Fragment implements SwipeRefreshLayo
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_second_sub, null);
         InitView();
+        iAnswerRecordPresenter = new AnswerRecordPresenterImpl(this);
+        iAnswerRecordPresenter.getAnswerRecordList(((MyApplication) getActivity().getApplication()).getCurrUser());
         return rootView;
     }
 
@@ -133,8 +135,8 @@ public class ThirdSubAnswerFragment extends Fragment implements SwipeRefreshLayo
             }
         });
 
-        iAnswerRecordPresenter =new AnswerRecordPresenterImpl(this);
-        iAnswerRecordPresenter.getAnswerRecordList(((MyApplication) getActivity().getApplication()).getCurrUser());
+//        iAnswerRecordPresenter =new AnswerRecordPresenterImpl(this);
+//        iAnswerRecordPresenter.getAnswerRecordList(((MyApplication) getActivity().getApplication()).getCurrUser());
 
 
 

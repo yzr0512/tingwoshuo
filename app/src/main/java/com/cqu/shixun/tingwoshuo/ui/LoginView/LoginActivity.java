@@ -95,8 +95,8 @@ public class LoginActivity extends AppCompatActivity implements ILoginView, View
         myApp.setCurrUser(user);
 
         Intent intent = new Intent();
-//        intent.setClass(LoginActivity.this, MainActivity.class);
-        intent.setClass(LoginActivity.this, RechargeActivity.class);
+        intent.setClass(LoginActivity.this, MainActivity.class);
+//        intent.setClass(LoginActivity.this, FindPswActivity.class);
         //  intent.putExtra("id",2);
         startActivity(intent);
     }

@@ -47,6 +47,7 @@ public class ThirdSubListenFragment extends Fragment implements SwipeRefreshLayo
         rootView = inflater.inflate(R.layout.fragment_second_sub, null);
         InitView();
         iListenRecordPresenter = new ListenRecordPresenterImpl(this);
+        iListenRecordPresenter.getListenRecordList(((MyApplication) getActivity().getApplication()).getCurrUser());
         return rootView;
     }
 
@@ -129,8 +130,8 @@ public class ThirdSubListenFragment extends Fragment implements SwipeRefreshLayo
             }
         });
 
-        iListenRecordPresenter=new ListenRecordPresenterImpl(this);
-        iListenRecordPresenter.getListenRecordList(((MyApplication) getActivity().getApplication()).getCurrUser());
+//        iListenRecordPresenter=new ListenRecordPresenterImpl(this);
+//        iListenRecordPresenter.getListenRecordList(((MyApplication) getActivity().getApplication()).getCurrUser());
     }
 
     @Override

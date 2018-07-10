@@ -36,12 +36,9 @@ public class FindPswActivity extends AppCompatActivity implements IFindPswView, 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_psw);
 
-
         iFindPswPresenter = new FindPswPresenterImpl(this);//绑定
         // 定时器 用于限制验证码获取频率
         mTimeCount = new TimeCount(60000, 1000);
-
-
 
         btnGetCode=(Button)findViewById(R.id.getinf_bu_fsw);
         btnGetCode.setOnClickListener(this);
@@ -169,7 +166,6 @@ public class FindPswActivity extends AppCompatActivity implements IFindPswView, 
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(FindPswActivity.this,"111",Toast.LENGTH_SHORT).show();
         switch (view.getId()){
 
             case R.id.getinf_bu_fsw://验证码
@@ -185,8 +181,9 @@ public class FindPswActivity extends AppCompatActivity implements IFindPswView, 
                 } else {
                     Toast.makeText(FindPswActivity.this, "请输入手机号", Toast.LENGTH_SHORT).show();
                 }
-                break;
+
             }
+            break;
             case R.id.certain_bu_fsw://确定找回
             {
                 if(editTextphone.getText().toString().trim().equals("")) {
@@ -205,10 +202,8 @@ public class FindPswActivity extends AppCompatActivity implements IFindPswView, 
                     Toast.makeText(FindPswActivity.this,"请输入验证码",Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                SMSSDK.submitVerificationCode("+86",editTextphone.getText().toString().trim(),editTextcomf.getText().toString().trim());
             }
-
-            SMSSDK.submitVerificationCode("+86",editTextphone.getText().toString().trim(),editTextcomf.getText().toString().trim());
             break;
         }
 
@@ -220,19 +215,18 @@ public class FindPswActivity extends AppCompatActivity implements IFindPswView, 
 
     @Override
     public void findpswSuccess() {
+        Toast t = Toast.makeText(this, "密码设置成功", Toast.LENGTH_LONG);
+        t.show();
         Intent intent = new Intent();
         intent.setClass(FindPswActivity.this, LoginActivity.class);
         //  intent.putExtra("id",2);
         startActivity(intent);
 
-
     }
 
     @Override
     public void showMessage(String msg) {
-
         Toast t = Toast.makeText(this, msg, Toast.LENGTH_LONG);
         t.show();
-
     }
 }

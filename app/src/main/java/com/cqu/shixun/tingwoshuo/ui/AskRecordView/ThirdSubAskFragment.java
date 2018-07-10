@@ -130,7 +130,9 @@ public class ThirdSubAskFragment extends Fragment implements SwipeRefreshLayout.
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(manager);
+
         adapter = new SubAskContentRecyclerViewAdapter(mContext, datas);
+
         recyclerView.setAdapter(adapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

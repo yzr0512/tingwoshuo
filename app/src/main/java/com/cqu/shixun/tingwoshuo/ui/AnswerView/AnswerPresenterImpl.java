@@ -76,7 +76,7 @@ public class AnswerPresenterImpl implements IAnswerPresenter {
         try {
             answerObject.put("questionID", answer.getQuestionID());
             answerObject.put("isAppend", answer.getAppend());
-            answerObject.put("answer", answer.getAnswer());
+//            answerObject.put("answer", answer.getAnswer());
             answerObject.put("userID", user.getId());
 
             params.put("phone", user.getPhone());
@@ -89,7 +89,7 @@ public class AnswerPresenterImpl implements IAnswerPresenter {
 
         myOkHttp.upload().url(url)
                 .params(params)
-                .addFile("answer", new File(answer.getAnswer()))
+                .addFile("answerAudio", new File(answer.getAnswerPath()))
                 .enqueue(new JsonResponseHandler() {
                     @Override
                     public void onSuccess(int statusCode, JSONObject response) {

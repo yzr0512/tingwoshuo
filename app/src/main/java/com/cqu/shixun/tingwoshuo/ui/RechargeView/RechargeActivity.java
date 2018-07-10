@@ -23,8 +23,6 @@ public class RechargeActivity extends AppCompatActivity implements IRechargeView
     MyApplication myApp;
     String phone;
 
-    MyApplication myApp;
-
     IRechargePresenter iRechargePresenter; // MVP模式
 
     @Override
@@ -32,7 +30,6 @@ public class RechargeActivity extends AppCompatActivity implements IRechargeView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recharge);
 
-        myApp = (MyApplication) getApplication();
        // phone=(myApp.getCurrUser().getPhone());//获取用户手机
         myApp = (MyApplication) getApplication();
 

@@ -27,7 +27,7 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
     int responderID;    // 回答者ID
     String category;    // 分类
     float price;    // 问题价格
-    MyApplication myApp = (MyApplication) getApplication();//当前用户APP
+    MyApplication myApp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +45,7 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
         iAskPresenter = new AskPresenterImpl(this);
         iAskPresenter.getExpertInfo(expertID);
 
-
+        myApp = (MyApplication) getApplication();//当前用户APP
     }
 
 
@@ -126,7 +126,6 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
 
             public void onClick(DialogInterface dialog, int which) {
                 // TODO Auto-generated method stub
-
 
                 rechargePresenter.recharge(myApp.getCurrUser(),temp);//充值
                 dialog.dismiss();
