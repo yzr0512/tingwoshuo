@@ -2,8 +2,9 @@ package com.cqu.shixun.tingwoshuo.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.media.MediaPlayer;
-import android.media.MediaRecorder;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -22,31 +23,41 @@ import java.util.List;
 import com.bumptech.glide.Glide;
 import com.cqu.shixun.tingwoshuo.Constant;
 import com.cqu.shixun.tingwoshuo.R;
+import com.cqu.shixun.tingwoshuo.model.Answer;
 import com.cqu.shixun.tingwoshuo.model.ContentItem;
+import com.cqu.shixun.tingwoshuo.model.Question;
+import com.cqu.shixun.tingwoshuo.model.User;
+import com.cqu.shixun.tingwoshuo.ui.ListenView.IListenAdapterView;
+import com.cqu.shixun.tingwoshuo.ui.ListenView.IListenAdapterPresenter;
+import com.cqu.shixun.tingwoshuo.ui.ListenView.ListenAdapterPresenterImpl;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by engineer on 2016/9/13.
  */
-public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerViewAdapter.MyViewHolder> {
+public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerViewAdapter.MyViewHolder> implements IListenAdapterView{
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_NORMAL = 1;
     private View headView;
-    Boolean isrecord = false;
+    private  boolean isrecord=false;
+    private MediaPlayer mediaPlayer;
+    IListenAdapterPresenter iListenAdapterPresenter;
     private List<ContentItem> datas = new ArrayList<>();
     private Context mContext;
-
+    User currUser;
     private int menuW, menuH;
 
-    public SubRecyclerViewAdapter(Context mContext, List<ContentItem> datas) {
+    public SubRecyclerViewAdapter(Context mContext, List<ContentItem> datas, User currUser) {
         this.datas = datas;
         this.mContext = mContext;
+        this.currUser = currUser;
         DisplayMetrics display = new DisplayMetrics();
         Activity mActivity = (Activity) mContext;
         mActivity.getWindowManager().getDefaultDisplay().getMetrics(display);
         menuW = display.widthPixels / 2;
         menuH = LinearLayout.LayoutParams.WRAP_CONTENT;
+        iListenAdapterPresenter = new ListenAdapterPresenterImpl(this, mContext);
 
     }
 
@@ -95,6 +106,56 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
         return headView == null ? datas.size() : datas.size() + 1;
     }
 
+    @Override
+    public void play(Answer answer) {
+
+                    try {
+                        mediaPlayer=new MediaPlayer();
+                        mediaPlayer.setDataSource(answer.getAnswerPath());
+                        mediaPlayer.prepare();
+                        mediaPlayer.setLooping(false);
+                        mediaPlayer.start();
+                        isrecord=false;
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+    }
+
+    @Override
+    public void showPayRequest(float price) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+
+        builder.setMessage("偷听需要支付" + Float.toString(price) + "个听币，请问是否支付？");
+        builder.setTitle("提示");
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                iListenAdapterPresenter.confirmPayRequest();
+                // finish();
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+        builder.show();
+
+
+    }
+
+
+    @Override
+    public void showMessage(String msg) {
+
+    }
+
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         CircleImageView StrAvatar;
@@ -103,7 +164,8 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
         TextView StrQuesition;
         TextView IntListenNum;
         TextView IntListenPrice;
-        MediaPlayer mediaPlayer;
+
+
         Button BtnAnswer;
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -122,28 +184,12 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
         @Override
         public void onClick(View v) {
             if(v.getId()==R.id.BtnAnswer){
-                int i = getLayoutPosition();
-                Log.d("debug", Integer.toString(i));
-                test(i);
-//                if(isrecord==true){
-//                    mediaPlayer=new MediaPlayer();
-//                    try {
-//
-////                        mediaPlayer.setDataSource(datas.get(getAdapterPosition()).getFilePath());
-//                        mediaPlayer.setDataSource("111");
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                    try {
-//                        mediaPlayer.prepare();
-//                        mediaPlayer.setLooping(false);
-//                        mediaPlayer.start();
-//                        isrecord=false;
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//
-//                }
+
+                Toast.makeText(mContext,"button"+getAdapterPosition(),Toast.LENGTH_SHORT).show();
+
+                iListenAdapterPresenter.getQuestionAnswer(new Question(datas.get(getAdapterPosition()).getQuesitionId()), currUser);
+
+
 
             }else {
                 Toast.makeText(mContext,"item"+getAdapterPosition(),Toast.LENGTH_SHORT).show();

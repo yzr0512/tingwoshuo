@@ -7,6 +7,6 @@ public interface IListenPresenter {
     //刷新内容
     void getQuestionList(String category);
 
-    void getQuestionAnswer(Question question, User user);
+//    void getQuestionAnswer(Question question, User user);
 
 }

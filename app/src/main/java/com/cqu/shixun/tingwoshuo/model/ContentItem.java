@@ -14,6 +14,8 @@ public class ContentItem {
     private Button BtnAnswer;
     private int IntListenNum;
     private int IntListenPrice;
+    private String filePath;
+    private int quesitionId;
 
     public String getStrAvatar() {
         return StrAvatar;
@@ -69,5 +71,21 @@ public class ContentItem {
 
     public void setIntListenPrice(int intListenPrice) {
         IntListenPrice = intListenPrice;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public int getQuesitionId() {
+        return quesitionId;
+    }
+
+    public void setQuesitionId(int quesitionId) {
+        this.quesitionId = quesitionId;
     }
 }
