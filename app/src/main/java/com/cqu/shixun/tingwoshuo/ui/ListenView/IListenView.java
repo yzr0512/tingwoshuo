@@ -10,7 +10,7 @@ public interface IListenView {
 //    void refreshSuccess();//刷新哪个页面,按钮id
 //    void listenSuccess();
     void showQuestionList(List<Question> questions);
-    Boolean showPayRequest(float price);
-    void setAnswer(Answer answer);
+//    Boolean showPayRequest(float price);
+//    void setAnswer(Answer answer);
     void showMessage(String msg);
 }

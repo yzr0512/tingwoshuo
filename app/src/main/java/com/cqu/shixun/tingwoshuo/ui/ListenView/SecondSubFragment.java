@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,10 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.cqu.shixun.tingwoshuo.MyApplication;
 import com.cqu.shixun.tingwoshuo.model.Answer;
 import com.cqu.shixun.tingwoshuo.model.ContentItem;
 import com.cqu.shixun.tingwoshuo.model.Question;
 import com.cqu.shixun.tingwoshuo.model.User;
+import com.cqu.shixun.tingwoshuo.ui.AskView.WriteQuestionActivity;
 import com.github.clans.fab.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -115,14 +118,15 @@ public class SecondSubFragment extends Fragment implements SwipeRefreshLayout.On
             ContentItem contentItem = new ContentItem();
             contentItem.setIntListenNum(question.getListenNum());
             contentItem.setStrType("精选");
-            contentItem.setStrAvatar("hahah");
+            contentItem.setStrAvatar("hhh");
+            contentItem.setQuesitionId(question.getId());
             contentItem.setIntListenPrice((int)question.getListenPrice());
             contentItem.setStrName(question.getQuestionerName());
             contentItem.setStrQuesition(question.getContent());
             datas.add(contentItem);
         }
 
-        adapter = new SubRecyclerViewAdapter(mContext, datas);
+        adapter = new SubRecyclerViewAdapter(mContext, datas, ((MyApplication)getActivity().getApplication()).getCurrUser());
         recyclerView.setAdapter(adapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -140,15 +144,6 @@ public class SecondSubFragment extends Fragment implements SwipeRefreshLayout.On
 
     }
 
-    @Override
-    public Boolean showPayRequest(float price) {
-        return null;
-    }
-
-    @Override
-    public void setAnswer(Answer answer) {
-
-    }
 
     @Override
     public void showMessage(String msg) {

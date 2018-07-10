@@ -39,6 +39,7 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
 
         buask=(Button)findViewById(R.id.writequestion_bu_writeq);
         buask.setOnClickListener(this);
+
         editcontent=(EditText)findViewById(R.id.question_writeq);
         editcontent.setOnClickListener(this);
 
@@ -70,6 +71,7 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
         switch (view.getId()){
             case R.id.back_bu_writeq:
             {
+//                Toast.makeText(WriteQuestionActivity.this,"111",Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent();
                 intent.setClass(WriteQuestionActivity.this, ExpertInformationActivity.class);
                 //  intent.putExtra("id",2);
