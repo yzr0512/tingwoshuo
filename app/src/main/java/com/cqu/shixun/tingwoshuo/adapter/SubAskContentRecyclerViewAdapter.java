@@ -73,6 +73,10 @@ public class SubAskContentRecyclerViewAdapter extends RecyclerView.Adapter<SubAs
         holder.StrDate.setText(datas.get(pos).getStrDate());
         holder.StrAskPerson.setText("  "+datas.get(pos).getStrAskPerson());
         holder.StrQuesitionState.setText(datas.get(pos).getStrQuesitionState());
+        if(datas.get(pos).getStrQuesitionState().equals("已回答"))
+        {
+            holder.player.setVisibility(View.VISIBLE);//是否显示播放
+        }
         Glide.with(mContext).load(Constant.headPics.get(pos % 3)).placeholder(R.drawable.profile).into(holder.StrAskAvatar);
 
     }
@@ -100,7 +104,7 @@ public class SubAskContentRecyclerViewAdapter extends RecyclerView.Adapter<SubAs
         TextView StrQuesitionState;
         TextView StrAskPerson;
         TextView IntQuesitionPrice;
-
+        Button player;//按钮实现
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -112,7 +116,7 @@ public class SubAskContentRecyclerViewAdapter extends RecyclerView.Adapter<SubAs
             StrQuesitionState = (TextView) itemView.findViewById(R.id.sub_ask_StrQuesitionState);
             IntQuesitionPrice = (TextView) itemView.findViewById(R.id.sub_ask_IntQuesitionPrice);
             StrAskAvatar=(CircleImageView)itemView.findViewById(R.id.sub_ask_StrAskAvatar);
-
+            player=(Button)itemView.findViewById(R.id.askplayer);
         }
     }
 
