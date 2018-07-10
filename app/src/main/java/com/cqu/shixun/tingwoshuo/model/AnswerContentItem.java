@@ -18,11 +18,10 @@ public class AnswerContentItem {
     private int IntListenContentNum;
     private Button BtnReAnswer;
 
-
-    public  AnswerContentItem(int id){this.id=id;}
-    public int getId() {
-        return id;
+    public  AnswerContentItem(int id) {
+        this.id = id;
     }
+    public  int getId(){return id;}
 
     public String getStrAskAvatar() {
         return StrAskAvatar;

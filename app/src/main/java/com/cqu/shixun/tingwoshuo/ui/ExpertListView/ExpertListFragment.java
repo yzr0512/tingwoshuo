@@ -124,7 +124,8 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
                 Intent intent=new Intent();
                 intent.setClass(getActivity(), ExpertInformationActivity.class);
                 getActivity().startActivityForResult(intent,1);
-                intent.putExtra("item_id",position.getTag().toString());
+                intent.putExtra("expertID",Integer.valueOf(position.getTag().toString()));
+
                 startActivity(intent);
             }
         });
