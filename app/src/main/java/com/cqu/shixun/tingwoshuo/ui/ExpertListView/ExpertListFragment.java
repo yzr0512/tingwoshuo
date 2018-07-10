@@ -1,5 +1,6 @@
 package com.cqu.shixun.tingwoshuo.ui.ExpertListView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.cqu.shixun.tingwoshuo.model.Category;
@@ -33,7 +35,10 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
     private IndexRecyclerViewAdapter adapter;
-    //
+    public Button buProperty;
+    public Button buFinancial;
+    public Button buEmotion;
+    public Button buLaw;
     private View rootView;
     private FloatingActionMenu fam;
 
@@ -50,6 +55,14 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_index, null);
         InitView();
+
+      //  View headView = LayoutInflater.from(mContext).inflate(R.layout.index_list_headview, null);
+
+        iExpertListPrsenter = new ExpertListPresentImpl(this);
+        iExpertListPrsenter.getExpertList("房产");
+
+
+
         return rootView;
     }
 
@@ -66,9 +79,9 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
         recyclerView.setLayoutManager(manager);
 
 
-        iExpertListPrsenter = new ExpertListPresentImpl(this);
-        //iExpertListPrsenter.getCategoryList();
-        iExpertListPrsenter.getExpertList("房产");
+
+
+
     }
 //    public void  onItemClick(int position){
 //        Toast.makeText(getActivity().getApplicationContext(), ""+position, Toast.LENGTH_SHORT).show();
@@ -115,6 +128,48 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
         adapter.setHeadView(headView);   //设置4个范围下面的灰块区域
 //        adapter.setmItemClickListener((IndexRecyclerViewAdapter.OnItemClickListener) this);
 
+        buProperty=(Button)headView.findViewById(R.id.BtnProperty);
+        buProperty.setOnClickListener(new View.OnClickListener() {
+           // @SuppressLint("ResourceAsColor")
+            @Override
+            public void onClick(View view) {
+
+
+                iExpertListPrsenter.getExpertList("房产");
+
+            }
+        });
+
+        buLaw=(Button)headView.findViewById(R.id.BtnLaw);
+        buLaw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                iExpertListPrsenter.getExpertList("法律");
+
+            }
+        });
+
+        buFinancial=(Button)headView.findViewById(R.id.BtnFinancial);
+        buFinancial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                iExpertListPrsenter.getExpertList("理财");
+
+            }
+        });
+
+        buEmotion=(Button)headView.findViewById(R.id.BtnEmotion);
+        buEmotion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                iExpertListPrsenter.getExpertList("情感");
+
+            }
+        });
+
         adapter.setmItemClickListener(new IndexRecyclerViewAdapter.OnItemClickListener() {
 
             @Override
@@ -127,6 +182,8 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
                 intent.putExtra("expertID",Integer.valueOf(position.getTag().toString()));
 
                 startActivity(intent);
+
+
             }
         });
 
@@ -145,9 +202,9 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
             }
         });
 
-        iExpertListPrsenter = new ExpertListPresentImpl(this);
+       // iExpertListPrsenter = new ExpertListPresentImpl(this);
 
-        iExpertListPrsenter.getCategoryList();//板块列表
+       // iExpertListPrsenter.getCategoryList();//板块列表
 
 
     }
@@ -157,9 +214,6 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
         Toast t = Toast.makeText(mContext, msg, Toast.LENGTH_LONG);
         t.show();
     }
-
-
-
 
 
 }

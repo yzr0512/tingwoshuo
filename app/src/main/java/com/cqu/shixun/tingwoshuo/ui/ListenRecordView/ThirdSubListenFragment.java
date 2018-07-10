@@ -46,7 +46,8 @@ public class ThirdSubListenFragment extends Fragment implements SwipeRefreshLayo
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_second_sub, null);
         InitView();
-        iListenRecordPresenter = new ListenRecordPresenterImpl(this);
+
+        iListenRecordPresenter=new ListenRecordPresenterImpl(this);
         iListenRecordPresenter.getListenRecordList(((MyApplication) getActivity().getApplication()).getCurrUser());
         return rootView;
     }
@@ -57,35 +58,8 @@ public class ThirdSubListenFragment extends Fragment implements SwipeRefreshLayo
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         swipeRefreshLayout.setProgressViewOffset(false, 0, (int) (mContext.getResources().getDisplayMetrics().density * 64));
         swipeRefreshLayout.setOnRefreshListener(this);
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
-        LinearLayoutManager manager = new LinearLayoutManager(mContext);
-        recyclerView.setLayoutManager(manager);
 
-    /*    List<ListenContentItem>datas=new ArrayList<>();
-        for (int i=0;i<100;i++){
-            ListenContentItem listenContentItem=new ListenContentItem();
-            listenContentItem.setStrDate("2018-07-05");
-            listenContentItem.setIntListenContentNum(33+i);
-            listenContentItem.setStrAskContent("重庆合川北新御龙湾的房产是否具有投资价值？升值空间多大？");
-            datas.add(listenContentItem);
-        }
 
-        adapter = new SubContentRecyclerViewAdapter(mContext, datas);
-        recyclerView.setAdapter(adapter);
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                if (Math.abs(dy) > 5) {
-                    if (dy > 0) {
-                        fab.hide(true);
-                    } else {
-                        fab.show(true);
-                    }
-                }
-            }
-        });
-            */
     }
 
 
@@ -114,6 +88,9 @@ public class ThirdSubListenFragment extends Fragment implements SwipeRefreshLayo
             datas.add(listenContentItem);
 
         }
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
+        LinearLayoutManager manager = new LinearLayoutManager(mContext);
+        recyclerView.setLayoutManager(manager);
         adapter = new SubContentRecyclerViewAdapter(mContext, datas);
         recyclerView.setAdapter(adapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

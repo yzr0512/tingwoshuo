@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
 
+
 import com.cqu.shixun.tingwoshuo.R;
 import com.cqu.shixun.tingwoshuo.ui.ChangePwdView.ChangePswActivity;
 import com.cqu.shixun.tingwoshuo.ui.LoginView.LoginActivity;
@@ -21,10 +22,13 @@ public class MySettingActivity extends AppCompatActivity {
     public LinearLayout aboutus;
     public LinearLayout changecount;
     public LinearLayout viewall;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_setting);
+
 
 
         //返回
@@ -32,6 +36,7 @@ public class MySettingActivity extends AppCompatActivity {
         myback_bu.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent();
                 intent.setClass(MySettingActivity.this, MainActivity.class);
                 //  intent.putExtra("id",2);

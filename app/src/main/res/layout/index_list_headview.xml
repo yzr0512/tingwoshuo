@@ -1,41 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="120dp"
+    android:background="#ffd9d9"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:background="@color/gray"
-        android:layout_height="?attr/actionBarSize"/>
-    <LinearLayout
+
+    <RelativeLayout
         android:id="@+id/btn_pos"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/BtnProperty"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="33.6dp"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="房产"
-            android:textStyle="bold"/>
-        <Button
-            android:id="@+id/BtnFinancial"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+
+                android:id="@+id/BtnProperty"
+                android:layout_width="48dp"
+                android:layout_height="52dp"
+                android:background="@drawable/butten_co_change"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="房产"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_alignParentLeft="true"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textStyle="bold"
-            android:text="理财"/>
-        <Button
-            android:id="@+id/BtnEmotion"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="115.2dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/BtnFinancial"
+                android:layout_width="48dp"
+                android:layout_height="52dp"
+                android:background="@drawable/cash_65"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="理财"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textStyle="bold"
-            android:text="情感"/>
-        <Button
-            android:id="@+id/BtnLaw"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="115.2dp"
+            android:layout_marginLeft="115.2dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/BtnEmotion"
+                android:layout_width="48dp"
+                android:layout_height="52dp"
+                android:background="@drawable/love_65"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="感情"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textStyle="bold"
-            android:text="法律"/>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="33.6dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/BtnLaw"
+                android:layout_width="48dp"
+                android:layout_height="52dp"
+                android:background="@drawable/law_65"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="法律"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
 
 </LinearLayout>
+
+
+
