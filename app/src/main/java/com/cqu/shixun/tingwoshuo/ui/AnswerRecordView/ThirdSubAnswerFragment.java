@@ -1,6 +1,7 @@
 package com.cqu.shixun.tingwoshuo.ui.AnswerRecordView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -17,6 +18,9 @@ import com.cqu.shixun.tingwoshuo.MyApplication;
 import com.cqu.shixun.tingwoshuo.R;
 import com.cqu.shixun.tingwoshuo.adapter.SubAnswerContentRecyclerViewAdapter;
 import com.cqu.shixun.tingwoshuo.model.AnswerContentItem;
+import com.cqu.shixun.tingwoshuo.model.AskContentItem;
+import com.cqu.shixun.tingwoshuo.ui.AnswerView.AnswerActivity;
+import com.cqu.shixun.tingwoshuo.ui.ExpertInfoView.ExpertInformationActivity;
 import com.cqu.shixun.tingwoshuo.model.Question;
 import com.cqu.shixun.tingwoshuo.model.User;
 import com.cqu.shixun.tingwoshuo.ui.AnswerRecordView.IAnswerRecordView;
@@ -59,8 +63,52 @@ public class ThirdSubAnswerFragment extends Fragment implements SwipeRefreshLayo
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         swipeRefreshLayout.setProgressViewOffset(false, 0, (int) (mContext.getResources().getDisplayMetrics().density * 64));
         swipeRefreshLayout.setOnRefreshListener(this);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
+        LinearLayoutManager manager = new LinearLayoutManager(mContext);
+        recyclerView.setLayoutManager(manager);
+
+     /*   List<AnswerContentItem>datas=new ArrayList<>();
+        for (int i=0;i<100;i++){
+            AnswerContentItem answerContentItem=new AnswerContentItem(i);
+            answerContentItem.setStrDate("2018-07-06");
+            answerContentItem.setStrAskPerson("彭小双");
+            answerContentItem.setIntQuesitionPrice(i*2);//
+            answerContentItem.setIntListenContentNum(i*3-2);//听的人数
+            answerContentItem.setStrAskContent("Python在机器学习中的优势有哪些？");
+            datas.add(answerContentItem);
+        }
 
 
+
+        adapter = new SubAnswerContentRecyclerViewAdapter(mContext, datas);
+        adapter.setmItemClickListener(new SubAnswerContentRecyclerViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View position) {
+                Toast.makeText(getActivity().getApplicationContext(),"onAnswerItemClick:"+position.getTag().toString(),Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent();
+
+                intent.setClass(getActivity(), AnswerActivity.class);
+                getActivity().startActivityForResult(intent,3);
+                intent.putExtra("questionID",Integer.valueOf(position.getTag().toString()));
+
+                startActivity(intent);
+            }
+        });
+        recyclerView.setAdapter(adapter);
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (Math.abs(dy) > 5) {
+                    if (dy > 0) {
+                        fab.hide(true);
+                    } else {
+                        fab.show(true);
+                    }
+                }
+            }
+        });
+        */
     }
 
 

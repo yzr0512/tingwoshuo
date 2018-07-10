@@ -2,6 +2,7 @@ package com.cqu.shixun.tingwoshuo.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
@@ -24,13 +25,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import com.cqu.shixun.tingwoshuo.Constant;
 import com.cqu.shixun.tingwoshuo.R;
 import com.cqu.shixun.tingwoshuo.model.PersonItem;
+import com.cqu.shixun.tingwoshuo.ui.ExpertInfoView.ExpertInformationActivity;
 import com.cqu.shixun.tingwoshuo.util.ScreenUtil;
 import com.cqu.shixun.tingwoshuo.widget.ListItemMenu;
+
+import static android.app.PendingIntent.getActivity;
 
 /**
  * Created by engineer on 2016/9/13.
  */
-public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<IndexRecyclerViewAdapter.MyViewHolder> {
+public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<IndexRecyclerViewAdapter.MyViewHolder>  {
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_NORMAL = 1;
     private View headView;
@@ -85,7 +89,7 @@ public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<IndexRecycler
 
         if(pos>=0){
 
-            holder.itemView.setTag(pos);
+            holder.itemView.setTag(datas.get(pos).getId());
         }
 
 //        if (pos == 1) {
@@ -145,6 +149,9 @@ public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<IndexRecycler
     public int getItemCount() {
         return headView == null ? datas.size() : datas.size() + 1;
     }
+
+
+
 
 
 

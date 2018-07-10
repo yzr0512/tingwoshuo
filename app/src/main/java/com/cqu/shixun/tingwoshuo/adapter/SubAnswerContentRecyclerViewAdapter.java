@@ -24,11 +24,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 /**
  * Created by engineer on 2016/9/13.
  */
-public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<SubAnswerContentRecyclerViewAdapter.MyViewHolder> {
+public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<SubAnswerContentRecyclerViewAdapter.MyViewHolder> implements View.OnClickListener {
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_NORMAL = 1;
     private View headView;
-
+    private OnItemClickListener mItemClickListener;
     private List<AnswerContentItem> datas = new ArrayList<>();
     private Context mContext;
 
@@ -52,12 +52,26 @@ public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<Su
 
         View view = LayoutInflater.from(mContext).inflate(R.layout.sub_answerlistcontent_item, null);
         MyViewHolder holder = new MyViewHolder(view);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                mItemClickListener.onItemClick(v);
+            }
+        });
         return holder;
     }
 
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, int position) {
+
+        if(position>=0){
+
+            holder.itemView.setTag(datas.get(position).getId());
+        }
+
         if (getItemViewType(position) == TYPE_HEADER) {
             return;
         }
@@ -73,7 +87,8 @@ public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<Su
         holder.StrDate.setText(datas.get(pos).getStrDate());
         holder.StrAskPerson.setText("  "+datas.get(pos).getStrAskPerson());
         holder.IntListenContentNum.setText(datas.get(pos).getIntListenContentNum()+"人听过");
-
+        holder.BtnListenContent.setOnClickListener(this);
+        holder.BtnReanswer.setOnClickListener(this);
 
         Glide.with(mContext).load(Constant.headPics.get(pos % 3)).placeholder(R.drawable.profile).into(holder.StrAskAvatar);
         Glide.with(mContext).load(Constant.headPics.get(pos % 3)).placeholder(R.drawable.profile).into(holder.StrAnswerAvatar);
@@ -89,6 +104,16 @@ public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<Su
     @Override
     public int getItemCount() {
         return headView == null ? datas.size() : datas.size() + 1;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId()==R.id.sub_answer_BtnListenContent){
+
+        }
+        if(v.getId()==R.id.sub_answer_BtnReanswer){
+
+        }
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -131,5 +156,12 @@ public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<Su
     private int getRealPosition(RecyclerView.ViewHolder holder) {
         int pos = holder.getLayoutPosition();
         return headView == null ? pos : pos - 1;
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(View position);
+    }
+    public void setmItemClickListener(SubAnswerContentRecyclerViewAdapter.OnItemClickListener itemClickListener){
+        mItemClickListener=itemClickListener;
     }
 }

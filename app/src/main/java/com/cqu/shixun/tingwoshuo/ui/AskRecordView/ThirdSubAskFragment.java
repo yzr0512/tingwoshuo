@@ -77,6 +77,21 @@ public class ThirdSubAskFragment extends Fragment implements SwipeRefreshLayout.
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         swipeRefreshLayout.setProgressViewOffset(false, 0, (int) (mContext.getResources().getDisplayMetrics().density * 64));
         swipeRefreshLayout.setOnRefreshListener(this);
+      //  recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
+      //  LinearLayoutManager manager = new LinearLayoutManager(mContext);
+      //  recyclerView.setLayoutManager(manager);
+
+     /*   List<AskContentItem>datas=new ArrayList<>();
+        for (int i=0;i<100;i++){
+            AskContentItem askContentItem=new AskContentItem(i);
+            askContentItem.setStrDate("2018-07-05");
+            askContentItem.setIntQuesitionPrice(13+i);
+            askContentItem.setStrAskPerson("梁宏观");
+            askContentItem.setStrQuesitionState("等待回答");
+            askContentItem.setStrAskContent("重庆大学创校多长时间了？");
+            datas.add(askContentItem);
+        }
+        */
 
     }
 
