@@ -49,7 +49,7 @@ public class RechargeActivity extends AppCompatActivity implements IRechargeView
         buHundred.setOnClickListener(this);
 
         textBalance=(TextView)findViewById(R.id.money_count);
-        textBalance.setOnClickListener(this);
+//        textBalance.setOnClickListener(this);
 
         iRechargePresenter = new RechargePresenterImpl(this);
         iRechargePresenter.getBalance(((MyApplication) getApplication()).getCurrUser());
@@ -114,6 +114,7 @@ public class RechargeActivity extends AppCompatActivity implements IRechargeView
     public void rechargeSuccess() {
 
         Toast.makeText(RechargeActivity.this,"充值成功！",Toast.LENGTH_SHORT).show();
+        iRechargePresenter.getBalance(((MyApplication) getApplication()).getCurrUser());
 
     }
 

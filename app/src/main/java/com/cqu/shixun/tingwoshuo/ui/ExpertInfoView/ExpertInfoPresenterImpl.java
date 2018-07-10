@@ -35,6 +35,7 @@ public class ExpertInfoPresenterImpl implements IExpertInfoPresenter {
                             User user = new User(userInfoJson.getInt("id"));    // 答主
                             user.setName(userInfoJson.getString("name"));
                             user.setTitle(userInfoJson.getString("title"));
+                            user.setIntro(userInfoJson.getString("intro"));
                             user.setAnsNum(userInfoJson.getInt("ansNum"));
                             user.setAskPrice(Float.valueOf(userInfoJson.get("askPrice").toString()));
                             user.setCategory(userInfoJson.getString("categoryName"));

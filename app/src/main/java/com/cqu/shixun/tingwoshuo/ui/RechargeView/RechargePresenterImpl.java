@@ -35,8 +35,7 @@ public class RechargePresenterImpl implements IRechargePresenter {
                         try{
                             String res = response.getString("result");
                             if(res.equals("true")){
-                                JSONObject userInfoJson = response.getJSONObject("description");
-                                user.setBalance(Float.valueOf(userInfoJson.get("balance").toString()));
+                                user.setBalance(Float.valueOf(response.get("balance").toString()));
 
                                 iRechargeView.rechargeInformation(user);
                             }else{

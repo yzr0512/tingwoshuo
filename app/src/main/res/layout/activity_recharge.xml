@@ -68,15 +68,16 @@
                     android:layout_marginLeft="20dp"
                     android:text="余额"
                     android:textSize="20dp"/>
+
                 <TextView
                     android:id="@+id/money_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/coins_im"
                     android:layout_alignBottom="@+id/coins_im"
                     android:layout_marginLeft="20dp"
-                    android:text="99"
-                    android:textSize="35dp"/>
+                    android:layout_toRightOf="@+id/coins_im"
+                    android:text="1234"
+                    android:textSize="35dp" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
