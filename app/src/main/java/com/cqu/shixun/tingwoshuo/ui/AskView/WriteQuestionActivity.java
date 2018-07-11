@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cqu.shixun.tingwoshuo.MyApplication;
@@ -24,6 +25,7 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
     IRechargePresenter rechargePresenter; // MVP模式
     private Button buask;
     private EditText editcontent;
+    TextView tvHeadTitle; // 页面顶端的标题
     int responderID;    // 回答者ID
     String category;    // 分类
     float price;    // 问题价格
@@ -35,7 +37,9 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
 
         Intent intent = getIntent();
         //intent.getStringExtra("userID");
-        int expertID = intent.getIntExtra("userID", 0);//专家id
+        int expertID = intent.getIntExtra("expertID", 0); // 专家id
+
+        tvHeadTitle = (TextView)findViewById(R.id.text_title);
 
         buask=(Button)findViewById(R.id.writequestion_bu_writeq);
         buask.setOnClickListener(this);
@@ -54,8 +58,9 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
     public void showExpertInfo(User user) {
 
         //显示信息
-        float askprice = user.getBalance();
-        buask.setText(Float.toString(askprice));
+        float askprice = user.getAskPrice();
+        buask.setText(Float.toString(askprice)+"提问");
+        tvHeadTitle.setText("向" + user.getName() + "提问");
         responderID=user.getId();
         category=user.getCategory();
         price=user.getAskPrice();
@@ -88,7 +93,7 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
                 {
                     //MyApplication myApp = (MyApplication) getApplication();
 
-                    Question question=new Question(1);
+                    Question question=new Question(0);
                     question.setContent(editcontent.getText().toString());//内容
                     question.setQuestionerID(myApp.getCurrUser().getId());//提问者ID
                     //回答者ID、价格、分类
@@ -142,7 +147,6 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
             }
         });
         builder.show();
-
 
     }
 

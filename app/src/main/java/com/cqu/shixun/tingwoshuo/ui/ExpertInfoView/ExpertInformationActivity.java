@@ -29,7 +29,7 @@ public class ExpertInformationActivity extends AppCompatActivity implements IExp
     private TextView TexImform_exim;
     private TextView TexName_exim;
     private TextView  TexKeyword_exim;
-
+    User expert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,14 +61,13 @@ public class ExpertInformationActivity extends AppCompatActivity implements IExp
         if(v.getId()==R.id.back_bu_exim){
             ExpertInformationActivity.this.setResult(2);
             ExpertInformationActivity.this.finish();
-            Toast.makeText(ExpertInformationActivity.this,String.valueOf(ExpertInformationActivity.this.isFinishing()),Toast.LENGTH_SHORT).show();
-
-
+//            Toast.makeText(ExpertInformationActivity.this,String.valueOf(ExpertInformationActivity.this.isFinishing()),Toast.LENGTH_SHORT).show();
 
         }
         if(v.getId()==R.id.ask_bu_exim){
-            Toast.makeText(ExpertInformationActivity.this,String.valueOf(v.getId()),Toast.LENGTH_SHORT).show();
+//            Toast.makeText(ExpertInformationActivity.this,String.valueOf(v.getId()),Toast.LENGTH_SHORT).show();
             Intent intent=new Intent();
+            intent.putExtra("expertID", expert.getId());
             intent.setClass(ExpertInformationActivity.this,WriteQuestionActivity.class);
             startActivity(intent);
         }
@@ -79,6 +78,7 @@ public class ExpertInformationActivity extends AppCompatActivity implements IExp
     // 显示答主页
     @Override
     public void showExpertInfo(User user, List<Question> questions) {
+        expert = user;
         TexName_exim.setText(user.getName());
         TexImform_exim.setText(user.getIntro());
         TexKeyword_exim.setText(user.getTitle());

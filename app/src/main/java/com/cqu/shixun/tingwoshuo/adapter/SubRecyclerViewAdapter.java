@@ -109,16 +109,16 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
     @Override
     public void play(Answer answer) {
 
-                    try {
-                        mediaPlayer=new MediaPlayer();
-                        mediaPlayer.setDataSource(answer.getAnswerPath());
-                        mediaPlayer.prepare();
-                        mediaPlayer.setLooping(false);
-                        mediaPlayer.start();
-                        isrecord=false;
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+        try {
+            mediaPlayer=new MediaPlayer();
+            mediaPlayer.setDataSource(answer.getAnswerPath());
+            mediaPlayer.prepare();
+            mediaPlayer.setLooping(false);
+            mediaPlayer.start();
+            isrecord=false;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
     }

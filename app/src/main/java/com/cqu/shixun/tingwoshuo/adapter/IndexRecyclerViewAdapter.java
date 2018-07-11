@@ -25,6 +25,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import com.cqu.shixun.tingwoshuo.Constant;
 import com.cqu.shixun.tingwoshuo.R;
 import com.cqu.shixun.tingwoshuo.model.PersonItem;
+import com.cqu.shixun.tingwoshuo.ui.AskView.WriteQuestionActivity;
 import com.cqu.shixun.tingwoshuo.ui.ExpertInfoView.ExpertInformationActivity;
 import com.cqu.shixun.tingwoshuo.util.ScreenUtil;
 import com.cqu.shixun.tingwoshuo.widget.ListItemMenu;
@@ -155,7 +156,7 @@ public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<IndexRecycler
 
 
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView ansNum;
         TextView listenNum;
         TextView nametext;//名字
@@ -174,6 +175,7 @@ public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<IndexRecycler
             if (itemView == headView) return;
             menu = (ImageView) itemView.findViewById(R.id.menu);
             askPrice = (Button) itemView.findViewById(R.id.ask);//数据库获取？
+            askPrice.setOnClickListener(this);
             nametext = (TextView) itemView.findViewById(R.id.name_text);//名字
             title = (TextView) itemView.findViewById(R.id.title);
             ansNum = (TextView) itemView.findViewById(R.id.ansNum);
@@ -185,6 +187,20 @@ public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<IndexRecycler
 
             hidequesition=(TextView)itemView.findViewById(R.id.hidequestion);
             share=(TextView)itemView.findViewById(R.id.share);
+        }
+
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()){
+                case R.id.ask:
+                {
+                    Intent intent = new Intent();
+                    intent.setClass(mContext, WriteQuestionActivity.class);
+                    intent.putExtra("expertID", datas.get(getAdapterPosition()).getId());
+                    mContext.startActivity(intent);
+                }
+                break;
+            }
         }
     }
 
