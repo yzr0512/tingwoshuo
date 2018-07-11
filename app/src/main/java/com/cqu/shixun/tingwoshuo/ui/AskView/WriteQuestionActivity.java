@@ -23,6 +23,7 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
     IAskPresenter iAskPresenter;
     IRechargePresenter rechargePresenter; // MVP模式
     private Button buask;
+    private Button buback;
     private EditText editcontent;
     int responderID;    // 回答者ID
     String category;    // 分类
@@ -35,7 +36,10 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
 
         Intent intent = getIntent();
         //intent.getStringExtra("userID");
-        int expertID = intent.getIntExtra("userID", 0);//专家id
+        int expertID = intent.getIntExtra("EXPERTID", 0);//专家id
+
+        buback=(Button)findViewById(R.id.back_bu_writeq);
+        buback.setOnClickListener(this);
 
         buask=(Button)findViewById(R.id.writequestion_bu_writeq);
         buask.setOnClickListener(this);
@@ -54,8 +58,8 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
     public void showExpertInfo(User user) {
 
         //显示信息
-        float askprice = user.getBalance();
-        buask.setText(Float.toString(askprice));
+        float askprice = user.getAskPrice();
+        buask.setText(Float.toString(askprice)+"个听币提问");
         responderID=user.getId();
         category=user.getCategory();
         price=user.getAskPrice();

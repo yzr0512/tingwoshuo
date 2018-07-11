@@ -50,21 +50,21 @@ public class SecondFragment extends Fragment {
         //初始化TabLayout的title
         mTabLayout.addTab(mTabLayout.newTab().setText("内容"));
         mTabLayout.addTab(mTabLayout.newTab().setText("答主"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("热门"));
-        mTabLayout.addTab(mTabLayout.newTab().setText("收藏"));
+        //mTabLayout.addTab(mTabLayout.newTab().setText("热门"));
+        //mTabLayout.addTab(mTabLayout.newTab().setText("收藏"));
 
         List<String> titles = new ArrayList<>();
         titles.add("内容");
         titles.add("答主");
-        titles.add("热门");
-        titles.add("收藏");
+       // titles.add("热门");
+       // titles.add("收藏");
 
         //初始化ViewPager的数据集
         List<Fragment> fragments = new ArrayList<>();
         fragments.add(new SecondSubFragment());
         fragments.add(new SecondSubFragment());
-        fragments.add(new SecondSubFragment());
-        fragments.add(new SecondSubFragment());
+       // fragments.add(new SecondSubFragment());
+       // fragments.add(new SecondSubFragment());
         //创建ViewPager的adapter
         FragmentAdapter adapter = new FragmentAdapter(getChildFragmentManager(), fragments, titles);
         mViewPager.setAdapter(adapter);

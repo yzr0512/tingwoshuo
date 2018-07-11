@@ -57,6 +57,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:minWidth="200px"
+                android:inputType="number"
                 android:hint="手机"
                 android:minLines="1"
                 android:maxLines="2"
