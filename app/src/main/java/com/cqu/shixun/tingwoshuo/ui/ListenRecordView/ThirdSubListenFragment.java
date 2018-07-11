@@ -55,6 +55,7 @@ public class ThirdSubListenFragment extends Fragment implements SwipeRefreshLayo
 
     private void InitView() {
         fab = (FloatingActionButton) rootView.findViewById(R.id.sub_fab);
+        fab.setVisibility(View.INVISIBLE);
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         swipeRefreshLayout.setProgressViewOffset(false, 0, (int) (mContext.getResources().getDisplayMetrics().density * 64));
@@ -100,9 +101,9 @@ public class ThirdSubListenFragment extends Fragment implements SwipeRefreshLayo
                 super.onScrolled(recyclerView, dx, dy);
                 if (Math.abs(dy) > 5) {
                     if (dy > 0) {
-                        fab.hide(true);
+//                        fab.hide(true);
                     } else {
-                        fab.show(true);
+//                        fab.show(true);
                     }
                 }
             }

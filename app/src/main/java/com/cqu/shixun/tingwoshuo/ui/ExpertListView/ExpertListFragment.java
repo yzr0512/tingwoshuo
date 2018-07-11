@@ -68,6 +68,7 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
 
     private void InitView() {
         fam = (FloatingActionMenu) rootView.findViewById(R.id.menu_yellow);
+        fam.setVisibility(View.INVISIBLE);
         //头像实现处
 
         swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh);
@@ -192,9 +193,9 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
                 super.onScrolled(recyclerView, dx, dy);
                 if (Math.abs(dy) > 5) {
                     if (dy > 0) {
-                        fam.hideMenu(true);
+//                        fam.hideMenu(true);
                     } else {
-                        fam.showMenu(true);
+//                        fam.showMenu(true);
                     }
                 }
             }
