@@ -96,6 +96,7 @@
                 android:id="@+id/phone_text_rge"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
                 android:minWidth="200px"
                 android:hint="手机"
                 android:minLines="1"

@@ -47,7 +47,7 @@ public class ExpertInformationActivity extends AppCompatActivity implements IExp
 
         BtnBack.setOnClickListener(this);
         Intent intent=getIntent();
-        int expertID = intent.getIntExtra("expertID", 0);
+        expertID = intent.getIntExtra("expertID", 0);
 
 
         iExpertInfoPresenter = new ExpertInfoPresenterImpl(this);
@@ -69,6 +69,8 @@ public class ExpertInformationActivity extends AppCompatActivity implements IExp
             Intent intent=new Intent();
             intent.putExtra("expertID", expert.getId());
             intent.setClass(ExpertInformationActivity.this,WriteQuestionActivity.class);
+
+            intent.putExtra("EXPERTID",expertID);
             startActivity(intent);
         }
 

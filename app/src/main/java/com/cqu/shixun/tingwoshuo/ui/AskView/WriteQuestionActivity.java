@@ -24,6 +24,7 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
     IAskPresenter iAskPresenter;
     IRechargePresenter rechargePresenter; // MVP模式
     private Button buask;
+    private Button buback;
     private EditText editcontent;
     TextView tvHeadTitle; // 页面顶端的标题
     int responderID;    // 回答者ID
@@ -59,8 +60,8 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
 
         //显示信息
         float askprice = user.getAskPrice();
-        buask.setText(Float.toString(askprice)+"提问");
         tvHeadTitle.setText("向" + user.getName() + "提问");
+        buask.setText(Float.toString(askprice)+"个听币提问");
         responderID=user.getId();
         category=user.getCategory();
         price=user.getAskPrice();
