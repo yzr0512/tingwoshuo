@@ -64,7 +64,7 @@ public class AskPresenterImpl implements IAskPresenter {
                         //Log.d("Get成功：", "doPost onSuccess:" + response);
                         try{
                             String res = response.getString("result");
-                            if(res.equals("ture")){
+                            if(res.equals("true")){
                                 int questionID = response.getInt("questionID");
                                 iAskView.askSuccess();
                             }else{

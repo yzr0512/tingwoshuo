@@ -110,10 +110,15 @@ public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<Su
 
         Glide.with(mContext).load(Constant.headPics.get(pos % 3)).placeholder(R.drawable.profile).into(holder.StrAskAvatar);
         Glide.with(mContext).load(Constant.headPics.get(pos % 3)).placeholder(R.drawable.profile).into(holder.StrAnswerAvatar);
-        if(datas.get(pos).getStrIsAnswered().equals("已回答"))
+        if(datas.get(pos).getStrIsAnswered().equals("待回答"))
         {
+            holder.BtnListenContent.setVisibility(View.INVISIBLE);//是否显示播放
+        }else{
+            holder.BtnReanswer.setVisibility(View.INVISIBLE);
             holder.BtnListenContent.setVisibility(View.VISIBLE);//是否显示播放
         }
+
+
     }
 
     @Override

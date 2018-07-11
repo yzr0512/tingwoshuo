@@ -241,12 +241,12 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
 
                     btnPlay.setVisibility(View.VISIBLE);
 
-                    // 提交答案
-//                    Answer answer = new Answer(0);
-//                    answer.setAnswer(filePath);
-//                    answer.setQuestionID(question.getId());
-//                    answer.setAppend(false);
-//                    iAnswerPresenter.postAnswer(((MyApplication)getApplication()).getCurrUser(), answer);
+                     //提交答案
+                    Answer answer = new Answer(0);
+                    answer.setAnswerPath(filePath);
+                    answer.setQuestionID(question.getId());
+                    answer.setAppend(false);
+                    iAnswerPresenter.postAnswer(((MyApplication)getApplication()).getCurrUser(), answer);
 
                     return true;
             }

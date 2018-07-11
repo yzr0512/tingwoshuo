@@ -73,9 +73,9 @@
                 android:id="@+id/BtnListenContent"
 
                 android:layout_toRightOf="@+id/StrListenAvatar"
-                android:background="@drawable/shape"
+                android:background="@drawable/butten_play"
                 android:layout_width="180dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:text="点击播放"
                 android:layout_centerVertical="true"
                 />
