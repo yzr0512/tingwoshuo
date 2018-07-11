@@ -142,11 +142,17 @@ public class SecondSubFragment extends Fragment implements SwipeRefreshLayout.On
 
     @Override
     public Boolean showPayRequest(float price) {
+
+
+
+
         return null;
     }
 
     @Override
     public void setAnswer(Answer answer) {
+
+
 
     }
 

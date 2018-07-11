@@ -78,8 +78,9 @@
             <Button
             android:id="@+id/sub_answer_BtnListenContent"
             android:layout_toRightOf="@+id/sub_answer_StrAnswerAvatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:background="@drawable/butten_play"
             android:text="点击播放"
             android:layout_centerVertical="true"
             />
@@ -88,6 +89,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/shape"
                 android:text="重新回答"
                 android:layout_centerVertical="true"
                 />

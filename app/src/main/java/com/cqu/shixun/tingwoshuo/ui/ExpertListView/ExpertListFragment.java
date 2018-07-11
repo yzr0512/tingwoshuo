@@ -177,12 +177,12 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
                 Toast.makeText(getActivity().getApplicationContext(),"onItemClick:"+position.getTag().toString(),Toast.LENGTH_SHORT).show();
                 Log.d("positon.getid():",position.getTag().toString());
                 Intent intent=new Intent();
+
                 intent.setClass(getActivity(), ExpertInformationActivity.class);
                 getActivity().startActivityForResult(intent,1);
                 intent.putExtra("expertID",Integer.valueOf(position.getTag().toString()));
 
                 startActivity(intent);
-
 
             }
         });
