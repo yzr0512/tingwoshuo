@@ -41,6 +41,7 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
     private static final int TYPE_NORMAL = 1;
     private View headView;
     private  int playstate=0;
+    private int currItemPos = -1;
     private MediaPlayer mediaPlayer;
     IListenAdapterPresenter iListenAdapterPresenter;
     private List<ContentItem> datas = new ArrayList<>();
@@ -122,7 +123,8 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
 
 
     }
-public void pause(){
+
+    public void pause(){
         if(playstate==1){
             mediaPlayer.pause();
             playstate=2;
@@ -131,9 +133,6 @@ public void pause(){
             mediaPlayer.start();
             playstate=1;
         }
-
-
-
 }
 
     @Override
@@ -197,13 +196,8 @@ public void pause(){
         @Override
         public void onClick(View v) {
             if(v.getId()==R.id.BtnAnswer){
+                if(getAdapterPosition() == currItemPos){
 
-                Toast.makeText(mContext,"button"+getAdapterPosition(),Toast.LENGTH_SHORT).show();
-                if(playstate==0){
-                    iListenAdapterPresenter.getQuestionAnswer(new Question(datas.get(getAdapterPosition()).getQuesitionId()), currUser);
-                    BtnAnswer.setText("播放中");
-                }
-               else {
                     pause();
                     if(playstate==1){
                         BtnAnswer.setText("播放中");
@@ -212,9 +206,16 @@ public void pause(){
                         BtnAnswer.setText("暂停中");
                     }
                     Log.d("isplay:",String.valueOf(mediaPlayer.isPlaying()));
+                }else{
+                    currItemPos = getAdapterPosition();
+                    if(playstate == 1 || playstate == 2){
+                        playstate = 0;
+                        mediaPlayer.stop();
+                        mediaPlayer.release();
+                    }
+                    iListenAdapterPresenter.getQuestionAnswer(new Question(datas.get(getAdapterPosition()).getQuesitionId()), currUser);
+                    BtnAnswer.setText("播放中");
                 }
-
-
 
             }else {
                 Toast.makeText(mContext,"item"+getAdapterPosition(),Toast.LENGTH_SHORT).show();

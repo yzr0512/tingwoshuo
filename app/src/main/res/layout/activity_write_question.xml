@@ -55,7 +55,7 @@
             android:layout_marginRight="20dp"
             android:background="@drawable/shape3_biankuang"
             android:gravity="top"
-            android:minLines="3"
+            android:minLines="5"
             />
         <Button
             android:id="@+id/writequestion_bu_writeq"

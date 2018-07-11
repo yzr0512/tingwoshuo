@@ -29,6 +29,7 @@ public class ExpertInformationActivity extends AppCompatActivity implements IExp
     private TextView TexImform_exim;
     private TextView TexName_exim;
     private TextView  TexKeyword_exim;
+
     User expert;
 
     @Override
@@ -47,7 +48,7 @@ public class ExpertInformationActivity extends AppCompatActivity implements IExp
 
         BtnBack.setOnClickListener(this);
         Intent intent=getIntent();
-        expertID = intent.getIntExtra("expertID", 0);
+        int expertID = intent.getIntExtra("expertID", 0);
 
 
         iExpertInfoPresenter = new ExpertInfoPresenterImpl(this);
@@ -67,10 +68,8 @@ public class ExpertInformationActivity extends AppCompatActivity implements IExp
         if(v.getId()==R.id.ask_bu_exim){
 //            Toast.makeText(ExpertInformationActivity.this,String.valueOf(v.getId()),Toast.LENGTH_SHORT).show();
             Intent intent=new Intent();
-            intent.putExtra("expertID", expert.getId());
             intent.setClass(ExpertInformationActivity.this,WriteQuestionActivity.class);
-
-            intent.putExtra("EXPERTID",expertID);
+            intent.putExtra("expertID", expert.getId());
             startActivity(intent);
         }
 
