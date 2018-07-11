@@ -40,7 +40,7 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_NORMAL = 1;
     private View headView;
-    private  boolean isrecord=false;
+    private  int playstate=0;
     private MediaPlayer mediaPlayer;
     IListenAdapterPresenter iListenAdapterPresenter;
     private List<ContentItem> datas = new ArrayList<>();
@@ -115,13 +115,26 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
                         mediaPlayer.prepare();
                         mediaPlayer.setLooping(false);
                         mediaPlayer.start();
-                        isrecord=false;
+                        playstate=1;
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
 
 
     }
+public void pause(){
+        if(playstate==1){
+            mediaPlayer.pause();
+            playstate=2;
+        }
+        else if(playstate==2){
+            mediaPlayer.start();
+            playstate=1;
+        }
+
+
+
+}
 
     @Override
     public void showPayRequest(float price) {
@@ -186,8 +199,20 @@ public class SubRecyclerViewAdapter extends RecyclerView.Adapter<SubRecyclerView
             if(v.getId()==R.id.BtnAnswer){
 
                 Toast.makeText(mContext,"button"+getAdapterPosition(),Toast.LENGTH_SHORT).show();
-
-                iListenAdapterPresenter.getQuestionAnswer(new Question(datas.get(getAdapterPosition()).getQuesitionId()), currUser);
+                if(playstate==0){
+                    iListenAdapterPresenter.getQuestionAnswer(new Question(datas.get(getAdapterPosition()).getQuesitionId()), currUser);
+                    BtnAnswer.setText("播放中");
+                }
+               else {
+                    pause();
+                    if(playstate==1){
+                        BtnAnswer.setText("播放中");
+                    }
+                    if(playstate==2){
+                        BtnAnswer.setText("暂停中");
+                    }
+                    Log.d("isplay:",String.valueOf(mediaPlayer.isPlaying()));
+                }
 
 
 

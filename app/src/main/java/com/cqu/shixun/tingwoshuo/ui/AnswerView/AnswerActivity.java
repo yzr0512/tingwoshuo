@@ -89,9 +89,7 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
             public void onStart() {
 
                 // 开始
-                btnRecord.setBackgroundResource(R.drawable.microphone_red);
-
-
+                
             }
 
             @Override

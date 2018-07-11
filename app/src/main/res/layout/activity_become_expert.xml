@@ -38,65 +38,70 @@
             />
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/layout_moneybar"
         android:layout_marginTop="52dp"
-
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <LinearLayout
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <TextView
-                android:id="@+id/jianjieone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="20dp"
-                android:text="　　你的简介"/>
-            <EditText
-                android:id="@+id/Introduction"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/jianjieone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_marginTop="60dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <TextView
                 android:id="@+id/title_tex"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:textSize="20dp"
-                android:text="　　你的头衔"/>
+                android:text="你的头衔"/>
             <EditText
                 android:id="@+id/title_becexp"
                 android:layout_marginTop="10dp"
                 android:layout_below="@+id/jianjieone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="运营经理，电台DJ，Google早期员工等"
                 />
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="100dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/jianjieone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="20dp"
+                android:text="你的简介"/>
+            <EditText
+                android:id="@+id/Introduction"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/jianjieone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="投资理财；如何优雅参加前任婚礼；如何自我管理；或者给你唱个晚安小曲。"
+                />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:textSize="20dp"
-                android:text="　　提问价格"/>
+                android:text="提问价格"/>
             <EditText
                 android:id="@+id/price_becexp"
                 android:layout_marginTop="10dp"
@@ -108,9 +113,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_marginTop="150dp"
+
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/jiejietwo"
@@ -134,8 +139,6 @@
 
         </LinearLayout>
 
-
-
         <LinearLayout
             android:layout_marginTop="220dp"
             android:orientation="horizontal"
@@ -144,7 +147,7 @@
             <Button
                 android:id="@+id/certain_bu_becex"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
+                android:layout_marginBottom="0dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_red"
@@ -152,6 +155,6 @@
                 />
         </LinearLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.cqu.shixun.tingwoshuo.Constant;
@@ -24,7 +25,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 /**
  * Created by engineer on 2016/9/13.
  */
-public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<SubAnswerContentRecyclerViewAdapter.MyViewHolder> implements View.OnClickListener {
+public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<SubAnswerContentRecyclerViewAdapter.MyViewHolder>implements View.OnClickListener {
     private static final int TYPE_HEADER = 0;
     private static final int TYPE_NORMAL = 1;
     private View headView;
@@ -87,8 +88,8 @@ public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<Su
         holder.StrDate.setText(datas.get(pos).getStrDate());
         holder.StrAskPerson.setText("  "+datas.get(pos).getStrAskPerson());
         holder.IntListenContentNum.setText(datas.get(pos).getIntListenContentNum()+"人听过");
-        holder.BtnListenContent.setOnClickListener(this);
-        holder.BtnReanswer.setOnClickListener(this);
+//        holder.BtnListenContent.setOnClickListener(this);
+//        holder.BtnReanswer.setOnClickListener(this);
 
         Glide.with(mContext).load(Constant.headPics.get(pos % 3)).placeholder(R.drawable.profile).into(holder.StrAskAvatar);
         Glide.with(mContext).load(Constant.headPics.get(pos % 3)).placeholder(R.drawable.profile).into(holder.StrAnswerAvatar);
@@ -108,15 +109,20 @@ public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<Su
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.sub_answer_BtnListenContent){
 
-        }
-        if(v.getId()==R.id.sub_answer_BtnReanswer){
-
-        }
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+//    @Override
+//    public void onClick(View v) {
+//        if(v.getId()==R.id.sub_answer_BtnListenContent){
+//
+//        }
+//        if(v.getId()==R.id.sub_answer_BtnReanswer){
+//
+//        }
+//    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
 
         CircleImageView StrAskAvatar;
@@ -132,6 +138,8 @@ public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<Su
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            itemView.setOnClickListener(this);
+
             if (itemView == headView) return;
 
             IntListenContentNum = (TextView) itemView.findViewById(R.id.sub_answer_IntListenContentNum);
@@ -145,6 +153,23 @@ public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<Su
             StrAskAvatar=(CircleImageView)itemView.findViewById(R.id.sub_answer_StrAskAvatar);
             StrAnswerAvatar=(CircleImageView)itemView.findViewById(R.id.sub_answer_StrAnswerAvatar);
 
+            BtnReanswer.setOnClickListener(this);
+            BtnListenContent.setOnClickListener(this);
+
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            if(v.getId()==R.id.sub_answer_BtnReanswer){
+                Toast.makeText(mContext,"buttonreanswer"+getAdapterPosition(),Toast.LENGTH_SHORT).show();
+            }
+            if(v.getId()==R.id.sub_answer_BtnListenContent){
+                Toast.makeText(mContext,"buttonlisten"+getAdapterPosition(),Toast.LENGTH_SHORT).show();
+            }
+//            else {
+//                Toast.makeText(mContext,"item"+getAdapterPosition(),Toast.LENGTH_SHORT).show();
+//            }
         }
     }
 
