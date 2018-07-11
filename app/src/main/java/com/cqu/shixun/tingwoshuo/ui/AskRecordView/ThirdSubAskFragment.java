@@ -99,7 +99,7 @@ public class ThirdSubAskFragment extends Fragment implements SwipeRefreshLayout.
 
     @Override
     public void onRefresh() {
-
+        iAskRecordPresenter.getAskRecordList(((MyApplication) getActivity().getApplication()).getCurrUser());
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

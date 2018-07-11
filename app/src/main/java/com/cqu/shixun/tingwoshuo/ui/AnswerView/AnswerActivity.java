@@ -174,6 +174,9 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
                     btnPlay.setText("暂停中");
                 }
                 break;
+            case R.id.back_bu_answer:
+                finish();
+                break;
         }
     }
 
@@ -187,14 +190,12 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
         // 获取到问题时调用此函数
         this.question = question;
 
-        filePath = this.getExternalFilesDir("").getAbsolutePath() + "/" + "question_"  + question.getId() + ".mp3";
-
-
-        filePath = this.getExternalFilesDir("").getAbsolutePath() + "/" + "question_"  + question.getId() + "_" + new Date().getTime() +".mp3";
-        Log.d("路径",filePath);
+//        filePath = this.getExternalFilesDir("").getAbsolutePath() + "/" + "question_"  + question.getId() + ".mp3";
+//        filePath = this.getExternalFilesDir("").getAbsolutePath() + "/" + "question_"  + question.getId() + "_" + new Date().getTime() +".mp3";
+//        Log.d("路径",filePath);
         name_answer.setText(question.getQuestionerName());
         question_answer.setText(question.getContent());
-        money_answer.setText(Float.toString(question.getPrice()));
+        money_answer.setText(Float.toString(question.getPrice()) + "听币");
 
     }
 
@@ -242,11 +243,11 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
                     btnPlay.setVisibility(View.VISIBLE);
 
                     // 提交答案
-//                    Answer answer = new Answer(0);
-//                    answer.setAnswer(filePath);
-//                    answer.setQuestionID(question.getId());
-//                    answer.setAppend(false);
-//                    iAnswerPresenter.postAnswer(((MyApplication)getApplication()).getCurrUser(), answer);
+                    Answer answer = new Answer(0);
+                    answer.setAnswerPath(filePath);
+                    answer.setQuestionID(question.getId());
+                    answer.setAppend(false);
+                    iAnswerPresenter.postAnswer(((MyApplication)getApplication()).getCurrUser(), answer);
 
                     return true;
             }

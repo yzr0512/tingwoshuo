@@ -4,7 +4,8 @@
     android:layout_height="100dp"
     android:background="#ffd9d9"
     android:orientation="horizontal"
-    android:layout_gravity="center_horizontal">
+    android:layout_gravity="center_horizontal"
+    android:baselineAligned="false">
 
 
         <LinearLayout

@@ -128,10 +128,11 @@ public class BecomeExpertActivity extends AppCompatActivity implements IBecomeEx
             break;
             case R.id.back_bu_becex:
             {
-                Intent intent = new Intent();
-                intent.setClass(BecomeExpertActivity.this, MainActivity.class);
-                //  intent.putExtra("id",2);
-                startActivity(intent);
+//                Intent intent = new Intent();
+//                intent.setClass(BecomeExpertActivity.this, MainActivity.class);
+//                //  intent.putExtra("id",2);
+//                startActivity(intent);
+                finish();
             }
             break;
             case R.id.Introduction:

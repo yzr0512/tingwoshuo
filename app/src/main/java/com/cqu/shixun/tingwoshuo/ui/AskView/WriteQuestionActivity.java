@@ -121,6 +121,7 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
     @Override
     public void askSuccess() {
         Toast.makeText(WriteQuestionActivity.this,"提问成功！",Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override

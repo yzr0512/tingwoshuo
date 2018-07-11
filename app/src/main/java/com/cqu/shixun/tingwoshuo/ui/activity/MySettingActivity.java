@@ -37,11 +37,11 @@ public class MySettingActivity extends AppCompatActivity {
         myback_bu.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                Intent intent = new Intent();
-                intent.setClass(MySettingActivity.this, MainActivity.class);
-                //  intent.putExtra("id",2);
-                startActivity(intent);
+            finish();
+//                Intent intent = new Intent();
+//                intent.setClass(MySettingActivity.this, MainActivity.class);
+//                //  intent.putExtra("id",2);
+//                startActivity(intent);
             }
         });
         //进入更换手机

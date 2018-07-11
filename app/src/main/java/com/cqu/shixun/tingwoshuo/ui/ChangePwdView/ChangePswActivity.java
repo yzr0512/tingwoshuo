@@ -73,9 +73,10 @@ public class ChangePswActivity extends AppCompatActivity implements IChangePswVi
             break;
             case R.id.back_bu_changepsw:
             {
-                Intent intent = new Intent();
-                intent.setClass(ChangePswActivity.this, MySettingActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent();
+//                intent.setClass(ChangePswActivity.this, MySettingActivity.class);
+//                startActivity(intent);
+                finish();
             }
 
         }
