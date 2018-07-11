@@ -28,6 +28,7 @@ import com.cqu.shixun.tingwoshuo.model.Question;
 import com.czt.mp3recorder.Mp3Recorder;
 import com.czt.mp3recorder.Mp3RecorderUtil;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Date;
 
@@ -43,6 +44,7 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
     TextView btnRecord;
     Button btnPlay;
     Button refuse_bu;
+    Button btnRecordAgain;
     String filePath;
     Question question;
     Mp3Recorder mMp3Recorder;
@@ -54,11 +56,11 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answer);
 
-        //判断SDK版本是否大于等于19，大于就让他显示，小于就要隐藏，不然低版本会多出来一个
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            setTranslucentStatus(true);
-            //还有设置View的高度，因为每个型号的手机状态栏高度都不相同
-        }
+//        //判断SDK版本是否大于等于19，大于就让他显示，小于就要隐藏，不然低版本会多出来一个
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            setTranslucentStatus(true);
+//            //还有设置View的高度，因为每个型号的手机状态栏高度都不相同
+//        }
 
         recoderDialog = new AudioRecoderDialog(this);
         recoderDialog.setShowAlpha(0.98f);
@@ -72,6 +74,9 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
         btnPlay=(Button)findViewById(R.id.play_bu);
         btnPlay.setVisibility(View.INVISIBLE);
 
+        btnRecordAgain = (Button)findViewById(R.id.record_again_bu);
+        btnRecordAgain.setOnClickListener(this);
+        btnRecordAgain.setVisibility(View.INVISIBLE);
 
         back_bu_answer.setOnClickListener(this);
         btnPlay.setOnClickListener(this);
@@ -120,7 +125,7 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
             public void onRecording(double v, double v1) {
                 //已经录制的时间v, 实时音量分贝值v1
                 if(null != recoderDialog) {
-                    int level = (int) v1;
+//                    int level = (int) v1;
                     recoderDialog.setLevel((int)v1);
                     recoderDialog.setTime(System.currentTimeMillis() - downT);
                 }
@@ -151,27 +156,56 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
 
     }
 
-    int isRecording = 0;
+    int isPlaying = 0;
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.play_bu:
-                if(isRecording==0){
+                if(isPlaying==0){
                     try {
                         mediaPlayer = new MediaPlayer();
                         mediaPlayer.setDataSource(filePath);
                         mediaPlayer.prepare();
                         mediaPlayer.setLooping(false);
+                        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mediaPlayer) {
+                                btnPlay.setText("播放");
+                                isPlaying=0;
+                            }
+                        });
                         mediaPlayer.start();
-                        isRecording=1;
-                        btnPlay.setText("播放中");
+                        isPlaying=1;
+                        btnPlay.setText("暂停");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }else {
-                    isRecording=0;
+                    isPlaying=0;
                     mediaPlayer.pause();
-                    btnPlay.setText("暂停中");
+                    btnPlay.setText("播放");
+                }
+                break;
+            case R.id.back_bu_answer:
+                finish();
+                break;
+            case R.id.record_again_bu:
+                {
+                    isRecorded = 0;
+                    if(isPlaying == 1){
+                        mediaPlayer.stop();
+                        mediaPlayer.release();
+                        isPlaying = 0;
+                        btnPlay.setText("播放");
+                    }
+
+                    File file = new File(filePath);
+                    if(file.exists()){
+                        file.delete();
+                    }
+                    btnRecord.setText("开始录制");
+                    btnRecordAgain.setVisibility(View.INVISIBLE);
+                    btnPlay.setVisibility(View.INVISIBLE);
                 }
                 break;
         }
@@ -180,6 +214,8 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
     @Override
     public void answerSuccess() {
         // 回答上传成功时调用此函数
+        Toast.makeText(AnswerActivity.this,"回答上传成功",Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override
@@ -188,15 +224,16 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
         this.question = question;
 
         filePath = this.getExternalFilesDir("").getAbsolutePath() + "/" + "question_"  + question.getId() + ".mp3";
+        File file = new File(filePath);
+        if(file.exists()){
+            file.delete();
+        }
 
-
-        filePath = this.getExternalFilesDir("").getAbsolutePath() + "/" + "question_"  + question.getId() + "_" + new Date().getTime() +".mp3";
-        Log.d("路径",filePath);
         name_answer.setText(question.getQuestionerName());
         question_answer.setText(question.getContent());
-        money_answer.setText(Float.toString(question.getPrice()));
-
+        money_answer.setText(Float.toString(question.getPrice()) + "听币");
     }
+
 
     @Override
     public void showMessage(String msg) {
@@ -205,52 +242,58 @@ public class AnswerActivity extends AppCompatActivity implements IAnswerView, Vi
         t.show();
     }
 
-    @TargetApi(19)
-    private void setTranslucentStatus(boolean on) {
-        Window win = getWindow();
-        WindowManager.LayoutParams winParams = win.getAttributes();
-        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-        if (on) {
-            winParams.flags |= bits;
-        } else {
-            winParams.flags &= ~bits;
-        }
-        win.setAttributes(winParams);
-    }
 
+//    @TargetApi(19)
+//    private void setTranslucentStatus(boolean on) {
+//        Window win = getWindow();
+//        WindowManager.LayoutParams winParams = win.getAttributes();
+//        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+//        if (on) {
+//            winParams.flags |= bits;
+//        } else {
+//            winParams.flags &= ~bits;
+//        }
+//        win.setAttributes(winParams);
+//    }
+
+    int isRecorded = 0; // 是否已经录制了答案
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         if(v.getId()==R.id.answer_bu){
+            if(isRecorded == 0){    // 没有答案
+                switch (event.getAction()){
+                    case MotionEvent.ACTION_DOWN:
+//                    Toast.makeText(AnswerActivity.this,"222",Toast.LENGTH_SHORT).show();
+                        mMp3Recorder.setOutputFile(filePath);
+                        mMp3Recorder.setMaxDuration(60);
+                        mMp3Recorder.start();
+                        downT=System.currentTimeMillis();
+                        recoderDialog.showAtLocation((View) v.getParent(), Gravity.CENTER,0,0);
+                        btnRecord.setBackgroundResource(R.drawable.shape_recoder_btn_recoding);
+                        return true;
+                    case MotionEvent.ACTION_UP:
+//                    Toast.makeText(AnswerActivity.this,"333",Toast.LENGTH_SHORT).show();
+                        mMp3Recorder.stop(Mp3Recorder.ACTION_STOP_ONLY);
+                        mMp3Recorder.reset();
+                        recoderDialog.dismiss();
+                        btnRecord.setBackgroundResource(R.drawable.shape_recoder_btn_normal);
 
-            switch (event.getAction()){
-                case MotionEvent.ACTION_DOWN:
-                    Toast.makeText(AnswerActivity.this,"222",Toast.LENGTH_SHORT).show();
-                    mMp3Recorder.setOutputFile(filePath);
-                    mMp3Recorder.setMaxDuration(60);
-                    mMp3Recorder.start();
-                    downT=System.currentTimeMillis();
-                    recoderDialog.showAtLocation((View) v.getParent(), Gravity.CENTER,0,0);
-                    btnRecord.setBackgroundResource(R.drawable.shape_recoder_btn_recoding);
-                    return true;
-                case MotionEvent.ACTION_UP:
-                    Toast.makeText(AnswerActivity.this,"333",Toast.LENGTH_SHORT).show();
-                    mMp3Recorder.stop(Mp3Recorder.ACTION_STOP_ONLY);
-                    mMp3Recorder.reset();
-                    recoderDialog.dismiss();
-                    btnRecord.setBackgroundResource(R.drawable.shape_recoder_btn_normal);
+                        btnPlay.setVisibility(View.VISIBLE);
+                        btnRecordAgain.setVisibility(View.VISIBLE);
+                        btnRecord.setText("提交答案");
 
-                    btnPlay.setVisibility(View.VISIBLE);
+                        isRecorded = 1;
 
-                     //提交答案
-                    Answer answer = new Answer(0);
-                    answer.setAnswerPath(filePath);
-                    answer.setQuestionID(question.getId());
-                    answer.setAppend(false);
-                    iAnswerPresenter.postAnswer(((MyApplication)getApplication()).getCurrUser(), answer);
+                        return true;
+                }
 
-                    return true;
+            }else{  // 有答案就提交
+                Answer answer = new Answer(0);
+                answer.setAnswerPath(filePath);
+                answer.setQuestionID(question.getId());
+                answer.setAppend(false);
+                iAnswerPresenter.postAnswer(((MyApplication)getApplication()).getCurrUser(), answer);
             }
-
 
         }
         return false;

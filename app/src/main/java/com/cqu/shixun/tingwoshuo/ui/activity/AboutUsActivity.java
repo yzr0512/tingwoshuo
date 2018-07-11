@@ -20,10 +20,11 @@ public class AboutUsActivity extends AppCompatActivity {
         btnMyback.setOnClickListener(new android.view.View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(AboutUsActivity.this, MySettingActivity.class);
-                //  intent.putExtra("id",2);
-                startActivity(intent);
+                finish();
+//                Intent intent = new Intent();
+//                intent.setClass(AboutUsActivity.this, MySettingActivity.class);
+//                //  intent.putExtra("id",2);
+//                startActivity(intent);
             }
         });
     }

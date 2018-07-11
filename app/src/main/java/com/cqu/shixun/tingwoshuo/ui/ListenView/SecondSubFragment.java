@@ -101,7 +101,7 @@ public class SecondSubFragment extends Fragment implements SwipeRefreshLayout.On
 
     @Override
     public void onRefresh() {
-
+        iListenPresenter.getQuestionList("房产");
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

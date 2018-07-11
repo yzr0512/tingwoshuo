@@ -45,6 +45,9 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
         buask=(Button)findViewById(R.id.writequestion_bu_writeq);
         buask.setOnClickListener(this);
 
+        buback = (Button)findViewById(R.id.back_bu_writeq);
+        buback.setOnClickListener(this);
+
         editcontent=(EditText)findViewById(R.id.question_writeq);
         editcontent.setOnClickListener(this);
 
@@ -78,10 +81,11 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
             case R.id.back_bu_writeq:
             {
 //                Toast.makeText(WriteQuestionActivity.this,"111",Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent();
-                intent.setClass(WriteQuestionActivity.this, ExpertInformationActivity.class);
-                //  intent.putExtra("id",2);
-                startActivity(intent);
+//                Intent intent = new Intent();
+//                intent.setClass(WriteQuestionActivity.this, ExpertInformationActivity.class);
+//                //  intent.putExtra("id",2);
+//                startActivity(intent);
+                finish();
             }
             break;
             case R.id.writequestion_bu_writeq:
@@ -121,6 +125,7 @@ public class WriteQuestionActivity extends AppCompatActivity implements IAskView
     @Override
     public void askSuccess() {
         Toast.makeText(WriteQuestionActivity.this,"提问成功！",Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     @Override

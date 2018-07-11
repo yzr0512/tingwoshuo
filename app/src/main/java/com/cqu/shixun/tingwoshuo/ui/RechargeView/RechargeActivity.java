@@ -63,11 +63,11 @@ public class RechargeActivity extends AppCompatActivity implements IRechargeView
             case R.id.button_backward:
             {
 
-                Intent intent = new Intent();
-                intent.setClass(RechargeActivity.this, MainActivity.class);
-                //  intent.putExtra("id",2);
-                startActivity(intent);
-
+//                Intent intent = new Intent();
+//                intent.setClass(RechargeActivity.this, MainActivity.class);
+//                //  intent.putExtra("id",2);
+//                startActivity(intent);
+                finish();
             }
             break;
             case R.id.tenTB:

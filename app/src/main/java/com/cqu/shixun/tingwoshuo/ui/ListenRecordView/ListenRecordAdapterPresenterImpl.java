@@ -72,8 +72,9 @@ public class ListenRecordAdapterPresenterImpl implements IListenRecordAdapterPre
         File file = new File(answer.getAnswerPath());
         if (file.exists()) {
             Log.d("debug", "文件存在");
-            iListenRecordAdapterView.play(answer);
-            return;
+//            iListenRecordAdapterView.play(answer);
+//            return;
+            file.delete();
         }
 
         String url = "http://119.29.105.37:8000/answerFile";

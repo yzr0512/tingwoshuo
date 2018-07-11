@@ -72,8 +72,9 @@ public class AskRecordAdapterPresenterImpl implements IAskRecordAdapterPresenter
         File file = new File(answer.getAnswerPath());
         if (file.exists()) {
             Log.d("debug", "文件存在");
-            iAskRecordAdapterView.play(answer);
-            return;
+//            iAskRecordAdapterView.play(answer);
+//            return;
+            file.delete();
         }
 
         String url = "http://119.29.105.37:8000/answerFile";

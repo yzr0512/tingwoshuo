@@ -99,7 +99,7 @@ public class AnswerPresenterImpl implements IAnswerPresenter {
 //                            Log.d("res=", res);
                             if(res.equals("true")){
                                 int ansID = response.getInt("answerID");    // 回答的id
-                                int consumeRecord = response.getInt("consumeRecordID"); // 消费记录的id
+//                                int consumeRecord = response.getInt("consumeRecordID"); // 消费记录的id
 
                                 iAnswerView.answerSuccess();
                             }else{

@@ -47,6 +47,7 @@ public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<Su
     IAnswerRecordAdapterPresenter iAnswerRecordAdapterPresenter;
     private  int playstate=0;
     private int currItemPos = -1;
+    Button currItemBtnView;     // 当前正在播放的按钮
     private MediaPlayer mediaPlayer;
     User currUser;
 
@@ -145,6 +146,13 @@ public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<Su
             mediaPlayer.setDataSource(answer.getAnswerPath());
             mediaPlayer.prepare();
             mediaPlayer.setLooping(false);
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    currItemBtnView.setText("重新播放");
+                    playstate=2;
+                }
+            });
             mediaPlayer.start();
             playstate=1;
         } catch (IOException e) {
@@ -155,10 +163,12 @@ public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<Su
         if(playstate==1){
             mediaPlayer.pause();
             playstate=2;
+            currItemBtnView.setText("播放");
         }
         else if(playstate==2){
             mediaPlayer.start();
             playstate=1;
+            currItemBtnView.setText("暂停");
         }
     }
     @Override
@@ -220,22 +230,26 @@ public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<Su
                 if(getAdapterPosition() == currItemPos){
 
                     pause();
-                    if(playstate==1){
-                        BtnListenContent.setText("播放中");
-                    }
-                    if(playstate==2){
-                        BtnListenContent.setText("暂停中");
-                    }
-                    Log.d("isplay:",String.valueOf(mediaPlayer.isPlaying()));
+//                    if(playstate==1){
+//                        BtnListenContent.setText("播放中");
+//                    }
+//                    if(playstate==2){
+//                        BtnListenContent.setText("暂停中");
+//                    }
+//                    Log.d("isplay:",String.valueOf(mediaPlayer.isPlaying()));
                 }else{
+                    if(currItemBtnView != null){
+                        currItemBtnView.setText("重新播放");
+                    }
                     currItemPos = getAdapterPosition();
+                    currItemBtnView = (Button) v;
                     if(playstate == 1 || playstate == 2){
                         playstate = 0;
                         mediaPlayer.stop();
                         mediaPlayer.release();
                     }
                     iAnswerRecordAdapterPresenter.getQuestionAnswer(new Question(datas.get(getAdapterPosition()).getId()), currUser);
-                    BtnListenContent.setText("播放中");
+                    BtnListenContent.setText("暂停");
                 }
 
             }
@@ -246,7 +260,7 @@ public class SubAnswerContentRecyclerViewAdapter extends RecyclerView.Adapter<Su
                 mContext.startActivity(intent);
 
             }else {
-                Toast.makeText(mContext,"item"+getAdapterPosition(),Toast.LENGTH_SHORT).show();
+//                Toast.makeText(mContext,"item"+getAdapterPosition(),Toast.LENGTH_SHORT).show();
             }
 
         }

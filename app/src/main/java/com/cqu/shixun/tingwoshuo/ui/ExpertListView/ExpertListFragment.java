@@ -41,7 +41,7 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
     public Button buLaw;
     private View rootView;
     private FloatingActionMenu fam;
-
+    String currCategory = "房产"; // 当前的分类
     IExpertListPrsenter iExpertListPrsenter;
 
     @Override
@@ -87,7 +87,7 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
 
     @Override
     public void onRefresh() {
-
+        iExpertListPrsenter.getExpertList(currCategory);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -120,8 +120,8 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
             datas.add(personItem);
         }
 
-
         View headView = LayoutInflater.from(mContext).inflate(R.layout.index_list_headview, null);
+
         adapter = new IndexRecyclerViewAdapter(mContext, datas);
         adapter.setHeadView(headView);   //设置4个范围下面的灰块区域
 //        adapter.setmItemClickListener((IndexRecyclerViewAdapter.OnItemClickListener) this);
@@ -134,7 +134,7 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
 
                 buProperty.setBackgroundResource(R.drawable.house_65_v2);
                 iExpertListPrsenter.getExpertList("房产");
-
+                currCategory = "房产";
             }
         });
 
@@ -144,7 +144,7 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
             public void onClick(View view) {
                 buLaw.setBackgroundResource(R.drawable.law_65_v2);
                 iExpertListPrsenter.getExpertList("法律");
-
+                currCategory = "法律";
             }
         });
 
@@ -154,7 +154,7 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
             public void onClick(View view) {
                 buFinancial.setBackgroundResource(R.drawable.cash_65_v2);
                 iExpertListPrsenter.getExpertList("理财");
-
+                currCategory = "理财";
             }
         });
 
@@ -164,7 +164,7 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
             public void onClick(View view) {
                 buEmotion.setBackgroundResource(R.drawable.love_65_v2);
                 iExpertListPrsenter.getExpertList("情感");
-
+                currCategory = "情感";
             }
         });
 
@@ -172,12 +172,12 @@ public class ExpertListFragment extends Fragment implements SwipeRefreshLayout.O
 
             @Override
             public void onItemClick(View position) {
-                Toast.makeText(getActivity().getApplicationContext(),"onItemClick:"+position.getTag().toString(),Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity().getApplicationContext(),"onItemClick:"+position.getTag().toString(),Toast.LENGTH_SHORT).show();
                 Log.d("positon.getid():",position.getTag().toString());
                 Intent intent=new Intent();
 
                 intent.setClass(getActivity(), ExpertInformationActivity.class);
-                getActivity().startActivityForResult(intent,1);
+//                getActivity().startActivityForResult(intent,1);
                 intent.putExtra("expertID",Integer.valueOf(position.getTag().toString()));
 
                 startActivity(intent);

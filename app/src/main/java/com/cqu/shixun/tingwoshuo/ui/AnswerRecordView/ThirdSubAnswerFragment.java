@@ -102,7 +102,7 @@ public class ThirdSubAnswerFragment extends Fragment implements SwipeRefreshLayo
 
     @Override
     public void onRefresh() {
-
+        iAnswerRecordPresenter.getAnswerRecordList(((MyApplication) getActivity().getApplication()).getCurrUser());
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -134,11 +134,11 @@ public class ThirdSubAnswerFragment extends Fragment implements SwipeRefreshLayo
         adapter.setmItemClickListener(new SubAnswerContentRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View position) {
-                Toast.makeText(getActivity().getApplicationContext(),"onAnswerItemClick:"+position.getTag().toString(),Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity().getApplicationContext(),"onAnswerItemClick:"+position.getTag().toString(),Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent();
 
                 intent.setClass(getActivity(), AnswerActivity.class);
-                getActivity().startActivityForResult(intent,3);
+//                getActivity().startActivityForResult(intent,3);
                 intent.putExtra("questionID",Integer.valueOf(position.getTag().toString()));
 
                 startActivity(intent);

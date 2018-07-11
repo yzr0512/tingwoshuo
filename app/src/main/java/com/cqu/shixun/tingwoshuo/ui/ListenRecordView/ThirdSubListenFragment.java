@@ -66,7 +66,7 @@ public class ThirdSubListenFragment extends Fragment implements SwipeRefreshLayo
 
     @Override
     public void onRefresh() {
-
+        iListenRecordPresenter.getListenRecordList(((MyApplication) getActivity().getApplication()).getCurrUser());
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

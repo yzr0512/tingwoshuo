@@ -93,6 +93,7 @@ public class ListenAdapterPresenterImpl implements IListenAdapterPresenter {
             Log.d("debug", "文件存在");
             iListenAdapterView.play(answer);
             return;
+//            file.delete();
         }
 
         String url = "http://119.29.105.37:8000/answerFile";

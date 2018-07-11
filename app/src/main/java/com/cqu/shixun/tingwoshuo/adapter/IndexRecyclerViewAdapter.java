@@ -221,4 +221,6 @@ public class IndexRecyclerViewAdapter extends RecyclerView.Adapter<IndexRecycler
         mItemClickListener=itemClickListener;
     }
 
+
+
 }
