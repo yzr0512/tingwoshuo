@@ -3,105 +3,120 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:orientation="horizontal"
+    android:background="#ffffff"
     android:layout_gravity="center_horizontal">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="34dp"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_marginTop="10dp"
+        <Button
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:id="@+id/BtnProperty"
+            android:layout_width="48dp"
+            android:layout_height="52dp"
+            android:background="@drawable/butten_co_change"
+            android:textStyle="bold" />
+
+        <TextView
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:text="房产"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="116dp"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-            <Button
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:id="@+id/BtnProperty"
-                android:layout_width="48dp"
-                android:layout_height="52dp"
-                android:background="@drawable/butten_co_change"
-                android:textStyle="bold" />
+        <Button
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:id="@+id/BtnFinancial"
+            android:layout_width="48dp"
+            android:layout_height="52dp"
+            android:background="@drawable/cash_65"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="房产"
-                android:textSize="20sp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="10dp"
+        <TextView
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:text="理财"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="116dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-            <Button
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:id="@+id/BtnFinancial"
-                android:layout_width="48dp"
-                android:layout_height="52dp"
-                android:background="@drawable/cash_65"
-                android:textStyle="bold" />
+        <Button
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:id="@+id/BtnEmotion"
+            android:layout_width="48dp"
+            android:layout_height="52dp"
+            android:background="@drawable/love_65"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="理财"
-                android:textSize="20sp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="10dp"
+        <TextView
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:text="感情"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="34dp"
+        android:layout_weight="1"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-            <Button
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:id="@+id/BtnEmotion"
-                android:layout_width="48dp"
-                android:layout_height="52dp"
-                android:background="@drawable/love_65"
-                android:textStyle="bold" />
+        <Button
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:id="@+id/BtnLaw"
+            android:layout_width="48dp"
+            android:layout_height="52dp"
+            android:background="@drawable/law_65"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="感情"
-                android:textSize="20sp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginTop="10dp"
+        <TextView
             android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_gravity="center"
+            android:text="法律"
+            android:textSize="20sp" />
+    </LinearLayout>
 
-            <Button
-                android:layout_weight="1"
-                android:layout_gravity="center"
-                android:id="@+id/BtnLaw"
-                android:layout_width="48dp"
-                android:layout_height="52dp"
-                android:background="@drawable/law_65"
-                android:textStyle="bold" />
 
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="法律"
-                android:textSize="20sp" />
-        </LinearLayout>
+</RelativeLayout>
+
 
 </LinearLayout>
 
