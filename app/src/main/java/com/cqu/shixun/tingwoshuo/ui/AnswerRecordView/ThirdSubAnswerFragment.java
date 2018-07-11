@@ -120,7 +120,7 @@ public class ThirdSubAnswerFragment extends Fragment implements SwipeRefreshLayo
             AnswerContentItem answerContentItem=new AnswerContentItem(question.getId());
             answerContentItem.setStrDate("刚刚");
             answerContentItem.setStrAskPerson(question.getQuestionerName());
-
+            answerContentItem.setStrIsAnswered(question.getStatus());
             answerContentItem.setIntQuesitionPrice((int) question.getPrice());//价格
             answerContentItem.setIntListenContentNum(question.getListenNum());//听的人数
             answerContentItem.setStrAskContent(question.getContent());
@@ -130,7 +130,7 @@ public class ThirdSubAnswerFragment extends Fragment implements SwipeRefreshLayo
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(manager);
-        adapter = new SubAnswerContentRecyclerViewAdapter(mContext, datas);
+        adapter = new SubAnswerContentRecyclerViewAdapter(mContext, datas,((MyApplication)getActivity().getApplication()).getCurrUser());
         adapter.setmItemClickListener(new SubAnswerContentRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View position) {

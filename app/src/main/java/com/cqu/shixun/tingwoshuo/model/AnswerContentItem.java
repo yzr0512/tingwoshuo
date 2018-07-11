@@ -17,6 +17,7 @@ public class AnswerContentItem {
     private int IntQuesitionPrice;
     private int IntListenContentNum;
     private Button BtnReAnswer;
+    private String StrIsAnswered;
 
     public  AnswerContentItem(int id) {
         this.id = id;
@@ -93,5 +94,13 @@ public class AnswerContentItem {
 
     public void setIntListenContentNum(int intListenContentNum) {
         IntListenContentNum = intListenContentNum;
+    }
+
+    public String getStrIsAnswered() {
+        return StrIsAnswered;
+    }
+
+    public void setStrIsAnswered(String strIsAnswered) {
+        StrIsAnswered = strIsAnswered;
     }
 }

@@ -29,7 +29,7 @@ public class LoginPresenterImpl implements ILoginPresenter {
         MyOkHttp myOkHttp = new MyOkHttp();
         String url = "http://119.29.105.37:8000/login";
         Map<String, String> params = new HashMap<>();
-        params.put("phone", "18888888883");
+        params.put("phone", "18888888811");
         params.put("pwd", "123456");
 //        params.put("phone", phone);
 //        params.put("pwd", pwd);

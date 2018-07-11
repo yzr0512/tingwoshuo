@@ -23,6 +23,7 @@ import com.cqu.shixun.tingwoshuo.R;
 import com.cqu.shixun.tingwoshuo.adapter.SubAskContentRecyclerViewAdapter;
 import com.cqu.shixun.tingwoshuo.model.AskContentItem;
 import com.cqu.shixun.tingwoshuo.model.Question;
+import com.cqu.shixun.tingwoshuo.model.User;
 import com.cqu.shixun.tingwoshuo.ui.ChangePwdView.ChangePswActivity;
 import com.cqu.shixun.tingwoshuo.ui.activity.MySettingActivity;
 import com.github.clans.fab.FloatingActionButton;
@@ -129,7 +130,7 @@ public class ThirdSubAskFragment extends Fragment implements SwipeRefreshLayout.
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(manager);
 
-        adapter = new SubAskContentRecyclerViewAdapter(mContext, datas);
+        adapter = new SubAskContentRecyclerViewAdapter(mContext, datas,((MyApplication)getActivity().getApplication()).getCurrUser());
 
         recyclerView.setAdapter(adapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

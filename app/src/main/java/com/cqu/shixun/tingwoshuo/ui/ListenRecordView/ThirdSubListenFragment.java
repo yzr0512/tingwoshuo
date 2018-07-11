@@ -92,7 +92,7 @@ public class ThirdSubListenFragment extends Fragment implements SwipeRefreshLayo
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recyclerview);
         LinearLayoutManager manager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(manager);
-        adapter = new SubContentRecyclerViewAdapter(mContext, datas);
+        adapter = new SubContentRecyclerViewAdapter(mContext, datas,((MyApplication)getActivity().getApplication()).getCurrUser());
         recyclerView.setAdapter(adapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
